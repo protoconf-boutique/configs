@@ -35,7 +35,10 @@
             "id": "plan",
             "run": "terraform -chdir=tfconfigs/terraform plan -no-color",
             "continue-on-error": true,
-            "if": "github.event_name == 'pull_request'"
+            "if": "github.event_name == 'pull_request'",
+            "env": {
+              "TF_VAR_GITHUB_TOKEN": "${{ secrets.GITHUB_TOKEN }}"
+            }
           },
           {
             "name": "Update Pull Request",
@@ -57,7 +60,10 @@
           {
             "name": "Terraform Apply",
             "run": "terraform -chdir=tfconfigs/terraform apply -auto-approve",
-            "if": "github.ref == 'refs/heads/main' \u0026\u0026 github.event_name == 'push'"
+            "if": "github.ref == 'refs/heads/main' \u0026\u0026 github.event_name == 'push'",
+            "env": {
+              "TF_VAR_GITHUB_TOKEN": "${{ secrets.GITHUB_TOKEN }}"
+            }
           }
         ]
       }

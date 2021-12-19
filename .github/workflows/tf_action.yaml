@@ -17,6 +17,8 @@ jobs:
       name: Terraform Validate
       run: terraform -chdir=tfconfigs/terraform validate -no-color
     - continue-on-error: true
+      env:
+        TF_VAR_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       id: plan
       if: github.event_name == 'pull_request'
       name: Terraform Plan
@@ -41,7 +43,9 @@ jobs:
     - if: steps.plan.outcome == 'failure'
       name: Terraform Plan Status
       run: exit 1
-    - if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    - env:
+        TF_VAR_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       name: Terraform Apply
       run: terraform -chdir=tfconfigs/terraform apply -auto-approve
 "on":
