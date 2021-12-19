@@ -37,7 +37,7 @@
             "continue-on-error": true,
             "if": "github.event_name == 'pull_request'",
             "env": {
-              "TF_VAR_GITHUB_TOKEN": "${{ secrets.GITHUB_TOKEN }}"
+              "TF_VAR_github_token": "${{ secrets.GITHUB_TOKEN }}"
             }
           },
           {
@@ -62,7 +62,7 @@
             "run": "terraform -chdir=tfconfigs/terraform apply -auto-approve",
             "if": "github.ref == 'refs/heads/main' \u0026\u0026 github.event_name == 'push'",
             "env": {
-              "TF_VAR_GITHUB_TOKEN": "${{ secrets.GITHUB_TOKEN }}"
+              "TF_VAR_github_token": "${{ secrets.GITHUB_TOKEN }}"
             }
           }
         ]
