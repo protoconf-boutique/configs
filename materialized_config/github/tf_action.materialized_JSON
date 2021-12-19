@@ -23,7 +23,7 @@
           {
             "name": "Terraform Init",
             "id": "init",
-            "run": "terraform init -chdir tfconfigs/terraform"
+            "run": "terraform  -chdir=tfconfigs/terraform init"
           },
           {
             "name": "Terraform Validate",
@@ -34,6 +34,7 @@
             "name": "Terraform Plan",
             "id": "plan",
             "run": "terraform plan -no-color tfconfigs/terraform",
+            "continue-on-error": true,
             "if": "github.event_name == 'pull_request'"
           },
           {
@@ -47,6 +48,16 @@
               "github-token": "${{ secrets.GITHUB_TOKEN }}",
               "script": "\nconst output = `#### Terraform Format and Style 🖌\\`${{ steps.fmt.outcome }}\\`\n#### Terraform Initialization ⚙️\\`${{ steps.init.outcome }}\\`\n#### Terraform Plan 📖\\`${{ steps.plan.outcome }}\\`\n#### Terraform Validation 🤖\\`${{ steps.validate.outcome }}\\`\n\n\u003cdetails\u003e\u003csummary\u003eShow Plan\u003c/summary\u003e\n\n\\`\\`\\`\n\n${process.env.PLAN}\n\\`\\`\\`\n\n\u003c/details\u003e\n\n*Pusher: @${{ github.actor }}, Action: \\`${{ github.event_name }}\\`*`;\n\ngithub.issues.createComment({\n    issue_number: context.issue.number,\n    owner: context.repo.owner,\n    repo: context.repo.repo,\n    body: output\n})\n                        "
             }
+          },
+          {
+            "name": "Terraform Plan Status",
+            "run": "exit 1",
+            "if": "steps.plan.outcome == 'failure'"
+          },
+          {
+            "name": "Terraform Apply",
+            "run": "terraform apply -auto-approve tfconfigs/terraform",
+            "if": "github.ref == 'refs/heads/main' \u0026\u0026 github.event_name == 'push'"
           }
         ]
       }

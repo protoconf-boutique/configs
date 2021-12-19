@@ -23,7 +23,7 @@ def gen_actions(path):
                     g.Job.Step(
                         name="Terraform Init",
                         id="init",
-                        run="terraform init -chdir %s" % path,
+                        run="terraform  -chdir=%s init" % path,
                     ),
                     g.Job.Step(
                         name="Terraform Validate",
@@ -35,6 +35,7 @@ def gen_actions(path):
                         id="plan",
                         condition="github.event_name == 'pull_request'",
                         run="terraform plan -no-color %s" % path,
+                        continue_on_error=True,
                     ),
                     g.Job.Step(
                         name="Update Pull Request",
@@ -68,6 +69,16 @@ github.issues.createComment({
                         """,
                         },
                     ),
+                    g.Job.Step(
+                        name="Terraform Plan Status",
+                        condition="steps.plan.outcome == 'failure'",
+                        run="exit 1",
+                    ),
+                    g.Job.Step(
+                        name="Terraform Apply",
+                        condition="github.ref == 'refs/heads/main' && github.event_name == 'push'",
+                        run="terraform apply -auto-approve %s" % path,
+                    )
                 ],
             )
         },
