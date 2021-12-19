@@ -4,6 +4,9 @@ g = GithubActions
 
 
 def gen_actions(path):
+    def terraform(cmd):
+        return "terraform -chdir=%s %s" % (path, cmd)
+
     return GithubActions(
         on=g.On(push=g.On.Selector(branches=["main"]), pull_request=g.On.Selector()),
         jobs={
@@ -18,23 +21,23 @@ def gen_actions(path):
                     g.Job.Step(
                         name="Terraform Format",
                         id="fmt",
-                        run="terraform fmt -check %s" % path,
+                        run=terraform("fmt -check"),
                     ),
                     g.Job.Step(
                         name="Terraform Init",
                         id="init",
-                        run="terraform  -chdir=%s init" % path,
+                        run=terraform("init"),
                     ),
                     g.Job.Step(
                         name="Terraform Validate",
                         id="validate",
-                        run="terraform validate -no-color %s" % path,
+                        run=terraform("validate -no-color"),
                     ),
                     g.Job.Step(
                         name="Terraform Plan",
                         id="plan",
                         condition="github.event_name == 'pull_request'",
-                        run="terraform plan -no-color %s" % path,
+                        run=terraform("plan -no-color"),
                         continue_on_error=True,
                     ),
                     g.Job.Step(
@@ -77,8 +80,8 @@ github.issues.createComment({
                     g.Job.Step(
                         name="Terraform Apply",
                         condition="github.ref == 'refs/heads/main' && github.event_name == 'push'",
-                        run="terraform apply -auto-approve %s" % path,
-                    )
+                        run=terraform("apply -auto-approve"),
+                    ),
                 ],
             )
         },
