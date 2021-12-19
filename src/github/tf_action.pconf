@@ -37,7 +37,7 @@ def gen_actions(path):
                     g.Job.Step(
                         name="Update Pull Request",
                         uses="actions/github-script@0.9.0",
-                        condition="github.event_name == 'pull_request",
+                        condition="github.event_name == 'pull_request'",
                         env={"PLAN": "terraform\n${{ steps.plan.outputs.stdout }}"},
                         params={
                             "github-token": "${{ secrets.GITHUB_TOKEN }}",
