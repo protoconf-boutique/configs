@@ -1,0 +1,590 @@
+syntax = "proto3";
+
+package terraform.tfe.resources;
+
+import "terraform/meta.proto";
+
+//TfeAgentPool version is 0
+message TfeAgentPool {
+  string id = 1;
+
+  string name = 2;
+
+  string organization = 3;
+
+  repeated string depends_on = 4;
+
+  int32 count = 5;
+
+  map<string, string> for_each = 6;
+
+  string provider = 7;
+
+  terraform.meta.Lifecycle lifecycle = 8;
+}
+
+//TfeAgentToken version is 0
+message TfeAgentToken {
+  string agent_pool_id = 1 [json_name = "agent_pool_id"];
+
+  string description = 2;
+
+  string id = 3;
+
+  string token = 4;
+
+  repeated string depends_on = 5;
+
+  int32 count = 6;
+
+  map<string, string> for_each = 7;
+
+  string provider = 8;
+
+  terraform.meta.Lifecycle lifecycle = 9;
+}
+
+//TfeNotificationConfiguration version is 0
+message TfeNotificationConfiguration {
+  string destination_type = 1 [json_name = "destination_type"];
+
+  repeated string email_addresses = 2 [json_name = "email_addresses"];
+
+  repeated string email_user_ids = 3 [json_name = "email_user_ids"];
+
+  bool enabled = 4;
+
+  string id = 5;
+
+  string name = 6;
+
+  string token = 7;
+
+  repeated string triggers = 8;
+
+  string url = 9;
+
+  string workspace_id = 10 [json_name = "workspace_id"];
+
+  repeated string depends_on = 11;
+
+  int32 count = 12;
+
+  map<string, string> for_each = 13;
+
+  string provider = 14;
+
+  terraform.meta.Lifecycle lifecycle = 15;
+}
+
+//TfeOauthClient version is 0
+message TfeOauthClient {
+  string api_url = 1 [json_name = "api_url"];
+
+  string http_url = 2 [json_name = "http_url"];
+
+  string id = 3;
+
+  string key = 4;
+
+  string name = 5;
+
+  string oauth_token = 6 [json_name = "oauth_token"];
+
+  string oauth_token_id = 7 [json_name = "oauth_token_id"];
+
+  string organization = 8;
+
+  string private_key = 9 [json_name = "private_key"];
+
+  string rsa_public_key = 10 [json_name = "rsa_public_key"];
+
+  string secret = 11;
+
+  string service_provider = 12 [json_name = "service_provider"];
+
+  repeated string depends_on = 13;
+
+  int32 count = 14;
+
+  map<string, string> for_each = 15;
+
+  string provider = 16;
+
+  terraform.meta.Lifecycle lifecycle = 17;
+}
+
+//TfeOrganization version is 0
+message TfeOrganization {
+  string collaborator_auth_policy = 1 [json_name = "collaborator_auth_policy"];
+
+  bool cost_estimation_enabled = 2 [json_name = "cost_estimation_enabled"];
+
+  string email = 3;
+
+  string id = 4;
+
+  string name = 5;
+
+  string owners_team_saml_role_id = 6 [json_name = "owners_team_saml_role_id"];
+
+  bool send_passing_statuses_for_untriggered_speculative_plans = 7 [json_name = "send_passing_statuses_for_untriggered_speculative_plans"];
+
+  int64 session_remember_minutes = 8 [json_name = "session_remember_minutes"];
+
+  int64 session_timeout_minutes = 9 [json_name = "session_timeout_minutes"];
+
+  repeated string depends_on = 10;
+
+  int32 count = 11;
+
+  map<string, string> for_each = 12;
+
+  string provider = 13;
+
+  terraform.meta.Lifecycle lifecycle = 14;
+}
+
+//TfeOrganizationMembership version is 0
+message TfeOrganizationMembership {
+  string email = 1;
+
+  string id = 2;
+
+  string organization = 3;
+
+  string user_id = 4 [json_name = "user_id"];
+
+  repeated string depends_on = 5;
+
+  int32 count = 6;
+
+  map<string, string> for_each = 7;
+
+  string provider = 8;
+
+  terraform.meta.Lifecycle lifecycle = 9;
+}
+
+//TfeOrganizationToken version is 0
+message TfeOrganizationToken {
+  bool force_regenerate = 1 [json_name = "force_regenerate"];
+
+  string id = 2;
+
+  string organization = 3;
+
+  string token = 4;
+
+  repeated string depends_on = 5;
+
+  int32 count = 6;
+
+  map<string, string> for_each = 7;
+
+  string provider = 8;
+
+  terraform.meta.Lifecycle lifecycle = 9;
+}
+
+//TfePolicySet version is 0
+message TfePolicySet {
+  string description = 1;
+
+  bool global = 2;
+
+  string id = 3;
+
+  string name = 4;
+
+  string organization = 5;
+
+  string policies_path = 6 [json_name = "policies_path"];
+
+  repeated string policy_ids = 7 [json_name = "policy_ids"];
+
+  map<string, string> slug = 8;
+
+  repeated string workspace_ids = 9 [json_name = "workspace_ids"];
+
+  VcsRepo vcs_repo = 10 [json_name = "vcs_repo"];
+
+  repeated string depends_on = 11;
+
+  int32 count = 12;
+
+  map<string, string> for_each = 13;
+
+  string provider = 14;
+
+  terraform.meta.Lifecycle lifecycle = 15;
+
+  message VcsRepo {
+    string branch = 1;
+
+    string identifier = 2;
+
+    bool ingress_submodules = 3 [json_name = "ingress_submodules"];
+
+    string oauth_token_id = 4 [json_name = "oauth_token_id"];
+  }
+}
+
+//TfePolicySetParameter version is 0
+message TfePolicySetParameter {
+  string id = 1;
+
+  string key = 2;
+
+  string policy_set_id = 3 [json_name = "policy_set_id"];
+
+  bool sensitive = 4;
+
+  string value = 5;
+
+  repeated string depends_on = 6;
+
+  int32 count = 7;
+
+  map<string, string> for_each = 8;
+
+  string provider = 9;
+
+  terraform.meta.Lifecycle lifecycle = 10;
+}
+
+//TfeRegistryModule version is 0
+message TfeRegistryModule {
+  string id = 1;
+
+  string module_provider = 2 [json_name = "module_provider"];
+
+  string name = 3;
+
+  string organization = 4;
+
+  VcsRepo vcs_repo = 5 [json_name = "vcs_repo"];
+
+  repeated string depends_on = 6;
+
+  int32 count = 7;
+
+  map<string, string> for_each = 8;
+
+  string provider = 9;
+
+  terraform.meta.Lifecycle lifecycle = 10;
+
+  message VcsRepo {
+    string display_identifier = 1 [json_name = "display_identifier"];
+
+    string identifier = 2;
+
+    string oauth_token_id = 3 [json_name = "oauth_token_id"];
+  }
+}
+
+//TfeRunTrigger version is 0
+message TfeRunTrigger {
+  string id = 1;
+
+  string sourceable_id = 2 [json_name = "sourceable_id"];
+
+  string workspace_id = 3 [json_name = "workspace_id"];
+
+  repeated string depends_on = 4;
+
+  int32 count = 5;
+
+  map<string, string> for_each = 6;
+
+  string provider = 7;
+
+  terraform.meta.Lifecycle lifecycle = 8;
+}
+
+//TfeSentinelPolicy version is 0
+message TfeSentinelPolicy {
+  string description = 1;
+
+  string enforce_mode = 2 [json_name = "enforce_mode"];
+
+  string id = 3;
+
+  string name = 4;
+
+  string organization = 5;
+
+  string policy = 6;
+
+  repeated string depends_on = 7;
+
+  int32 count = 8;
+
+  map<string, string> for_each = 9;
+
+  string provider = 10;
+
+  terraform.meta.Lifecycle lifecycle = 11;
+}
+
+//TfeSshKey version is 0
+message TfeSshKey {
+  string id = 1;
+
+  string key = 2;
+
+  string name = 3;
+
+  string organization = 4;
+
+  repeated string depends_on = 5;
+
+  int32 count = 6;
+
+  map<string, string> for_each = 7;
+
+  string provider = 8;
+
+  terraform.meta.Lifecycle lifecycle = 9;
+}
+
+//TfeTeam version is 0
+message TfeTeam {
+  string id = 1;
+
+  string name = 2;
+
+  string organization = 3;
+
+  string visibility = 4;
+
+  OrganizationAccess organization_access = 5 [json_name = "organization_access"];
+
+  repeated string depends_on = 6;
+
+  int32 count = 7;
+
+  map<string, string> for_each = 8;
+
+  string provider = 9;
+
+  terraform.meta.Lifecycle lifecycle = 10;
+
+  message OrganizationAccess {
+    bool manage_policies = 1 [json_name = "manage_policies"];
+
+    bool manage_policy_overrides = 2 [json_name = "manage_policy_overrides"];
+
+    bool manage_vcs_settings = 3 [json_name = "manage_vcs_settings"];
+
+    bool manage_workspaces = 4 [json_name = "manage_workspaces"];
+  }
+}
+
+//TfeTeamAccess version is 1
+message TfeTeamAccess {
+  string access = 1;
+
+  string id = 2;
+
+  string team_id = 3 [json_name = "team_id"];
+
+  string workspace_id = 4 [json_name = "workspace_id"];
+
+  repeated Permissions permissions = 5;
+
+  repeated string depends_on = 6;
+
+  int32 count = 7;
+
+  map<string, string> for_each = 8;
+
+  string provider = 9;
+
+  terraform.meta.Lifecycle lifecycle = 10;
+
+  message Permissions {
+    string runs = 1;
+
+    string sentinel_mocks = 2 [json_name = "sentinel_mocks"];
+
+    string state_versions = 3 [json_name = "state_versions"];
+
+    string variables = 4;
+
+    bool workspace_locking = 5 [json_name = "workspace_locking"];
+  }
+}
+
+//TfeTeamMember version is 0
+message TfeTeamMember {
+  string id = 1;
+
+  string team_id = 2 [json_name = "team_id"];
+
+  string username = 3;
+
+  repeated string depends_on = 4;
+
+  int32 count = 5;
+
+  map<string, string> for_each = 6;
+
+  string provider = 7;
+
+  terraform.meta.Lifecycle lifecycle = 8;
+}
+
+//TfeTeamMembers version is 0
+message TfeTeamMembers {
+  string id = 1;
+
+  string team_id = 2 [json_name = "team_id"];
+
+  repeated string usernames = 3;
+
+  repeated string depends_on = 4;
+
+  int32 count = 5;
+
+  map<string, string> for_each = 6;
+
+  string provider = 7;
+
+  terraform.meta.Lifecycle lifecycle = 8;
+}
+
+//TfeTeamOrganizationMember version is 0
+message TfeTeamOrganizationMember {
+  string id = 1;
+
+  string organization_membership_id = 2 [json_name = "organization_membership_id"];
+
+  string team_id = 3 [json_name = "team_id"];
+
+  repeated string depends_on = 4;
+
+  int32 count = 5;
+
+  map<string, string> for_each = 6;
+
+  string provider = 7;
+
+  terraform.meta.Lifecycle lifecycle = 8;
+}
+
+//TfeTeamToken version is 0
+message TfeTeamToken {
+  bool force_regenerate = 1 [json_name = "force_regenerate"];
+
+  string id = 2;
+
+  string team_id = 3 [json_name = "team_id"];
+
+  string token = 4;
+
+  repeated string depends_on = 5;
+
+  int32 count = 6;
+
+  map<string, string> for_each = 7;
+
+  string provider = 8;
+
+  terraform.meta.Lifecycle lifecycle = 9;
+}
+
+//TfeVariable version is 1
+message TfeVariable {
+  string category = 1;
+
+  string description = 2;
+
+  bool hcl = 3;
+
+  string id = 4;
+
+  string key = 5;
+
+  bool sensitive = 6;
+
+  string value = 7;
+
+  string workspace_id = 8 [json_name = "workspace_id"];
+
+  repeated string depends_on = 9;
+
+  int32 count = 10;
+
+  map<string, string> for_each = 11;
+
+  string provider = 12;
+
+  terraform.meta.Lifecycle lifecycle = 13;
+}
+
+//TfeWorkspace version is 1
+message TfeWorkspace {
+  string agent_pool_id = 1 [json_name = "agent_pool_id"];
+
+  bool allow_destroy_plan = 2 [json_name = "allow_destroy_plan"];
+
+  bool auto_apply = 3 [json_name = "auto_apply"];
+
+  string description = 4;
+
+  string execution_mode = 5 [json_name = "execution_mode"];
+
+  bool file_triggers_enabled = 6 [json_name = "file_triggers_enabled"];
+
+  bool global_remote_state = 7 [json_name = "global_remote_state"];
+
+  string id = 8;
+
+  string name = 9;
+
+  bool operations = 10;
+
+  string organization = 11;
+
+  bool queue_all_runs = 12 [json_name = "queue_all_runs"];
+
+  repeated string remote_state_consumer_ids = 13 [json_name = "remote_state_consumer_ids"];
+
+  bool speculative_enabled = 14 [json_name = "speculative_enabled"];
+
+  string ssh_key_id = 15 [json_name = "ssh_key_id"];
+
+  bool structured_run_output_enabled = 16 [json_name = "structured_run_output_enabled"];
+
+  repeated string tag_names = 17 [json_name = "tag_names"];
+
+  string terraform_version = 18 [json_name = "terraform_version"];
+
+  repeated string trigger_prefixes = 19 [json_name = "trigger_prefixes"];
+
+  string working_directory = 20 [json_name = "working_directory"];
+
+  VcsRepo vcs_repo = 21 [json_name = "vcs_repo"];
+
+  repeated string depends_on = 22;
+
+  int32 count = 23;
+
+  map<string, string> for_each = 24;
+
+  string provider = 25;
+
+  terraform.meta.Lifecycle lifecycle = 26;
+
+  message VcsRepo {
+    string branch = 1;
+
+    string identifier = 2;
+
+    bool ingress_submodules = 3 [json_name = "ingress_submodules"];
+
+    string oauth_token_id = 4 [json_name = "oauth_token_id"];
+  }
+}

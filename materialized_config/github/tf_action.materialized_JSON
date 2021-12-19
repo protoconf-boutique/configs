@@ -1,0 +1,63 @@
+{
+  "protoFile": "github/actions.proto",
+  "value": {
+    "@type": "type.googleapis.com/GithubActions",
+    "jobs": {
+      "terraform": {
+        "name": "Terraform",
+        "runs-on": "ubuntu-latest",
+        "steps": [
+          {
+            "name": "Checkout",
+            "uses": "actions/checkout@v2"
+          },
+          {
+            "name": "Setup Terraform",
+            "uses": "hashicorp/setup-terraform@v1"
+          },
+          {
+            "name": "Terraform Format",
+            "id": "fmt",
+            "run": "terraform fmt -check tfconfigs/terraform"
+          },
+          {
+            "name": "Terraform Init",
+            "id": "init",
+            "run": "terraform init tfconfigs/terraform"
+          },
+          {
+            "name": "Terraform Validate",
+            "id": "validate",
+            "run": "terraform validate -no-color tfconfigs/terraform"
+          },
+          {
+            "name": "Terraform Plan",
+            "id": "plan",
+            "run": "terraform plan -no-color tfconfigs/terraform",
+            "if": "github.event_name == 'pull_request"
+          },
+          {
+            "name": "Update Pull Request",
+            "uses": "actions/github-script@0.9.0",
+            "if": "github.event_name == 'pull_request",
+            "env": {
+              "PLAN": "terraform\n${{ steps.plan.outputs.stdout }}"
+            },
+            "with": {
+              "github-token": "${{ secrets.GITHUB_TOKEN }}",
+              "script": "\nconst output = `#### Terraform Format and Style 🖌\\`${{ steps.fmt.outcome }}\\`\n#### Terraform Initialization ⚙️\\`${{ steps.init.outcome }}\\`\n#### Terraform Plan 📖\\`${{ steps.plan.outcome }}\\`\n#### Terraform Validation 🤖\\`${{ steps.validate.outcome }}\\`\n\n\u003cdetails\u003e\u003csummary\u003eShow Plan\u003c/summary\u003e\n\n\\`\\`\\`\n\n${process.env.PLAN}\n\\`\\`\\`\n\n\u003c/details\u003e\n\n*Pusher: @${{ github.actor }}, Action: \\`${{ github.event_name }}\\`*`;\n\ngithub.issues.createComment({\n    issue_number: context.issue.number,\n    owner: context.repo.owner,\n    repo: context.repo.repo,\n    body: output\n})\n                        "
+            }
+          }
+        ]
+      }
+    },
+    "on": {
+      "push": {
+        "branches": [
+          "main"
+        ]
+      },
+      "pull_request": {}
+    }
+  }
+}

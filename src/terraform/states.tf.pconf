@@ -1,0 +1,68 @@
+"""
+states.tf
+"""
+
+load("terraform.proto", "Terraform")
+load(
+    "tfe-resources.proto",
+    "TfeOauthClient",
+    "TfeOrganization",
+    "TfeWorkspace",
+    "TfeVariable",
+)
+
+tf = Terraform(
+    resource=Terraform.Resources(),
+    variable={
+        "github_token": Terraform.Variable(
+            type="string", description="github token for vcs integration"
+        ),
+    },
+)
+tfe_org = tf.resource.tfe_organization.setdefault(
+    "protoconf-boutique",
+    TfeOrganization(
+        email="team@protoconf.com",
+        name="protoconf-boutique",
+    ),
+)
+
+github_token = tf.resource.tfe_variable.setdefault(
+    "github_token",
+    TfeVariable(
+        category="terraform",
+        sensitive=True,
+        key="github_token",
+        value="${var.github_token}",
+        workspace_id="${tfe_workspace.test.id}",
+    ),
+)
+
+ws = tf.resource.tfe_workspace.setdefault(
+    "test",
+    TfeWorkspace(
+        name="test",
+        auto_apply=True,
+        organization=tfe_org.name,
+        working_directory="tfconfigs/terraform",
+        vcs_repo=TfeWorkspace.VcsRepo(
+            identifier="protoconf-boutique/configs",
+            oauth_token_id="${tfe_oauth_client.test.id}",
+        ),
+    ),
+)
+
+oauth_client = tf.resource.tfe_oauth_client.setdefault(
+    "test",
+    TfeOauthClient(
+        organization="protoconf-boutique",
+        api_url="https://api.github.com",
+        http_url="https://github.com",
+        oauth_token="var.github_token",
+        service_provider="github",
+    ),
+)
+
+
+def main():
+    return tf

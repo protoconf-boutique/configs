@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+message GithubActions {
+    On on = 1;
+    map<string,Job> jobs = 2;
+
+    message On {
+        Selector push = 1;
+        Selector pull_request = 2 [json_name= "pull_request"];
+
+        message Selector {
+            repeated string branches = 1;
+        }
+    }
+
+    message Job {
+        string name = 1;
+        string runs_on = 2 [json_name="runs-on"];
+        repeated Step steps = 3;
+
+        message Step {
+            string name = 1;
+            string uses = 2;
+            string id = 3;
+            string run = 4;
+            bool continue_on_error = 5 [json_name = "continue-on-error"];
+            string condition = 6 [json_name="if"];
+            map<string,string> env = 7;
+            map<string,string> params = 8 [json_name="with"];
+        }
+    }
+
+}

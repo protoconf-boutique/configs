@@ -1,0 +1,20 @@
+{
+  "protoFile": "exec/exec_config.proto",
+  "value": {
+    "@type": "type.googleapis.com/exec_config.Config",
+    "items": [
+      {
+        "path": "github/tf_action",
+        "protoFile": "github/actions.proto",
+        "actions": [
+          {
+            "file": {
+              "path": ".github/workflows/tf_action.yaml",
+              "serializer": "YAML"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

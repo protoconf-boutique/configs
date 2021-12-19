@@ -1,0 +1,29 @@
+"""
+Generates a providers list for `protoconf import terraform`
+"""
+
+load("terraform.proto", "Terraform")
+
+tf = Terraform(terraform=Terraform.TerraformSettings())
+tf.terraform.required_providers = {
+    "gsuite": Terraform.TerraformSettings.Provider(
+        source="DeviaVir/gsuite",
+        version="0.1.59",
+    ),
+    "cloudflare": Terraform.TerraformSettings.Provider(
+        source="cloudflare/cloudflare",
+        version="2.19.2",
+    ),
+    "github": Terraform.TerraformSettings.Provider(
+        source="integrations/github",
+        version="4.8.0",
+    ),
+    "aws": Terraform.TerraformSettings.Provider(
+        source="hashicorp/aws",
+        version="3.38.0",
+    ),
+}
+
+
+def main():
+    return tf

@@ -1,0 +1,31 @@
+"""
+Generates tf.json files under ./tfconfigs
+"""
+
+load(
+    "//exec/exec_config.proto",
+    "Action",
+    "ActionTypeWriteToFile",
+    "Config",
+    "WatcherConfig",
+)
+
+configs = [
+    "terraform/providers.tf",
+    "terraform/states.tf",
+]
+
+
+def main():
+    return Config(
+        items=[
+            WatcherConfig(
+                path="%s" % path,
+                proto_file="terraform/terraform.proto",
+                actions=[
+                    Action(file=ActionTypeWriteToFile(path="tfconfigs/%s.json" % path)),
+                ],
+            )
+            for path in configs
+        ],
+    )

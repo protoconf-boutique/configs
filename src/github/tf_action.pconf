@@ -1,0 +1,76 @@
+load("actions.proto", "GithubActions")
+
+g = GithubActions
+
+
+def gen_actions(path):
+    return GithubActions(
+        on=g.On(push=g.On.Selector(branches=["main"]), pull_request=g.On.Selector()),
+        jobs={
+            "terraform": g.Job(
+                name="Terraform",
+                runs_on="ubuntu-latest",
+                steps=[
+                    g.Job.Step(name="Checkout", uses="actions/checkout@v2"),
+                    g.Job.Step(
+                        name="Setup Terraform", uses="hashicorp/setup-terraform@v1"
+                    ),
+                    g.Job.Step(
+                        name="Terraform Format",
+                        id="fmt",
+                        run="terraform fmt -check %s" % path,
+                    ),
+                    g.Job.Step(
+                        name="Terraform Init", id="init", run="terraform init %s" % path
+                    ),
+                    g.Job.Step(
+                        name="Terraform Validate",
+                        id="validate",
+                        run="terraform validate -no-color %s" % path,
+                    ),
+                    g.Job.Step(
+                        name="Terraform Plan",
+                        id="plan",
+                        condition="github.event_name == 'pull_request",
+                        run="terraform plan -no-color %s" % path,
+                    ),
+                    g.Job.Step(
+                        name="Update Pull Request",
+                        uses="actions/github-script@0.9.0",
+                        condition="github.event_name == 'pull_request",
+                        env={"PLAN": "terraform\n${{ steps.plan.outputs.stdout }}"},
+                        params={
+                            "github-token": "${{ secrets.GITHUB_TOKEN }}",
+                            "script": """
+const output = `#### Terraform Format and Style 🖌\\`${{ steps.fmt.outcome }}\\`
+#### Terraform Initialization ⚙️\\`${{ steps.init.outcome }}\\`
+#### Terraform Plan 📖\\`${{ steps.plan.outcome }}\\`
+#### Terraform Validation 🤖\\`${{ steps.validate.outcome }}\\`
+
+<details><summary>Show Plan</summary>
+
+\\`\\`\\`\n
+${process.env.PLAN}
+\\`\\`\\`
+
+</details>
+
+*Pusher: @${{ github.actor }}, Action: \\`${{ github.event_name }}\\`*`;
+
+github.issues.createComment({
+    issue_number: context.issue.number,
+    owner: context.repo.owner,
+    repo: context.repo.repo,
+    body: output
+})
+                        """,
+                        },
+                    ),
+                ],
+            )
+        },
+    )
+
+
+def main():
+    return gen_actions("tfconfigs/terraform")

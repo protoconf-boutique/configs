@@ -1,0 +1,44 @@
+jobs:
+  terraform:
+    name: Terraform
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+    - id: fmt
+      name: Terraform Format
+      run: terraform fmt -check tfconfigs/terraform
+    - id: init
+      name: Terraform Init
+      run: terraform init tfconfigs/terraform
+    - id: validate
+      name: Terraform Validate
+      run: terraform validate -no-color tfconfigs/terraform
+    - id: plan
+      if: github.event_name == 'pull_request
+      name: Terraform Plan
+      run: terraform plan -no-color tfconfigs/terraform
+    - env:
+        PLAN: |-
+          terraform
+          ${{ steps.plan.outputs.stdout }}
+      if: github.event_name == 'pull_request
+      name: Update Pull Request
+      uses: actions/github-script@0.9.0
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: "\nconst output = `#### Terraform Format and Style \U0001F58C\\`${{
+          steps.fmt.outcome }}\\`\n#### Terraform Initialization ⚙️\\`${{ steps.init.outcome
+          }}\\`\n#### Terraform Plan \U0001F4D6\\`${{ steps.plan.outcome }}\\`\n####
+          Terraform Validation \U0001F916\\`${{ steps.validate.outcome }}\\`\n\n<details><summary>Show
+          Plan</summary>\n\n\\`\\`\\`\n\n${process.env.PLAN}\n\\`\\`\\`\n\n</details>\n\n*Pusher:
+          @${{ github.actor }}, Action: \\`${{ github.event_name }}\\`*`;\n\ngithub.issues.createComment({\n
+          \   issue_number: context.issue.number,\n    owner: context.repo.owner,\n
+          \   repo: context.repo.repo,\n    body: output\n})\n                        "
+"on":
+  pull_request: {}
+  push:
+    branches:
+    - main
