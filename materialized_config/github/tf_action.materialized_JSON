@@ -34,7 +34,7 @@
             "name": "Terraform Plan",
             "id": "plan",
             "run": "terraform plan -no-color tfconfigs/terraform",
-            "if": "github.event_name == 'pull_request"
+            "if": "github.event_name == 'pull_request'"
           },
           {
             "name": "Update Pull Request",

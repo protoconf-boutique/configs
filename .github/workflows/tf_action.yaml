@@ -17,7 +17,7 @@ jobs:
       name: Terraform Validate
       run: terraform validate -no-color tfconfigs/terraform
     - id: plan
-      if: github.event_name == 'pull_request
+      if: github.event_name == 'pull_request'
       name: Terraform Plan
       run: terraform plan -no-color tfconfigs/terraform
     - env:

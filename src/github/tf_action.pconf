@@ -31,7 +31,7 @@ def gen_actions(path):
                     g.Job.Step(
                         name="Terraform Plan",
                         id="plan",
-                        condition="github.event_name == 'pull_request",
+                        condition="github.event_name == 'pull_request'",
                         run="terraform plan -no-color %s" % path,
                     ),
                     g.Job.Step(
