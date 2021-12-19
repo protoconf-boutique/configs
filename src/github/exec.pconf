@@ -25,7 +25,7 @@ def main():
                     Action(
                         file=ActionTypeWriteToFile(
                             path=".github/workflows/%s.yaml" % path.split("/")[-1],
-                            serializer=Config.Serializer.YAML
+                            serializer=Config.Serializer.YAML,
                         )
                     ),
                 ],

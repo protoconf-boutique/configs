@@ -21,7 +21,9 @@ def gen_actions(path):
                         run="terraform fmt -check %s" % path,
                     ),
                     g.Job.Step(
-                        name="Terraform Init", id="init", run="terraform init %s" % path
+                        name="Terraform Init",
+                        id="init",
+                        run="terraform init -chdir %s" % path,
                     ),
                     g.Job.Step(
                         name="Terraform Validate",

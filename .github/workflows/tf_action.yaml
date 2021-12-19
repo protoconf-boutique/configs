@@ -12,7 +12,7 @@ jobs:
       run: terraform fmt -check tfconfigs/terraform
     - id: init
       name: Terraform Init
-      run: terraform init tfconfigs/terraform
+      run: terraform init -chdir tfconfigs/terraform
     - id: validate
       name: Terraform Validate
       run: terraform validate -no-color tfconfigs/terraform
