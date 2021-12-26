@@ -1,0 +1,25 @@
+{
+  "protoFile": "terraform/terraform.proto",
+  "value": {
+    "@type": "type.googleapis.com/terraform.Terraform",
+    "resource": {
+      "aws_vpc": {
+        "us-west-1": {
+          "tags": {
+            "Name": "us-west-1"
+          }
+        }
+      }
+    },
+    "terraform": {
+      "backend": {
+        "remote": {
+          "organization": "protoconf-boutique",
+          "workspaces": {
+            "name": "vpc-us-west-1"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1037 @@
+syntax = "proto3";
+
+package terraform.aws.provider;
+
+import "terraform/meta.proto";
+
+message resources {
+}
+
+message data {
+}
+
+//Aws version is 0
+message Aws {
+  //The access key for API operations. You can retrieve this
+  //from the 'Security & Credentials' section of the AWS console.
+  string access_key = 1 [json_name = "access_key"];
+
+  repeated string allowed_account_ids = 2 [json_name = "allowed_account_ids"];
+
+  repeated string forbidden_account_ids = 3 [json_name = "forbidden_account_ids"];
+
+  //The address of an HTTP proxy to use when accessing the AWS API. Can also be configured using the `HTTP_PROXY` or `HTTPS_PROXY` environment variables.
+  string http_proxy = 4 [json_name = "http_proxy"];
+
+  //Explicitly allow the provider to perform "insecure" SSL requests. If omitted, default value is `false`
+  bool insecure = 5;
+
+  //The maximum number of times an AWS API request is
+  //being executed. If the API request still fails, an error is
+  //thrown.
+  int64 max_retries = 6 [json_name = "max_retries"];
+
+  //The profile for API operations. If not set, the default profile
+  //created with `aws configure` will be used.
+  string profile = 7;
+
+  //The region where AWS operations will take place. Examples
+  //are us-east-1, us-west-2, etc.
+  string region = 8;
+
+  //Set this to true to force the request to use path-style addressing,
+  //i.e., http://s3.amazonaws.com/BUCKET/KEY. By default, the S3 client will
+  //use virtual hosted bucket addressing when possible
+  //(http://BUCKET.s3.amazonaws.com/KEY). Specific to the Amazon S3 service.
+  bool s3_force_path_style = 9 [json_name = "s3_force_path_style"];
+
+  //The secret key for API operations. You can retrieve this
+  //from the 'Security & Credentials' section of the AWS console.
+  string secret_key = 10 [json_name = "secret_key"];
+
+  //The path to the shared credentials file. If not set
+  //this defaults to ~/.aws/credentials.
+  string shared_credentials_file = 11 [json_name = "shared_credentials_file"];
+
+  //Skip the credentials validation via STS API. Used for AWS API implementations that do not have STS available/implemented.
+  bool skip_credentials_validation = 12 [json_name = "skip_credentials_validation"];
+
+  //Skip getting the supported EC2 platforms. Used by users that don't have ec2:DescribeAccountAttributes permissions.
+  bool skip_get_ec2_platforms = 13 [json_name = "skip_get_ec2_platforms"];
+
+  bool skip_metadata_api_check = 14 [json_name = "skip_metadata_api_check"];
+
+  //Skip static validation of region name. Used by users of alternative AWS-like APIs or users w/ access to regions that are not public (yet).
+  bool skip_region_validation = 15 [json_name = "skip_region_validation"];
+
+  //Skip requesting the account ID. Used for AWS API implementations that do not have IAM/STS API and/or metadata API.
+  bool skip_requesting_account_id = 16 [json_name = "skip_requesting_account_id"];
+
+  //session token. A session token is only required if you are
+  //using temporary security credentials.
+  string token = 17;
+
+  AssumeRole assume_role = 18 [json_name = "assume_role"];
+
+  DefaultTags default_tags = 19 [json_name = "default_tags"];
+
+  repeated Endpoints endpoints = 20;
+
+  IgnoreTags ignore_tags = 21 [json_name = "ignore_tags"];
+
+  repeated string depends_on = 22;
+
+  int32 count = 23;
+
+  map<string, string> for_each = 24;
+
+  string provider = 25;
+
+  terraform.meta.Lifecycle lifecycle = 26;
+
+  string alias = 27;
+
+  message AssumeRole {
+    //Seconds to restrict the assume role session duration.
+    int64 duration_seconds = 1 [json_name = "duration_seconds"];
+
+    //Unique identifier that might be required for assuming a role in another account.
+    string external_id = 2 [json_name = "external_id"];
+
+    //IAM Policy JSON describing further restricting permissions for the IAM Role being assumed.
+    string policy = 3;
+
+    //Amazon Resource Names (ARNs) of IAM Policies describing further restricting permissions for the IAM Role being assumed.
+    repeated string policy_arns = 4 [json_name = "policy_arns"];
+
+    //Amazon Resource Name of an IAM Role to assume prior to making API calls.
+    string role_arn = 5 [json_name = "role_arn"];
+
+    //Identifier for the assumed role session.
+    string session_name = 6 [json_name = "session_name"];
+
+    //Assume role session tags.
+    map<string, string> tags = 7;
+
+    //Assume role session tag keys to pass to any subsequent sessions.
+    repeated string transitive_tag_keys = 8 [json_name = "transitive_tag_keys"];
+  }
+
+  message DefaultTags {
+    //Resource tags to default across all resources
+    map<string, string> tags = 1;
+  }
+
+  message Endpoints {
+    //Use this to override the default service endpoint URL
+    string accessanalyzer = 1;
+
+    //Use this to override the default service endpoint URL
+    string account = 2;
+
+    //Use this to override the default service endpoint URL
+    string acm = 3;
+
+    //Use this to override the default service endpoint URL
+    string acmpca = 4;
+
+    //Use this to override the default service endpoint URL
+    string alexaforbusiness = 5;
+
+    //Use this to override the default service endpoint URL
+    string amp = 6;
+
+    //Use this to override the default service endpoint URL
+    string amplify = 7;
+
+    //Use this to override the default service endpoint URL
+    string amplifybackend = 8;
+
+    //Use this to override the default service endpoint URL
+    string apigateway = 9;
+
+    //Use this to override the default service endpoint URL
+    string apigatewayv2 = 10;
+
+    //Use this to override the default service endpoint URL
+    string appautoscaling = 11;
+
+    //Use this to override the default service endpoint URL
+    string appconfig = 12;
+
+    //Use this to override the default service endpoint URL
+    string appflow = 13;
+
+    //Use this to override the default service endpoint URL
+    string appintegrations = 14;
+
+    //Use this to override the default service endpoint URL
+    string appintegrationsservice = 15;
+
+    //Use this to override the default service endpoint URL
+    string applicationautoscaling = 16;
+
+    //Use this to override the default service endpoint URL
+    string applicationcostprofiler = 17;
+
+    //Use this to override the default service endpoint URL
+    string applicationdiscovery = 18;
+
+    //Use this to override the default service endpoint URL
+    string applicationdiscoveryservice = 19;
+
+    //Use this to override the default service endpoint URL
+    string applicationinsights = 20;
+
+    //Use this to override the default service endpoint URL
+    string appmesh = 21;
+
+    //Use this to override the default service endpoint URL
+    string appregistry = 22;
+
+    //Use this to override the default service endpoint URL
+    string apprunner = 23;
+
+    //Use this to override the default service endpoint URL
+    string appstream = 24;
+
+    //Use this to override the default service endpoint URL
+    string appsync = 25;
+
+    //Use this to override the default service endpoint URL
+    string athena = 26;
+
+    //Use this to override the default service endpoint URL
+    string auditmanager = 27;
+
+    //Use this to override the default service endpoint URL
+    string augmentedairuntime = 28;
+
+    //Use this to override the default service endpoint URL
+    string autoscaling = 29;
+
+    //Use this to override the default service endpoint URL
+    string autoscalingplans = 30;
+
+    //Use this to override the default service endpoint URL
+    string backup = 31;
+
+    //Use this to override the default service endpoint URL
+    string batch = 32;
+
+    //Use this to override the default service endpoint URL
+    string braket = 33;
+
+    //Use this to override the default service endpoint URL
+    string budgets = 34;
+
+    //Use this to override the default service endpoint URL
+    string chime = 35;
+
+    //Use this to override the default service endpoint URL
+    string cloud9 = 36;
+
+    //Use this to override the default service endpoint URL
+    string cloudcontrol = 37;
+
+    //Use this to override the default service endpoint URL
+    string cloudcontrolapi = 38;
+
+    //Use this to override the default service endpoint URL
+    string clouddirectory = 39;
+
+    //Use this to override the default service endpoint URL
+    string cloudformation = 40;
+
+    //Use this to override the default service endpoint URL
+    string cloudfront = 41;
+
+    //Use this to override the default service endpoint URL
+    string cloudhsm = 42;
+
+    //Use this to override the default service endpoint URL
+    string cloudhsmv2 = 43;
+
+    //Use this to override the default service endpoint URL
+    string cloudsearch = 44;
+
+    //Use this to override the default service endpoint URL
+    string cloudsearchdomain = 45;
+
+    //Use this to override the default service endpoint URL
+    string cloudtrail = 46;
+
+    //Use this to override the default service endpoint URL
+    string cloudwatch = 47;
+
+    //Use this to override the default service endpoint URL
+    string cloudwatchevents = 48;
+
+    //Use this to override the default service endpoint URL
+    string cloudwatchlogs = 49;
+
+    //Use this to override the default service endpoint URL
+    string codeartifact = 50;
+
+    //Use this to override the default service endpoint URL
+    string codebuild = 51;
+
+    //Use this to override the default service endpoint URL
+    string codecommit = 52;
+
+    //Use this to override the default service endpoint URL
+    string codedeploy = 53;
+
+    //Use this to override the default service endpoint URL
+    string codeguruprofiler = 54;
+
+    //Use this to override the default service endpoint URL
+    string codegurureviewer = 55;
+
+    //Use this to override the default service endpoint URL
+    string codepipeline = 56;
+
+    //Use this to override the default service endpoint URL
+    string codestar = 57;
+
+    //Use this to override the default service endpoint URL
+    string codestarconnections = 58;
+
+    //Use this to override the default service endpoint URL
+    string codestarnotifications = 59;
+
+    //Use this to override the default service endpoint URL
+    string cognitoidentity = 60;
+
+    //Use this to override the default service endpoint URL
+    string cognitoidentityprovider = 61;
+
+    //Use this to override the default service endpoint URL
+    string cognitoidp = 62;
+
+    //Use this to override the default service endpoint URL
+    string cognitosync = 63;
+
+    //Use this to override the default service endpoint URL
+    string comprehend = 64;
+
+    //Use this to override the default service endpoint URL
+    string comprehendmedical = 65;
+
+    //Use this to override the default service endpoint URL
+    string config = 66;
+
+    //Use this to override the default service endpoint URL
+    string configservice = 67;
+
+    //Use this to override the default service endpoint URL
+    string connect = 68;
+
+    //Use this to override the default service endpoint URL
+    string connectcontactlens = 69;
+
+    //Use this to override the default service endpoint URL
+    string connectparticipant = 70;
+
+    //Use this to override the default service endpoint URL
+    string costandusagereportservice = 71;
+
+    //Use this to override the default service endpoint URL
+    string costexplorer = 72;
+
+    //Use this to override the default service endpoint URL
+    string cur = 73;
+
+    //Use this to override the default service endpoint URL
+    string databasemigration = 74;
+
+    //Use this to override the default service endpoint URL
+    string databasemigrationservice = 75;
+
+    //Use this to override the default service endpoint URL
+    string dataexchange = 76;
+
+    //Use this to override the default service endpoint URL
+    string datapipeline = 77;
+
+    //Use this to override the default service endpoint URL
+    string datasync = 78;
+
+    //Use this to override the default service endpoint URL
+    string dax = 79;
+
+    //Use this to override the default service endpoint URL
+    string detective = 80;
+
+    //Use this to override the default service endpoint URL
+    string devicefarm = 81;
+
+    //Use this to override the default service endpoint URL
+    string devopsguru = 82;
+
+    //Use this to override the default service endpoint URL
+    string directconnect = 83;
+
+    //Use this to override the default service endpoint URL
+    string dlm = 84;
+
+    //Use this to override the default service endpoint URL
+    string dms = 85;
+
+    //Use this to override the default service endpoint URL
+    string docdb = 86;
+
+    //Use this to override the default service endpoint URL
+    string ds = 87;
+
+    //Use this to override the default service endpoint URL
+    string dynamodb = 88;
+
+    //Use this to override the default service endpoint URL
+    string dynamodbstreams = 89;
+
+    //Use this to override the default service endpoint URL
+    string ec2 = 90;
+
+    //Use this to override the default service endpoint URL
+    string ec2instanceconnect = 91;
+
+    //Use this to override the default service endpoint URL
+    string ecr = 92;
+
+    //Use this to override the default service endpoint URL
+    string ecrpublic = 93;
+
+    //Use this to override the default service endpoint URL
+    string ecs = 94;
+
+    //Use this to override the default service endpoint URL
+    string efs = 95;
+
+    //Use this to override the default service endpoint URL
+    string eks = 96;
+
+    //Use this to override the default service endpoint URL
+    string elasticache = 97;
+
+    //Use this to override the default service endpoint URL
+    string elasticbeanstalk = 98;
+
+    //Use this to override the default service endpoint URL
+    string elasticinference = 99;
+
+    //Use this to override the default service endpoint URL
+    string elasticsearch = 100;
+
+    //Use this to override the default service endpoint URL
+    string elasticsearchservice = 101;
+
+    //Use this to override the default service endpoint URL
+    string elastictranscoder = 102;
+
+    //Use this to override the default service endpoint URL
+    string elb = 103;
+
+    //Use this to override the default service endpoint URL
+    string elbv2 = 104;
+
+    //Use this to override the default service endpoint URL
+    string emr = 105;
+
+    //Use this to override the default service endpoint URL
+    string emrcontainers = 106;
+
+    //Use this to override the default service endpoint URL
+    string es = 107;
+
+    //Use this to override the default service endpoint URL
+    string eventbridge = 108;
+
+    //Use this to override the default service endpoint URL
+    string events = 109;
+
+    //Use this to override the default service endpoint URL
+    string finspace = 110;
+
+    //Use this to override the default service endpoint URL
+    string finspacedata = 111;
+
+    //Use this to override the default service endpoint URL
+    string firehose = 112;
+
+    //Use this to override the default service endpoint URL
+    string fis = 113;
+
+    //Use this to override the default service endpoint URL
+    string fms = 114;
+
+    //Use this to override the default service endpoint URL
+    string forecast = 115;
+
+    //Use this to override the default service endpoint URL
+    string forecastquery = 116;
+
+    //Use this to override the default service endpoint URL
+    string forecastqueryservice = 117;
+
+    //Use this to override the default service endpoint URL
+    string forecastservice = 118;
+
+    //Use this to override the default service endpoint URL
+    string frauddetector = 119;
+
+    //Use this to override the default service endpoint URL
+    string fsx = 120;
+
+    //Use this to override the default service endpoint URL
+    string gamelift = 121;
+
+    //Use this to override the default service endpoint URL
+    string glacier = 122;
+
+    //Use this to override the default service endpoint URL
+    string globalaccelerator = 123;
+
+    //Use this to override the default service endpoint URL
+    string glue = 124;
+
+    //Use this to override the default service endpoint URL
+    string gluedatabrew = 125;
+
+    //Use this to override the default service endpoint URL
+    string greengrass = 126;
+
+    //Use this to override the default service endpoint URL
+    string greengrassv2 = 127;
+
+    //Use this to override the default service endpoint URL
+    string groundstation = 128;
+
+    //Use this to override the default service endpoint URL
+    string guardduty = 129;
+
+    //Use this to override the default service endpoint URL
+    string health = 130;
+
+    //Use this to override the default service endpoint URL
+    string healthlake = 131;
+
+    //Use this to override the default service endpoint URL
+    string honeycode = 132;
+
+    //Use this to override the default service endpoint URL
+    string iam = 133;
+
+    //Use this to override the default service endpoint URL
+    string identitystore = 134;
+
+    //Use this to override the default service endpoint URL
+    string imagebuilder = 135;
+
+    //Use this to override the default service endpoint URL
+    string inspector = 136;
+
+    //Use this to override the default service endpoint URL
+    string iot = 137;
+
+    //Use this to override the default service endpoint URL
+    string iot1clickdevices = 138;
+
+    //Use this to override the default service endpoint URL
+    string iot1clickdevicesservice = 139;
+
+    //Use this to override the default service endpoint URL
+    string iot1clickprojects = 140;
+
+    //Use this to override the default service endpoint URL
+    string iotanalytics = 141;
+
+    //Use this to override the default service endpoint URL
+    string iotdataplane = 142;
+
+    //Use this to override the default service endpoint URL
+    string iotdeviceadvisor = 143;
+
+    //Use this to override the default service endpoint URL
+    string iotevents = 144;
+
+    //Use this to override the default service endpoint URL
+    string ioteventsdata = 145;
+
+    //Use this to override the default service endpoint URL
+    string iotfleethub = 146;
+
+    //Use this to override the default service endpoint URL
+    string iotjobsdataplane = 147;
+
+    //Use this to override the default service endpoint URL
+    string iotsecuretunneling = 148;
+
+    //Use this to override the default service endpoint URL
+    string iotsitewise = 149;
+
+    //Use this to override the default service endpoint URL
+    string iotthingsgraph = 150;
+
+    //Use this to override the default service endpoint URL
+    string iotwireless = 151;
+
+    //Use this to override the default service endpoint URL
+    string kafka = 152;
+
+    //Use this to override the default service endpoint URL
+    string kendra = 153;
+
+    //Use this to override the default service endpoint URL
+    string kinesis = 154;
+
+    //Use this to override the default service endpoint URL
+    string kinesisanalytics = 155;
+
+    //Use this to override the default service endpoint URL
+    string kinesisanalyticsv2 = 156;
+
+    //Use this to override the default service endpoint URL
+    string kinesisvideo = 157;
+
+    //Use this to override the default service endpoint URL
+    string kinesisvideoarchivedmedia = 158;
+
+    //Use this to override the default service endpoint URL
+    string kinesisvideomedia = 159;
+
+    //Use this to override the default service endpoint URL
+    string kinesisvideosignalingchannels = 160;
+
+    //Use this to override the default service endpoint URL
+    string kms = 161;
+
+    //Use this to override the default service endpoint URL
+    string lakeformation = 162;
+
+    //Use this to override the default service endpoint URL
+    string lambda = 163;
+
+    //Use this to override the default service endpoint URL
+    string lexmodelbuilding = 164;
+
+    //Use this to override the default service endpoint URL
+    string lexmodelbuildingservice = 165;
+
+    //Use this to override the default service endpoint URL
+    string lexmodels = 166;
+
+    //Use this to override the default service endpoint URL
+    string lexmodelsv2 = 167;
+
+    //Use this to override the default service endpoint URL
+    string lexruntime = 168;
+
+    //Use this to override the default service endpoint URL
+    string lexruntimeservice = 169;
+
+    //Use this to override the default service endpoint URL
+    string lexruntimev2 = 170;
+
+    //Use this to override the default service endpoint URL
+    string licensemanager = 171;
+
+    //Use this to override the default service endpoint URL
+    string lightsail = 172;
+
+    //Use this to override the default service endpoint URL
+    string location = 173;
+
+    //Use this to override the default service endpoint URL
+    string lookoutequipment = 174;
+
+    //Use this to override the default service endpoint URL
+    string lookoutforvision = 175;
+
+    //Use this to override the default service endpoint URL
+    string lookoutmetrics = 176;
+
+    //Use this to override the default service endpoint URL
+    string machinelearning = 177;
+
+    //Use this to override the default service endpoint URL
+    string macie = 178;
+
+    //Use this to override the default service endpoint URL
+    string macie2 = 179;
+
+    //Use this to override the default service endpoint URL
+    string managedblockchain = 180;
+
+    //Use this to override the default service endpoint URL
+    string marketplacecatalog = 181;
+
+    //Use this to override the default service endpoint URL
+    string marketplacecommerceanalytics = 182;
+
+    //Use this to override the default service endpoint URL
+    string marketplaceentitlement = 183;
+
+    //Use this to override the default service endpoint URL
+    string marketplaceentitlementservice = 184;
+
+    //Use this to override the default service endpoint URL
+    string marketplacemetering = 185;
+
+    //Use this to override the default service endpoint URL
+    string mediaconnect = 186;
+
+    //Use this to override the default service endpoint URL
+    string mediaconvert = 187;
+
+    //Use this to override the default service endpoint URL
+    string medialive = 188;
+
+    //Use this to override the default service endpoint URL
+    string mediapackage = 189;
+
+    //Use this to override the default service endpoint URL
+    string mediapackagevod = 190;
+
+    //Use this to override the default service endpoint URL
+    string mediastore = 191;
+
+    //Use this to override the default service endpoint URL
+    string mediastoredata = 192;
+
+    //Use this to override the default service endpoint URL
+    string mediatailor = 193;
+
+    //Use this to override the default service endpoint URL
+    string memorydb = 194;
+
+    //Use this to override the default service endpoint URL
+    string mgn = 195;
+
+    //Use this to override the default service endpoint URL
+    string migrationhub = 196;
+
+    //Use this to override the default service endpoint URL
+    string migrationhubconfig = 197;
+
+    //Use this to override the default service endpoint URL
+    string mobile = 198;
+
+    //Use this to override the default service endpoint URL
+    string mobileanalytics = 199;
+
+    //Use this to override the default service endpoint URL
+    string mq = 200;
+
+    //Use this to override the default service endpoint URL
+    string mturk = 201;
+
+    //Use this to override the default service endpoint URL
+    string mwaa = 202;
+
+    //Use this to override the default service endpoint URL
+    string neptune = 203;
+
+    //Use this to override the default service endpoint URL
+    string networkfirewall = 204;
+
+    //Use this to override the default service endpoint URL
+    string networkmanager = 205;
+
+    //Use this to override the default service endpoint URL
+    string nimblestudio = 206;
+
+    //Use this to override the default service endpoint URL
+    string opsworks = 207;
+
+    //Use this to override the default service endpoint URL
+    string opsworkscm = 208;
+
+    //Use this to override the default service endpoint URL
+    string organizations = 209;
+
+    //Use this to override the default service endpoint URL
+    string outposts = 210;
+
+    //Use this to override the default service endpoint URL
+    string personalize = 211;
+
+    //Use this to override the default service endpoint URL
+    string personalizeevents = 212;
+
+    //Use this to override the default service endpoint URL
+    string personalizeruntime = 213;
+
+    //Use this to override the default service endpoint URL
+    string pi = 214;
+
+    //Use this to override the default service endpoint URL
+    string pinpoint = 215;
+
+    //Use this to override the default service endpoint URL
+    string pinpointemail = 216;
+
+    //Use this to override the default service endpoint URL
+    string pinpointsmsvoice = 217;
+
+    //Use this to override the default service endpoint URL
+    string polly = 218;
+
+    //Use this to override the default service endpoint URL
+    string pricing = 219;
+
+    //Use this to override the default service endpoint URL
+    string prometheus = 220;
+
+    //Use this to override the default service endpoint URL
+    string prometheusservice = 221;
+
+    //Use this to override the default service endpoint URL
+    string proton = 222;
+
+    //Use this to override the default service endpoint URL
+    string qldb = 223;
+
+    //Use this to override the default service endpoint URL
+    string qldbsession = 224;
+
+    //Use this to override the default service endpoint URL
+    string quicksight = 225;
+
+    //Use this to override the default service endpoint URL
+    string ram = 226;
+
+    //Use this to override the default service endpoint URL
+    string rds = 227;
+
+    //Use this to override the default service endpoint URL
+    string rdsdata = 228;
+
+    //Use this to override the default service endpoint URL
+    string rdsdataservice = 229;
+
+    //Use this to override the default service endpoint URL
+    string redshift = 230;
+
+    //Use this to override the default service endpoint URL
+    string redshiftdata = 231;
+
+    //Use this to override the default service endpoint URL
+    string rekognition = 232;
+
+    //Use this to override the default service endpoint URL
+    string resourcegroups = 233;
+
+    //Use this to override the default service endpoint URL
+    string resourcegroupstagging = 234;
+
+    //Use this to override the default service endpoint URL
+    string resourcegroupstaggingapi = 235;
+
+    //Use this to override the default service endpoint URL
+    string robomaker = 236;
+
+    //Use this to override the default service endpoint URL
+    string route53 = 237;
+
+    //Use this to override the default service endpoint URL
+    string route53domains = 238;
+
+    //Use this to override the default service endpoint URL
+    string route53recoverycontrolconfig = 239;
+
+    //Use this to override the default service endpoint URL
+    string route53recoveryreadiness = 240;
+
+    //Use this to override the default service endpoint URL
+    string route53resolver = 241;
+
+    //Use this to override the default service endpoint URL
+    string s3 = 242;
+
+    //Use this to override the default service endpoint URL
+    string s3control = 243;
+
+    //Use this to override the default service endpoint URL
+    string s3outposts = 244;
+
+    //Use this to override the default service endpoint URL
+    string sagemaker = 245;
+
+    //Use this to override the default service endpoint URL
+    string sagemakeredgemanager = 246;
+
+    //Use this to override the default service endpoint URL
+    string sagemakerfeaturestoreruntime = 247;
+
+    //Use this to override the default service endpoint URL
+    string sagemakerruntime = 248;
+
+    //Use this to override the default service endpoint URL
+    string savingsplans = 249;
+
+    //Use this to override the default service endpoint URL
+    string schemas = 250;
+
+    //Use this to override the default service endpoint URL
+    string sdb = 251;
+
+    //Use this to override the default service endpoint URL
+    string secretsmanager = 252;
+
+    //Use this to override the default service endpoint URL
+    string securityhub = 253;
+
+    //Use this to override the default service endpoint URL
+    string serverlessapplicationrepository = 254;
+
+    //Use this to override the default service endpoint URL
+    string serverlessapprepo = 255;
+
+    //Use this to override the default service endpoint URL
+    string serverlessrepo = 256;
+
+    //Use this to override the default service endpoint URL
+    string servicecatalog = 257;
+
+    //Use this to override the default service endpoint URL
+    string servicediscovery = 258;
+
+    //Use this to override the default service endpoint URL
+    string servicequotas = 259;
+
+    //Use this to override the default service endpoint URL
+    string ses = 260;
+
+    //Use this to override the default service endpoint URL
+    string sesv2 = 261;
+
+    //Use this to override the default service endpoint URL
+    string sfn = 262;
+
+    //Use this to override the default service endpoint URL
+    string shield = 263;
+
+    //Use this to override the default service endpoint URL
+    string signer = 264;
+
+    //Use this to override the default service endpoint URL
+    string simpledb = 265;
+
+    //Use this to override the default service endpoint URL
+    string sms = 266;
+
+    //Use this to override the default service endpoint URL
+    string snowball = 267;
+
+    //Use this to override the default service endpoint URL
+    string sns = 268;
+
+    //Use this to override the default service endpoint URL
+    string sqs = 269;
+
+    //Use this to override the default service endpoint URL
+    string ssm = 270;
+
+    //Use this to override the default service endpoint URL
+    string ssmcontacts = 271;
+
+    //Use this to override the default service endpoint URL
+    string ssmincidents = 272;
+
+    //Use this to override the default service endpoint URL
+    string sso = 273;
+
+    //Use this to override the default service endpoint URL
+    string ssoadmin = 274;
+
+    //Use this to override the default service endpoint URL
+    string ssooidc = 275;
+
+    //Use this to override the default service endpoint URL
+    string stepfunctions = 276;
+
+    //Use this to override the default service endpoint URL
+    string storagegateway = 277;
+
+    //Use this to override the default service endpoint URL
+    string sts = 278;
+
+    //Use this to override the default service endpoint URL
+    string support = 279;
+
+    //Use this to override the default service endpoint URL
+    string swf = 280;
+
+    //Use this to override the default service endpoint URL
+    string synthetics = 281;
+
+    //Use this to override the default service endpoint URL
+    string textract = 282;
+
+    //Use this to override the default service endpoint URL
+    string timestreamquery = 283;
+
+    //Use this to override the default service endpoint URL
+    string timestreamwrite = 284;
+
+    //Use this to override the default service endpoint URL
+    string transcribe = 285;
+
+    //Use this to override the default service endpoint URL
+    string transcribeservice = 286;
+
+    //Use this to override the default service endpoint URL
+    string transcribestreaming = 287;
+
+    //Use this to override the default service endpoint URL
+    string transcribestreamingservice = 288;
+
+    //Use this to override the default service endpoint URL
+    string transfer = 289;
+
+    //Use this to override the default service endpoint URL
+    string translate = 290;
+
+    //Use this to override the default service endpoint URL
+    string waf = 291;
+
+    //Use this to override the default service endpoint URL
+    string wafregional = 292;
+
+    //Use this to override the default service endpoint URL
+    string wafv2 = 293;
+
+    //Use this to override the default service endpoint URL
+    string wellarchitected = 294;
+
+    //Use this to override the default service endpoint URL
+    string workdocs = 295;
+
+    //Use this to override the default service endpoint URL
+    string worklink = 296;
+
+    //Use this to override the default service endpoint URL
+    string workmail = 297;
+
+    //Use this to override the default service endpoint URL
+    string workmailmessageflow = 298;
+
+    //Use this to override the default service endpoint URL
+    string workspaces = 299;
+
+    //Use this to override the default service endpoint URL
+    string xray = 300;
+  }
+
+  message IgnoreTags {
+    //Resource tag key prefixes to ignore across all resources.
+    repeated string key_prefixes = 1 [json_name = "key_prefixes"];
+
+    //Resource tag keys to ignore across all resources.
+    repeated string keys = 2;
+  }
+}
+
+message provider {
+}

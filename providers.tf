@@ -1,1 +1,2 @@
 provider "tfe" {}
+provider "aws" {}
