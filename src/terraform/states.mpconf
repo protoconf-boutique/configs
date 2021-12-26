@@ -1,0 +1,16 @@
+"""
+states.mpconf
+"""
+load("//github/tf_action.pinc", "gen_actions")
+load("//terraform/workspaces.pinc", "workspaces", "get_workspace_name")
+
+out = {}
+
+for ws in workspaces:
+    name = get_workspace_name(ws)
+    out["action/" + name] = gen_actions("tfconfigs/" + name)
+    out["terraform/" + name] = ws
+
+
+def main():
+    return out

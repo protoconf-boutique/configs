@@ -21,22 +21,22 @@
           {
             "name": "Terraform Format",
             "id": "fmt",
-            "run": "terraform -chdir=tfconfigs/terraform fmt -check"
+            "run": "terraform -chdir=tfconfigs/configs fmt -check"
           },
           {
             "name": "Terraform Init",
             "id": "init",
-            "run": "terraform -chdir=tfconfigs/terraform init"
+            "run": "terraform -chdir=tfconfigs/configs init"
           },
           {
             "name": "Terraform Validate",
             "id": "validate",
-            "run": "terraform -chdir=tfconfigs/terraform validate -no-color"
+            "run": "terraform -chdir=tfconfigs/configs validate -no-color"
           },
           {
             "name": "Terraform Plan",
             "id": "plan",
-            "run": "terraform -chdir=tfconfigs/terraform plan -no-color",
+            "run": "terraform -chdir=tfconfigs/configs plan -no-color",
             "continue-on-error": true,
             "if": "github.event_name == 'pull_request'",
             "env": {
@@ -52,7 +52,7 @@
             },
             "with": {
               "github-token": "${{ secrets.GITHUB_TOKEN }}",
-              "script": "\nconst output = `#### Terraform Format and Style 🖌\\`${{ steps.fmt.outcome }}\\`\n#### Terraform Initialization ⚙️\\`${{ steps.init.outcome }}\\`\n#### Terraform Plan 📖\\`${{ steps.plan.outcome }}\\`\n#### Terraform Validation 🤖\\`${{ steps.validate.outcome }}\\`\n\n\u003cdetails\u003e\u003csummary\u003eShow Plan\u003c/summary\u003e\n\n\\`\\`\\`\n\n${process.env.PLAN}\n\\`\\`\\`\n\n\u003c/details\u003e\n\n*Pusher: @${{ github.actor }}, Action: \\`${{ github.event_name }}\\`*`;\n\ngithub.issues.createComment({\n    issue_number: context.issue.number,\n    owner: context.repo.owner,\n    repo: context.repo.repo,\n    body: output\n})\n                        "
+              "script": "\nconst output = `#### Terraform Format and Style 🖌\\`${{ steps.fmt.outcome }}\\`\n#### Terraform Initialization ⚙️\\`${{ steps.init.outcome }}\\`\n#### Terraform Plan 📖\\`${{ steps.plan.outcome }}\\`\n#### Terraform Validation 🤖\\`${{ steps.validate.outcome }}\\`\n\n\u003cdetails\u003e\u003csummary\u003eShow Plan\u003c/summary\u003e\n\n\\`\\`\\`\n\n${process.env.PLAN}\n\\`\\`\\`\n\n\u003c/details\u003e\n\n*Pusher: @${{ github.actor }}, Action: \\`${{ github.event_name }}\\`*`;\n\ngithub.issues.createComment({\n    issue_number: context.issue.number,\n    owner: context.repo.owner,\n    repo: context.repo.repo,\n    body: output\n})\n"
             }
           },
           {
@@ -62,7 +62,7 @@
           },
           {
             "name": "Terraform Apply",
-            "run": "terraform -chdir=tfconfigs/terraform apply -auto-approve",
+            "run": "terraform -chdir=tfconfigs/configs apply -auto-approve",
             "if": "github.ref == 'refs/heads/main' \u0026\u0026 github.event_name == 'push'",
             "env": {
               "TF_VAR_github_token": "${{ secrets.GITHUB_TOKEN }}"

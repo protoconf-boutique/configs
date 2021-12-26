@@ -1,0 +1,20 @@
+{
+  "resource": {
+    "tfe_organization": {
+      "protoconf-boutique": {
+        "email": "team@protoconf.com",
+        "name": "protoconf-boutique"
+      }
+    }
+  },
+  "terraform": {
+    "backend": {
+      "remote": {
+        "organization": "protoconf-boutique",
+        "workspaces": {
+          "name": "configs"
+        }
+      }
+    }
+  }
+}
