@@ -1,0 +1,236 @@
+syntax = "proto3";
+
+package terraform;
+
+import "terraform/tfe-data.proto";
+
+import "terraform/tfe-provider.proto";
+
+import "terraform/tfe-resources.proto";
+
+message Terraform {
+  Resources resource = 1;
+
+  Datasources data = 2;
+
+  Providers provider = 3;
+
+  map<string, Variable> variable = 4;
+
+  map<string, Output> output = 5;
+
+  map<string, string> locals = 6;
+
+  Module module = 7;
+
+  TerraformSettings terraform = 8;
+
+  message Resources {
+    map<string, tfe.resources.TfeAgentPool> tfe_agent_pool = 1 [json_name = "tfe_agent_pool"];
+
+    map<string, tfe.resources.TfeAgentToken> tfe_agent_token = 2 [json_name = "tfe_agent_token"];
+
+    map<string, tfe.resources.TfeNotificationConfiguration> tfe_notification_configuration = 3 [json_name = "tfe_notification_configuration"];
+
+    map<string, tfe.resources.TfeOauthClient> tfe_oauth_client = 4 [json_name = "tfe_oauth_client"];
+
+    map<string, tfe.resources.TfeOrganization> tfe_organization = 5 [json_name = "tfe_organization"];
+
+    map<string, tfe.resources.TfeOrganizationMembership> tfe_organization_membership = 6 [json_name = "tfe_organization_membership"];
+
+    map<string, tfe.resources.TfeOrganizationToken> tfe_organization_token = 7 [json_name = "tfe_organization_token"];
+
+    map<string, tfe.resources.TfePolicySet> tfe_policy_set = 8 [json_name = "tfe_policy_set"];
+
+    map<string, tfe.resources.TfePolicySetParameter> tfe_policy_set_parameter = 9 [json_name = "tfe_policy_set_parameter"];
+
+    map<string, tfe.resources.TfeRegistryModule> tfe_registry_module = 10 [json_name = "tfe_registry_module"];
+
+    map<string, tfe.resources.TfeRunTrigger> tfe_run_trigger = 11 [json_name = "tfe_run_trigger"];
+
+    map<string, tfe.resources.TfeSentinelPolicy> tfe_sentinel_policy = 12 [json_name = "tfe_sentinel_policy"];
+
+    map<string, tfe.resources.TfeSshKey> tfe_ssh_key = 13 [json_name = "tfe_ssh_key"];
+
+    map<string, tfe.resources.TfeTeam> tfe_team = 14 [json_name = "tfe_team"];
+
+    map<string, tfe.resources.TfeTeamAccess> tfe_team_access = 15 [json_name = "tfe_team_access"];
+
+    map<string, tfe.resources.TfeTeamMember> tfe_team_member = 16 [json_name = "tfe_team_member"];
+
+    map<string, tfe.resources.TfeTeamMembers> tfe_team_members = 17 [json_name = "tfe_team_members"];
+
+    map<string, tfe.resources.TfeTeamOrganizationMember> tfe_team_organization_member = 18 [json_name = "tfe_team_organization_member"];
+
+    map<string, tfe.resources.TfeTeamToken> tfe_team_token = 19 [json_name = "tfe_team_token"];
+
+    map<string, tfe.resources.TfeVariable> tfe_variable = 20 [json_name = "tfe_variable"];
+
+    map<string, tfe.resources.TfeWorkspace> tfe_workspace = 21 [json_name = "tfe_workspace"];
+  }
+
+  message Datasources {
+    map<string, tfe.data.TfeAgentPool> tfe_agent_pool = 1 [json_name = "tfe_agent_pool"];
+
+    map<string, tfe.data.TfeIpRanges> tfe_ip_ranges = 2 [json_name = "tfe_ip_ranges"];
+
+    map<string, tfe.data.TfeOauthClient> tfe_oauth_client = 3 [json_name = "tfe_oauth_client"];
+
+    map<string, tfe.data.TfeOrganization> tfe_organization = 4 [json_name = "tfe_organization"];
+
+    map<string, tfe.data.TfeOrganizationMembership> tfe_organization_membership = 5 [json_name = "tfe_organization_membership"];
+
+    map<string, tfe.data.TfeOrganizations> tfe_organizations = 6 [json_name = "tfe_organizations"];
+
+    map<string, tfe.data.TfeOutputs> tfe_outputs = 7 [json_name = "tfe_outputs"];
+
+    map<string, tfe.data.TfeSlug> tfe_slug = 8 [json_name = "tfe_slug"];
+
+    map<string, tfe.data.TfeSshKey> tfe_ssh_key = 9 [json_name = "tfe_ssh_key"];
+
+    map<string, tfe.data.TfeTeam> tfe_team = 10 [json_name = "tfe_team"];
+
+    map<string, tfe.data.TfeTeamAccess> tfe_team_access = 11 [json_name = "tfe_team_access"];
+
+    map<string, tfe.data.TfeVariables> tfe_variables = 12 [json_name = "tfe_variables"];
+
+    map<string, tfe.data.TfeWorkspace> tfe_workspace = 13 [json_name = "tfe_workspace"];
+
+    map<string, tfe.data.TfeWorkspaceIds> tfe_workspace_ids = 14 [json_name = "tfe_workspace_ids"];
+  }
+
+  message Providers {
+    repeated tfe.provider.Tfe tfe = 1;
+  }
+
+  message Variable {
+    string type = 1;
+
+    string description = 2;
+
+    string default = 3;
+  }
+
+  message Output {
+    string value = 1;
+  }
+
+  message Module {
+  }
+
+  message TerraformSettings {
+    string required_version = 1 [json_name = "required_version"];
+
+    map<string, Provider> required_providers = 2 [json_name = "required_providers"];
+
+    Backend backend = 3;
+
+    message Provider {
+      string source = 1;
+
+      string version = 2;
+    }
+
+    message Backend {
+      oneof config {
+        BackendLocal local = 1;
+
+        BackendRemote remote = 2;
+
+        BackendS3 s3 = 3;
+      }
+
+      message BackendLocal {
+        string path = 1;
+
+        string workspace_dir = 2 [json_name = "workspace_dir"];
+      }
+
+      message BackendRemote {
+        //(Optional) The remote backend hostname to connect to. Defaults to app.terraform.io.
+        string hostname = 1;
+
+        //(Required) The name of the organization containing the targeted workspace(s).
+        string organization = 2;
+
+        //(Optional) The token used to authenticate with the remote backend. We recommend omitting the token from the configuration, and instead using `terraform login` or manually configuring `credentials` in the CLI config file.
+        string token = 3;
+
+        //(Required) A block specifying which remote workspace(s) to use. The workspaces block supports the following keys
+        Workspace workspaces = 4;
+
+        message Workspace {
+          //(Optional) The full name of one remote workspace. When configured, only the default workspace can be used. This option conflicts with prefix.
+          string name = 1;
+
+          //(Optional) A prefix used in the names of one or more remote workspaces, all of which can be used with this configuration. The full workspace names are used in Terraform Cloud, and the short names (minus the prefix) are used on the command line for Terraform CLI workspaces. If omitted, only the default workspace can be used. This option conflicts with name.
+          string prefix = 2;
+        }
+      }
+
+      message BackendS3 {
+        string region = 1;
+
+        string access_key = 2 [json_name = "access_key"];
+
+        string secret_key = 3 [json_name = "secret_key"];
+
+        string iam_endpoint = 4 [json_name = "iam_endpoint"];
+
+        string max_retries = 5 [json_name = "max_retries"];
+
+        string profile = 6;
+
+        string shared_credentials_file = 7 [json_name = "shared_credentials_file"];
+
+        string skip_credentials_validation = 8 [json_name = "skip_credentials_validation"];
+
+        string skip_region_validation = 9 [json_name = "skip_region_validation"];
+
+        string skip_metadata_api_check = 10 [json_name = "skip_metadata_api_check"];
+
+        string sts_endpoint = 11 [json_name = "sts_endpoint"];
+
+        string token = 12;
+
+        string assume_role_duration_seconds = 13 [json_name = "assume_role_duration_seconds"];
+
+        string assume_role_policy = 14 [json_name = "assume_role_policy"];
+
+        string assume_role_policy_arns = 15 [json_name = "assume_role_policy_arns"];
+
+        string assume_role_tags = 16 [json_name = "assume_role_tags"];
+
+        string assume_role_transitive_tag_keys = 17 [json_name = "assume_role_transitive_tag_keys"];
+
+        string external_id = 18 [json_name = "external_id"];
+
+        string role_arn = 19 [json_name = "role_arn"];
+
+        string session_name = 20 [json_name = "session_name"];
+
+        string bucket = 21;
+
+        string key = 22;
+
+        string acl = 23;
+
+        string encrypt = 24;
+
+        string endpoint = 25;
+
+        string force_path_style = 26 [json_name = "force_path_style"];
+
+        string kms_key_id = 27 [json_name = "kms_key_id"];
+
+        string sse_customer_key = 28 [json_name = "sse_customer_key"];
+
+        string workspace_key_prefix = 29 [json_name = "workspace_key_prefix"];
+
+        string dynamodb_endpoint = 30 [json_name = "dynamodb_endpoint"];
+
+        string dynamodb_table = 31 [json_name = "dynamodb_table"];
+      }
+    }
+  }
+}

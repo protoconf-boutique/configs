@@ -1,0 +1,56 @@
+{
+  "resource": {
+    "tfe_oauth_client": {
+      "test": {
+        "api_url": "https://api.github.com",
+        "http_url": "https://github.com",
+        "oauth_token": "var.github_token",
+        "organization": "protoconf-boutique",
+        "service_provider": "github"
+      }
+    },
+    "tfe_organization": {
+      "protoconf-boutique": {
+        "email": "team@protoconf.com",
+        "name": "protoconf-boutique"
+      }
+    },
+    "tfe_variable": {
+      "github_token": {
+        "category": "terraform",
+        "key": "github_token",
+        "sensitive": true,
+        "value": "${var.github_token}",
+        "workspace_id": "${tfe_workspace.test.id}"
+      }
+    },
+    "tfe_workspace": {
+      "test": {
+        "auto_apply": true,
+        "name": "test",
+        "organization": "protoconf-boutique",
+        "working_directory": "tfconfigs/terraform",
+        "vcs_repo": {
+          "identifier": "protoconf-boutique/configs",
+          "oauth_token_id": "${tfe_oauth_client.test.id}"
+        }
+      }
+    }
+  },
+  "variable": {
+    "github_token": {
+      "type": "string",
+      "description": "github token for vcs integration"
+    }
+  },
+  "terraform": {
+    "backend": {
+      "remote": {
+        "organization": "protoconf-boutique",
+        "workspaces": {
+          "name": "configs"
+        }
+      }
+    }
+  }
+}

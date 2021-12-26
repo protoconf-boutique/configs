@@ -1,0 +1,83 @@
+{
+  "protoFile": "github/actions.proto",
+  "value": {
+    "@type": "type.googleapis.com/GithubActions",
+    "jobs": {
+      "terraform": {
+        "name": "Terraform",
+        "runs-on": "ubuntu-latest",
+        "steps": [
+          {
+            "name": "Checkout",
+            "uses": "actions/checkout@v2"
+          },
+          {
+            "name": "Setup Terraform",
+            "uses": "hashicorp/setup-terraform@v1",
+            "with": {
+              "cli_config_credentials_token": "${{ secrets.TF_API_TOKEN }}"
+            }
+          },
+          {
+            "name": "Terraform Format",
+            "id": "fmt",
+            "run": "terraform -chdir=tfconfigs/terraform fmt -check"
+          },
+          {
+            "name": "Terraform Init",
+            "id": "init",
+            "run": "terraform -chdir=tfconfigs/terraform init"
+          },
+          {
+            "name": "Terraform Validate",
+            "id": "validate",
+            "run": "terraform -chdir=tfconfigs/terraform validate -no-color"
+          },
+          {
+            "name": "Terraform Plan",
+            "id": "plan",
+            "run": "terraform -chdir=tfconfigs/terraform plan -no-color",
+            "continue-on-error": true,
+            "if": "github.event_name == 'pull_request'",
+            "env": {
+              "TF_VAR_github_token": "${{ secrets.GITHUB_TOKEN }}"
+            }
+          },
+          {
+            "name": "Update Pull Request",
+            "uses": "actions/github-script@0.9.0",
+            "if": "github.event_name == 'pull_request'",
+            "env": {
+              "PLAN": "terraform\n${{ steps.plan.outputs.stdout }}"
+            },
+            "with": {
+              "github-token": "${{ secrets.GITHUB_TOKEN }}",
+              "script": "\nconst output = `#### Terraform Format and Style 🖌\\`${{ steps.fmt.outcome }}\\`\n#### Terraform Initialization ⚙️\\`${{ steps.init.outcome }}\\`\n#### Terraform Plan 📖\\`${{ steps.plan.outcome }}\\`\n#### Terraform Validation 🤖\\`${{ steps.validate.outcome }}\\`\n\n\u003cdetails\u003e\u003csummary\u003eShow Plan\u003c/summary\u003e\n\n\\`\\`\\`\n\n${process.env.PLAN}\n\\`\\`\\`\n\n\u003c/details\u003e\n\n*Pusher: @${{ github.actor }}, Action: \\`${{ github.event_name }}\\`*`;\n\ngithub.issues.createComment({\n    issue_number: context.issue.number,\n    owner: context.repo.owner,\n    repo: context.repo.repo,\n    body: output\n})\n                        "
+            }
+          },
+          {
+            "name": "Terraform Plan Status",
+            "run": "exit 1",
+            "if": "steps.plan.outcome == 'failure'"
+          },
+          {
+            "name": "Terraform Apply",
+            "run": "terraform -chdir=tfconfigs/terraform apply -auto-approve",
+            "if": "github.ref == 'refs/heads/main' \u0026\u0026 github.event_name == 'push'",
+            "env": {
+              "TF_VAR_github_token": "${{ secrets.GITHUB_TOKEN }}"
+            }
+          }
+        ]
+      }
+    },
+    "on": {
+      "push": {
+        "branches": [
+          "main"
+        ]
+      },
+      "pull_request": {}
+    }
+  }
+}

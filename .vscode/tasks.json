@@ -1,0 +1,52 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "dependsOn": ["run_agent", "run_tf_exec", "compile"],
+            "dependsOrder": "parallel",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+        },
+        {
+            "label": "compile",
+            "type": "shell",
+            "command": "protoconf compile .",
+            "problemMatcher": [],
+            "isBackground": false,
+            "group": "build",
+        },
+        {
+            "label": "run_agent",
+            "type": "shell",
+            "command": "protoconf",
+            "args": [
+                "agent",
+                "-dev",
+                "${workspaceRoot}"
+            ],
+            "isBackground": true,
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "run_tf_exec",
+            "type": "shell",
+            "command": "protoconf",
+            "args": [
+                "exec",
+                "-proto_dir",
+                "${workspaceRoot}/src",
+                "-config",
+                "terraform/exec"
+            ],
+            "isBackground": true,
+            "group": "build",
+            "problemMatcher": []
+        }
+    ]
+}

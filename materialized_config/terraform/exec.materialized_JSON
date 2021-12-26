@@ -1,0 +1,30 @@
+{
+  "protoFile": "exec/exec_config.proto",
+  "value": {
+    "@type": "type.googleapis.com/exec_config.Config",
+    "items": [
+      {
+        "path": "terraform/providers.tf",
+        "protoFile": "terraform/terraform.proto",
+        "actions": [
+          {
+            "file": {
+              "path": "tfconfigs/terraform/providers.tf.json"
+            }
+          }
+        ]
+      },
+      {
+        "path": "terraform/states.tf",
+        "protoFile": "terraform/terraform.proto",
+        "actions": [
+          {
+            "file": {
+              "path": "tfconfigs/terraform/states.tf.json"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

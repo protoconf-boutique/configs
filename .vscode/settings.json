@@ -1,0 +1,15 @@
+{
+    "python.formatting.provider": "black",
+    "files.associations": {
+        "*.pconf": "starlark",
+        "*.pinc": "starlark",
+        "*.mpconf": "starlark",
+        "*.proto-validator": "starlark"
+    },
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "bazel.pathsToIgnore": [
+        "*.pconf",
+        "*.pinc"
+    ]
+}

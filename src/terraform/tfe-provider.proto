@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package terraform.tfe.provider;
+
+import "terraform/meta.proto";
+
+message resources {
+}
+
+message data {
+}
+
+//Tfe version is 0
+message Tfe {
+  //The Terraform Enterprise hostname to connect to. Defaults to app.terraform.io.
+  string hostname = 1;
+
+  //Whether or not to skip certificate verifications.
+  bool ssl_skip_verify = 2 [json_name = "ssl_skip_verify"];
+
+  //The token used to authenticate with Terraform Enterprise. We recommend omitting
+  //the token which can be set as credentials in the CLI config file.
+  string token = 3;
+
+  repeated string depends_on = 4;
+
+  int32 count = 5;
+
+  map<string, string> for_each = 6;
+
+  string provider = 7;
+
+  terraform.meta.Lifecycle lifecycle = 8;
+
+  string alias = 9;
+}
+
+message provider {
+}
