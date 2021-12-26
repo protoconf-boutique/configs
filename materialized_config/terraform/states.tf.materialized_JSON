@@ -40,6 +40,16 @@
         }
       }
     },
+    "terraform": {
+      "backend": {
+        "remote": {
+          "organization": "protoconf-boutique",
+          "workspaces": {
+            "name": "configs"
+          }
+        }
+      }
+    },
     "variable": {
       "github_token": {
         "type": "string",

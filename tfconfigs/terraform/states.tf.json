@@ -42,5 +42,15 @@
       "type": "string",
       "description": "github token for vcs integration"
     }
+  },
+  "terraform": {
+    "backend": {
+      "remote": {
+        "organization": "protoconf-boutique",
+        "workspaces": {
+          "name": "configs"
+        }
+      }
+    }
   }
 }

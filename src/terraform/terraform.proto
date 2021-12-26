@@ -135,13 +135,37 @@ message Terraform {
       oneof config {
         BackendLocal local = 1;
 
-        BackendS3 s3 = 2;
+        BackendRemote remote = 2;
+
+        BackendS3 s3 = 3;
       }
 
       message BackendLocal {
         string path = 1;
 
         string workspace_dir = 2 [json_name = "workspace_dir"];
+      }
+
+      message BackendRemote {
+        //(Optional) The remote backend hostname to connect to. Defaults to app.terraform.io.
+        string hostname = 1;
+
+        //(Required) The name of the organization containing the targeted workspace(s).
+        string organization = 2;
+
+        //(Optional) The token used to authenticate with the remote backend. We recommend omitting the token from the configuration, and instead using `terraform login` or manually configuring `credentials` in the CLI config file.
+        string token = 3;
+
+        //(Required) A block specifying which remote workspace(s) to use. The workspaces block supports the following keys
+        Workspace workspaces = 4;
+
+        message Workspace {
+          //(Optional) The full name of one remote workspace. When configured, only the default workspace can be used. This option conflicts with prefix.
+          string name = 1;
+
+          //(Optional) A prefix used in the names of one or more remote workspaces, all of which can be used with this configuration. The full workspace names are used in Terraform Cloud, and the short names (minus the prefix) are used on the command line for Terraform CLI workspaces. If omitted, only the default workspace can be used. This option conflicts with name.
+          string prefix = 2;
+        }
       }
 
       message BackendS3 {

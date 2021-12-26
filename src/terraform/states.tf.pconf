@@ -18,6 +18,16 @@ tf = Terraform(
             type="string", description="github token for vcs integration"
         ),
     },
+    terraform=Terraform.TerraformSettings(
+        backend=Terraform.TerraformSettings.Backend(
+            remote=Terraform.TerraformSettings.Backend.BackendRemote(
+                organization="protoconf-boutique",
+                workspaces=Terraform.TerraformSettings.Backend.BackendRemote.Workspace(
+                    name="configs"
+                )
+            )
+        )
+    )
 )
 tfe_org = tf.resource.tfe_organization.setdefault(
     "protoconf-boutique",
