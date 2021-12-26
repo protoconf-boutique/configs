@@ -8,6 +8,7 @@ load(
     "TfeOrganization",
     "TfeWorkspace",
 )
+load("//clusters/vpc/vpc.pinc", "VPCS")
 
 TF_ORG_NAME = "protoconf-boutique"
 workspaces = []
@@ -35,8 +36,9 @@ tfe_org = states_tf.resource.tfe_organization.setdefault(
     ),
 )
 
-def terraform_workspace(tf, name):
-    ws = tf.resource.tfe_workspace.setdefault(
+
+def terraform_workspace(name):
+    ws = states_tf.resource.tfe_workspace.setdefault(
         name,
         TfeWorkspace(
             name=name,
@@ -61,5 +63,11 @@ def terraform_workspace(tf, name):
     workspaces.append(ws)
     return ws
 
+
 def get_workspace_name(tf):
     return tf.terraform.backend.remote.workspaces.name
+
+
+for vpc in VPCS:
+    tf = terraform_workspace("vpc-" + vpc.vpc.name)
+    vpc.make(tf)

@@ -24,7 +24,11 @@ def main():
                 path="terraform/states/terraform/%s" % get_workspace_name(ws),
                 proto_file="terraform/terraform.proto",
                 actions=[
-                    Action(file=ActionTypeWriteToFile(path="tfconfigs/%s/main.tf.json" % get_workspace_name(ws))),
+                    Action(
+                        file=ActionTypeWriteToFile(
+                            path="tfconfigs/%s/main.tf.json" % get_workspace_name(ws)
+                        )
+                    ),
                 ],
             )
             for ws in workspaces
@@ -36,7 +40,8 @@ def main():
                 actions=[
                     Action(
                         file=ActionTypeWriteToFile(
-                            path=".github/workflows/terraform-%s-action.yaml" % get_workspace_name(ws),
+                            path=".github/workflows/terraform-%s-action.yaml"
+                            % get_workspace_name(ws),
                             serializer=Config.Serializer.YAML,
                         )
                     ),

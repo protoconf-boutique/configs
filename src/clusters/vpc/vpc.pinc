@@ -1,0 +1,19 @@
+"""
+Create VPCs
+"""
+load("vpc.proto", "VPC")
+load("//terraform/aws-resources.proto", "AwsVpc")
+
+
+def VPCMaker(vpc):
+    def make(tf):
+        if not vpc.create_vpc:
+            return
+        tf.resource.aws_vpc.setdefault(vpc.name, AwsVpc(tags={"Name": vpc.name}))
+
+    return struct(vpc=vpc, make=make)
+
+
+VPCS = [VPCMaker(v) for v in [
+    VPC(create_vpc=True, name="us-west-1")
+]]

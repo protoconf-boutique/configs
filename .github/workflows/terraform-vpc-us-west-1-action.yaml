@@ -1,0 +1,57 @@
+jobs:
+  terraform:
+    name: Terraform
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+    - id: fmt
+      name: Terraform Format
+      run: terraform -chdir=tfconfigs/vpc-us-west-1 fmt -check
+    - id: init
+      name: Terraform Init
+      run: terraform -chdir=tfconfigs/vpc-us-west-1 init
+    - id: validate
+      name: Terraform Validate
+      run: terraform -chdir=tfconfigs/vpc-us-west-1 validate -no-color
+    - continue-on-error: true
+      env:
+        TF_VAR_github_token: ${{ secrets.GITHUB_TOKEN }}
+      id: plan
+      if: github.event_name == 'pull_request'
+      name: Terraform Plan
+      run: terraform -chdir=tfconfigs/vpc-us-west-1 plan -no-color
+    - env:
+        PLAN: |-
+          terraform
+          ${{ steps.plan.outputs.stdout }}
+      if: github.event_name == 'pull_request'
+      name: Update Pull Request
+      uses: actions/github-script@0.9.0
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: "\nconst output = `#### Terraform Format and Style \U0001F58C\\`${{
+          steps.fmt.outcome }}\\`\n#### Terraform Initialization ⚙️\\`${{ steps.init.outcome
+          }}\\`\n#### Terraform Plan \U0001F4D6\\`${{ steps.plan.outcome }}\\`\n####
+          Terraform Validation \U0001F916\\`${{ steps.validate.outcome }}\\`\n\n<details><summary>Show
+          Plan</summary>\n\n\\`\\`\\`\n\n${process.env.PLAN}\n\\`\\`\\`\n\n</details>\n\n*Pusher:
+          @${{ github.actor }}, Action: \\`${{ github.event_name }}\\`*`;\n\ngithub.issues.createComment({\n
+          \   issue_number: context.issue.number,\n    owner: context.repo.owner,\n
+          \   repo: context.repo.repo,\n    body: output\n})\n"
+    - if: steps.plan.outcome == 'failure'
+      name: Terraform Plan Status
+      run: exit 1
+    - env:
+        TF_VAR_github_token: ${{ secrets.GITHUB_TOKEN }}
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      name: Terraform Apply
+      run: terraform -chdir=tfconfigs/vpc-us-west-1 apply -auto-approve
+"on":
+  pull_request: {}
+  push:
+    branches:
+    - main

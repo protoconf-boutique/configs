@@ -15,12 +15,35 @@
         ]
       },
       {
+        "path": "terraform/states/terraform/vpc-us-west-1",
+        "protoFile": "terraform/terraform.proto",
+        "actions": [
+          {
+            "file": {
+              "path": "tfconfigs/vpc-us-west-1/main.tf.json"
+            }
+          }
+        ]
+      },
+      {
         "path": "terraform/states/action/configs",
         "protoFile": "github/actions.proto",
         "actions": [
           {
             "file": {
               "path": ".github/workflows/terraform-configs-action.yaml",
+              "serializer": "YAML"
+            }
+          }
+        ]
+      },
+      {
+        "path": "terraform/states/action/vpc-us-west-1",
+        "protoFile": "github/actions.proto",
+        "actions": [
+          {
+            "file": {
+              "path": ".github/workflows/terraform-vpc-us-west-1-action.yaml",
               "serializer": "YAML"
             }
           }

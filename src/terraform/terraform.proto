@@ -2,6 +2,12 @@ syntax = "proto3";
 
 package terraform;
 
+import "terraform/aws-data.proto";
+
+import "terraform/aws-provider.proto";
+
+import "terraform/aws-resources.proto";
+
 import "terraform/tfe-data.proto";
 
 import "terraform/tfe-provider.proto";
@@ -26,81 +32,2393 @@ message Terraform {
   TerraformSettings terraform = 8;
 
   message Resources {
-    map<string, tfe.resources.TfeAgentPool> tfe_agent_pool = 1 [json_name = "tfe_agent_pool"];
+    map<string, aws.resources.AwsAccessanalyzerAnalyzer> aws_accessanalyzer_analyzer = 1 [json_name = "aws_accessanalyzer_analyzer"];
 
-    map<string, tfe.resources.TfeAgentToken> tfe_agent_token = 2 [json_name = "tfe_agent_token"];
+    map<string, aws.resources.AwsAccountAlternateContact> aws_account_alternate_contact = 2 [json_name = "aws_account_alternate_contact"];
 
-    map<string, tfe.resources.TfeNotificationConfiguration> tfe_notification_configuration = 3 [json_name = "tfe_notification_configuration"];
+    map<string, aws.resources.AwsAcmCertificate> aws_acm_certificate = 3 [json_name = "aws_acm_certificate"];
 
-    map<string, tfe.resources.TfeOauthClient> tfe_oauth_client = 4 [json_name = "tfe_oauth_client"];
+    map<string, aws.resources.AwsAcmCertificateValidation> aws_acm_certificate_validation = 4 [json_name = "aws_acm_certificate_validation"];
 
-    map<string, tfe.resources.TfeOrganization> tfe_organization = 5 [json_name = "tfe_organization"];
+    map<string, aws.resources.AwsAcmpcaCertificate> aws_acmpca_certificate = 5 [json_name = "aws_acmpca_certificate"];
 
-    map<string, tfe.resources.TfeOrganizationMembership> tfe_organization_membership = 6 [json_name = "tfe_organization_membership"];
+    map<string, aws.resources.AwsAcmpcaCertificateAuthority> aws_acmpca_certificate_authority = 6 [json_name = "aws_acmpca_certificate_authority"];
 
-    map<string, tfe.resources.TfeOrganizationToken> tfe_organization_token = 7 [json_name = "tfe_organization_token"];
+    map<string, aws.resources.AwsAcmpcaCertificateAuthorityCertificate> aws_acmpca_certificate_authority_certificate = 7 [json_name = "aws_acmpca_certificate_authority_certificate"];
 
-    map<string, tfe.resources.TfePolicySet> tfe_policy_set = 8 [json_name = "tfe_policy_set"];
+    map<string, aws.resources.AwsAlb> aws_alb = 8 [json_name = "aws_alb"];
 
-    map<string, tfe.resources.TfePolicySetParameter> tfe_policy_set_parameter = 9 [json_name = "tfe_policy_set_parameter"];
+    map<string, aws.resources.AwsAlbListener> aws_alb_listener = 9 [json_name = "aws_alb_listener"];
 
-    map<string, tfe.resources.TfeRegistryModule> tfe_registry_module = 10 [json_name = "tfe_registry_module"];
+    map<string, aws.resources.AwsAlbListenerCertificate> aws_alb_listener_certificate = 10 [json_name = "aws_alb_listener_certificate"];
 
-    map<string, tfe.resources.TfeRunTrigger> tfe_run_trigger = 11 [json_name = "tfe_run_trigger"];
+    map<string, aws.resources.AwsAlbListenerRule> aws_alb_listener_rule = 11 [json_name = "aws_alb_listener_rule"];
 
-    map<string, tfe.resources.TfeSentinelPolicy> tfe_sentinel_policy = 12 [json_name = "tfe_sentinel_policy"];
+    map<string, aws.resources.AwsAlbTargetGroup> aws_alb_target_group = 12 [json_name = "aws_alb_target_group"];
 
-    map<string, tfe.resources.TfeSshKey> tfe_ssh_key = 13 [json_name = "tfe_ssh_key"];
+    map<string, aws.resources.AwsAlbTargetGroupAttachment> aws_alb_target_group_attachment = 13 [json_name = "aws_alb_target_group_attachment"];
 
-    map<string, tfe.resources.TfeTeam> tfe_team = 14 [json_name = "tfe_team"];
+    map<string, aws.resources.AwsAmi> aws_ami = 14 [json_name = "aws_ami"];
 
-    map<string, tfe.resources.TfeTeamAccess> tfe_team_access = 15 [json_name = "tfe_team_access"];
+    map<string, aws.resources.AwsAmiCopy> aws_ami_copy = 15 [json_name = "aws_ami_copy"];
 
-    map<string, tfe.resources.TfeTeamMember> tfe_team_member = 16 [json_name = "tfe_team_member"];
+    map<string, aws.resources.AwsAmiFromInstance> aws_ami_from_instance = 16 [json_name = "aws_ami_from_instance"];
 
-    map<string, tfe.resources.TfeTeamMembers> tfe_team_members = 17 [json_name = "tfe_team_members"];
+    map<string, aws.resources.AwsAmiLaunchPermission> aws_ami_launch_permission = 17 [json_name = "aws_ami_launch_permission"];
 
-    map<string, tfe.resources.TfeTeamOrganizationMember> tfe_team_organization_member = 18 [json_name = "tfe_team_organization_member"];
+    map<string, aws.resources.AwsAmplifyApp> aws_amplify_app = 18 [json_name = "aws_amplify_app"];
 
-    map<string, tfe.resources.TfeTeamToken> tfe_team_token = 19 [json_name = "tfe_team_token"];
+    map<string, aws.resources.AwsAmplifyBackendEnvironment> aws_amplify_backend_environment = 19 [json_name = "aws_amplify_backend_environment"];
 
-    map<string, tfe.resources.TfeVariable> tfe_variable = 20 [json_name = "tfe_variable"];
+    map<string, aws.resources.AwsAmplifyBranch> aws_amplify_branch = 20 [json_name = "aws_amplify_branch"];
 
-    map<string, tfe.resources.TfeWorkspace> tfe_workspace = 21 [json_name = "tfe_workspace"];
+    map<string, aws.resources.AwsAmplifyDomainAssociation> aws_amplify_domain_association = 21 [json_name = "aws_amplify_domain_association"];
+
+    map<string, aws.resources.AwsAmplifyWebhook> aws_amplify_webhook = 22 [json_name = "aws_amplify_webhook"];
+
+    map<string, aws.resources.AwsApiGatewayAccount> aws_api_gateway_account = 23 [json_name = "aws_api_gateway_account"];
+
+    map<string, aws.resources.AwsApiGatewayApiKey> aws_api_gateway_api_key = 24 [json_name = "aws_api_gateway_api_key"];
+
+    map<string, aws.resources.AwsApiGatewayAuthorizer> aws_api_gateway_authorizer = 25 [json_name = "aws_api_gateway_authorizer"];
+
+    map<string, aws.resources.AwsApiGatewayBasePathMapping> aws_api_gateway_base_path_mapping = 26 [json_name = "aws_api_gateway_base_path_mapping"];
+
+    map<string, aws.resources.AwsApiGatewayClientCertificate> aws_api_gateway_client_certificate = 27 [json_name = "aws_api_gateway_client_certificate"];
+
+    map<string, aws.resources.AwsApiGatewayDeployment> aws_api_gateway_deployment = 28 [json_name = "aws_api_gateway_deployment"];
+
+    map<string, aws.resources.AwsApiGatewayDocumentationPart> aws_api_gateway_documentation_part = 29 [json_name = "aws_api_gateway_documentation_part"];
+
+    map<string, aws.resources.AwsApiGatewayDocumentationVersion> aws_api_gateway_documentation_version = 30 [json_name = "aws_api_gateway_documentation_version"];
+
+    map<string, aws.resources.AwsApiGatewayDomainName> aws_api_gateway_domain_name = 31 [json_name = "aws_api_gateway_domain_name"];
+
+    map<string, aws.resources.AwsApiGatewayGatewayResponse> aws_api_gateway_gateway_response = 32 [json_name = "aws_api_gateway_gateway_response"];
+
+    map<string, aws.resources.AwsApiGatewayIntegration> aws_api_gateway_integration = 33 [json_name = "aws_api_gateway_integration"];
+
+    map<string, aws.resources.AwsApiGatewayIntegrationResponse> aws_api_gateway_integration_response = 34 [json_name = "aws_api_gateway_integration_response"];
+
+    map<string, aws.resources.AwsApiGatewayMethod> aws_api_gateway_method = 35 [json_name = "aws_api_gateway_method"];
+
+    map<string, aws.resources.AwsApiGatewayMethodResponse> aws_api_gateway_method_response = 36 [json_name = "aws_api_gateway_method_response"];
+
+    map<string, aws.resources.AwsApiGatewayMethodSettings> aws_api_gateway_method_settings = 37 [json_name = "aws_api_gateway_method_settings"];
+
+    map<string, aws.resources.AwsApiGatewayModel> aws_api_gateway_model = 38 [json_name = "aws_api_gateway_model"];
+
+    map<string, aws.resources.AwsApiGatewayRequestValidator> aws_api_gateway_request_validator = 39 [json_name = "aws_api_gateway_request_validator"];
+
+    map<string, aws.resources.AwsApiGatewayResource> aws_api_gateway_resource = 40 [json_name = "aws_api_gateway_resource"];
+
+    map<string, aws.resources.AwsApiGatewayRestApi> aws_api_gateway_rest_api = 41 [json_name = "aws_api_gateway_rest_api"];
+
+    map<string, aws.resources.AwsApiGatewayRestApiPolicy> aws_api_gateway_rest_api_policy = 42 [json_name = "aws_api_gateway_rest_api_policy"];
+
+    map<string, aws.resources.AwsApiGatewayStage> aws_api_gateway_stage = 43 [json_name = "aws_api_gateway_stage"];
+
+    map<string, aws.resources.AwsApiGatewayUsagePlan> aws_api_gateway_usage_plan = 44 [json_name = "aws_api_gateway_usage_plan"];
+
+    map<string, aws.resources.AwsApiGatewayUsagePlanKey> aws_api_gateway_usage_plan_key = 45 [json_name = "aws_api_gateway_usage_plan_key"];
+
+    map<string, aws.resources.AwsApiGatewayVpcLink> aws_api_gateway_vpc_link = 46 [json_name = "aws_api_gateway_vpc_link"];
+
+    map<string, aws.resources.AwsApigatewayv2Api> aws_apigatewayv2_api = 47 [json_name = "aws_apigatewayv2_api"];
+
+    map<string, aws.resources.AwsApigatewayv2ApiMapping> aws_apigatewayv2_api_mapping = 48 [json_name = "aws_apigatewayv2_api_mapping"];
+
+    map<string, aws.resources.AwsApigatewayv2Authorizer> aws_apigatewayv2_authorizer = 49 [json_name = "aws_apigatewayv2_authorizer"];
+
+    map<string, aws.resources.AwsApigatewayv2Deployment> aws_apigatewayv2_deployment = 50 [json_name = "aws_apigatewayv2_deployment"];
+
+    map<string, aws.resources.AwsApigatewayv2DomainName> aws_apigatewayv2_domain_name = 51 [json_name = "aws_apigatewayv2_domain_name"];
+
+    map<string, aws.resources.AwsApigatewayv2Integration> aws_apigatewayv2_integration = 52 [json_name = "aws_apigatewayv2_integration"];
+
+    map<string, aws.resources.AwsApigatewayv2IntegrationResponse> aws_apigatewayv2_integration_response = 53 [json_name = "aws_apigatewayv2_integration_response"];
+
+    map<string, aws.resources.AwsApigatewayv2Model> aws_apigatewayv2_model = 54 [json_name = "aws_apigatewayv2_model"];
+
+    map<string, aws.resources.AwsApigatewayv2Route> aws_apigatewayv2_route = 55 [json_name = "aws_apigatewayv2_route"];
+
+    map<string, aws.resources.AwsApigatewayv2RouteResponse> aws_apigatewayv2_route_response = 56 [json_name = "aws_apigatewayv2_route_response"];
+
+    map<string, aws.resources.AwsApigatewayv2Stage> aws_apigatewayv2_stage = 57 [json_name = "aws_apigatewayv2_stage"];
+
+    map<string, aws.resources.AwsApigatewayv2VpcLink> aws_apigatewayv2_vpc_link = 58 [json_name = "aws_apigatewayv2_vpc_link"];
+
+    map<string, aws.resources.AwsAppCookieStickinessPolicy> aws_app_cookie_stickiness_policy = 59 [json_name = "aws_app_cookie_stickiness_policy"];
+
+    map<string, aws.resources.AwsAppautoscalingPolicy> aws_appautoscaling_policy = 60 [json_name = "aws_appautoscaling_policy"];
+
+    map<string, aws.resources.AwsAppautoscalingScheduledAction> aws_appautoscaling_scheduled_action = 61 [json_name = "aws_appautoscaling_scheduled_action"];
+
+    map<string, aws.resources.AwsAppautoscalingTarget> aws_appautoscaling_target = 62 [json_name = "aws_appautoscaling_target"];
+
+    map<string, aws.resources.AwsAppconfigApplication> aws_appconfig_application = 63 [json_name = "aws_appconfig_application"];
+
+    map<string, aws.resources.AwsAppconfigConfigurationProfile> aws_appconfig_configuration_profile = 64 [json_name = "aws_appconfig_configuration_profile"];
+
+    map<string, aws.resources.AwsAppconfigDeployment> aws_appconfig_deployment = 65 [json_name = "aws_appconfig_deployment"];
+
+    map<string, aws.resources.AwsAppconfigDeploymentStrategy> aws_appconfig_deployment_strategy = 66 [json_name = "aws_appconfig_deployment_strategy"];
+
+    map<string, aws.resources.AwsAppconfigEnvironment> aws_appconfig_environment = 67 [json_name = "aws_appconfig_environment"];
+
+    map<string, aws.resources.AwsAppconfigHostedConfigurationVersion> aws_appconfig_hosted_configuration_version = 68 [json_name = "aws_appconfig_hosted_configuration_version"];
+
+    map<string, aws.resources.AwsAppmeshGatewayRoute> aws_appmesh_gateway_route = 69 [json_name = "aws_appmesh_gateway_route"];
+
+    map<string, aws.resources.AwsAppmeshMesh> aws_appmesh_mesh = 70 [json_name = "aws_appmesh_mesh"];
+
+    map<string, aws.resources.AwsAppmeshRoute> aws_appmesh_route = 71 [json_name = "aws_appmesh_route"];
+
+    map<string, aws.resources.AwsAppmeshVirtualGateway> aws_appmesh_virtual_gateway = 72 [json_name = "aws_appmesh_virtual_gateway"];
+
+    map<string, aws.resources.AwsAppmeshVirtualNode> aws_appmesh_virtual_node = 73 [json_name = "aws_appmesh_virtual_node"];
+
+    map<string, aws.resources.AwsAppmeshVirtualRouter> aws_appmesh_virtual_router = 74 [json_name = "aws_appmesh_virtual_router"];
+
+    map<string, aws.resources.AwsAppmeshVirtualService> aws_appmesh_virtual_service = 75 [json_name = "aws_appmesh_virtual_service"];
+
+    map<string, aws.resources.AwsApprunnerAutoScalingConfigurationVersion> aws_apprunner_auto_scaling_configuration_version = 76 [json_name = "aws_apprunner_auto_scaling_configuration_version"];
+
+    map<string, aws.resources.AwsApprunnerConnection> aws_apprunner_connection = 77 [json_name = "aws_apprunner_connection"];
+
+    map<string, aws.resources.AwsApprunnerCustomDomainAssociation> aws_apprunner_custom_domain_association = 78 [json_name = "aws_apprunner_custom_domain_association"];
+
+    map<string, aws.resources.AwsApprunnerService> aws_apprunner_service = 79 [json_name = "aws_apprunner_service"];
+
+    map<string, aws.resources.AwsAppstreamDirectoryConfig> aws_appstream_directory_config = 80 [json_name = "aws_appstream_directory_config"];
+
+    map<string, aws.resources.AwsAppstreamFleet> aws_appstream_fleet = 81 [json_name = "aws_appstream_fleet"];
+
+    map<string, aws.resources.AwsAppstreamFleetStackAssociation> aws_appstream_fleet_stack_association = 82 [json_name = "aws_appstream_fleet_stack_association"];
+
+    map<string, aws.resources.AwsAppstreamImageBuilder> aws_appstream_image_builder = 83 [json_name = "aws_appstream_image_builder"];
+
+    map<string, aws.resources.AwsAppstreamStack> aws_appstream_stack = 84 [json_name = "aws_appstream_stack"];
+
+    map<string, aws.resources.AwsAppstreamUser> aws_appstream_user = 85 [json_name = "aws_appstream_user"];
+
+    map<string, aws.resources.AwsAppstreamUserStackAssociation> aws_appstream_user_stack_association = 86 [json_name = "aws_appstream_user_stack_association"];
+
+    map<string, aws.resources.AwsAppsyncApiKey> aws_appsync_api_key = 87 [json_name = "aws_appsync_api_key"];
+
+    map<string, aws.resources.AwsAppsyncDatasource> aws_appsync_datasource = 88 [json_name = "aws_appsync_datasource"];
+
+    map<string, aws.resources.AwsAppsyncFunction> aws_appsync_function = 89 [json_name = "aws_appsync_function"];
+
+    map<string, aws.resources.AwsAppsyncGraphqlApi> aws_appsync_graphql_api = 90 [json_name = "aws_appsync_graphql_api"];
+
+    map<string, aws.resources.AwsAppsyncResolver> aws_appsync_resolver = 91 [json_name = "aws_appsync_resolver"];
+
+    map<string, aws.resources.AwsAthenaDatabase> aws_athena_database = 92 [json_name = "aws_athena_database"];
+
+    map<string, aws.resources.AwsAthenaNamedQuery> aws_athena_named_query = 93 [json_name = "aws_athena_named_query"];
+
+    map<string, aws.resources.AwsAthenaWorkgroup> aws_athena_workgroup = 94 [json_name = "aws_athena_workgroup"];
+
+    map<string, aws.resources.AwsAutoscalingAttachment> aws_autoscaling_attachment = 95 [json_name = "aws_autoscaling_attachment"];
+
+    map<string, aws.resources.AwsAutoscalingGroup> aws_autoscaling_group = 96 [json_name = "aws_autoscaling_group"];
+
+    map<string, aws.resources.AwsAutoscalingGroupTag> aws_autoscaling_group_tag = 97 [json_name = "aws_autoscaling_group_tag"];
+
+    map<string, aws.resources.AwsAutoscalingLifecycleHook> aws_autoscaling_lifecycle_hook = 98 [json_name = "aws_autoscaling_lifecycle_hook"];
+
+    map<string, aws.resources.AwsAutoscalingNotification> aws_autoscaling_notification = 99 [json_name = "aws_autoscaling_notification"];
+
+    map<string, aws.resources.AwsAutoscalingPolicy> aws_autoscaling_policy = 100 [json_name = "aws_autoscaling_policy"];
+
+    map<string, aws.resources.AwsAutoscalingSchedule> aws_autoscaling_schedule = 101 [json_name = "aws_autoscaling_schedule"];
+
+    map<string, aws.resources.AwsAutoscalingplansScalingPlan> aws_autoscalingplans_scaling_plan = 102 [json_name = "aws_autoscalingplans_scaling_plan"];
+
+    map<string, aws.resources.AwsBackupGlobalSettings> aws_backup_global_settings = 103 [json_name = "aws_backup_global_settings"];
+
+    map<string, aws.resources.AwsBackupPlan> aws_backup_plan = 104 [json_name = "aws_backup_plan"];
+
+    map<string, aws.resources.AwsBackupRegionSettings> aws_backup_region_settings = 105 [json_name = "aws_backup_region_settings"];
+
+    map<string, aws.resources.AwsBackupSelection> aws_backup_selection = 106 [json_name = "aws_backup_selection"];
+
+    map<string, aws.resources.AwsBackupVault> aws_backup_vault = 107 [json_name = "aws_backup_vault"];
+
+    map<string, aws.resources.AwsBackupVaultLockConfiguration> aws_backup_vault_lock_configuration = 108 [json_name = "aws_backup_vault_lock_configuration"];
+
+    map<string, aws.resources.AwsBackupVaultNotifications> aws_backup_vault_notifications = 109 [json_name = "aws_backup_vault_notifications"];
+
+    map<string, aws.resources.AwsBackupVaultPolicy> aws_backup_vault_policy = 110 [json_name = "aws_backup_vault_policy"];
+
+    map<string, aws.resources.AwsBatchComputeEnvironment> aws_batch_compute_environment = 111 [json_name = "aws_batch_compute_environment"];
+
+    map<string, aws.resources.AwsBatchJobDefinition> aws_batch_job_definition = 112 [json_name = "aws_batch_job_definition"];
+
+    map<string, aws.resources.AwsBatchJobQueue> aws_batch_job_queue = 113 [json_name = "aws_batch_job_queue"];
+
+    map<string, aws.resources.AwsBudgetsBudget> aws_budgets_budget = 114 [json_name = "aws_budgets_budget"];
+
+    map<string, aws.resources.AwsBudgetsBudgetAction> aws_budgets_budget_action = 115 [json_name = "aws_budgets_budget_action"];
+
+    map<string, aws.resources.AwsChimeVoiceConnector> aws_chime_voice_connector = 116 [json_name = "aws_chime_voice_connector"];
+
+    map<string, aws.resources.AwsChimeVoiceConnectorGroup> aws_chime_voice_connector_group = 117 [json_name = "aws_chime_voice_connector_group"];
+
+    map<string, aws.resources.AwsChimeVoiceConnectorLogging> aws_chime_voice_connector_logging = 118 [json_name = "aws_chime_voice_connector_logging"];
+
+    map<string, aws.resources.AwsChimeVoiceConnectorOrigination> aws_chime_voice_connector_origination = 119 [json_name = "aws_chime_voice_connector_origination"];
+
+    map<string, aws.resources.AwsChimeVoiceConnectorStreaming> aws_chime_voice_connector_streaming = 120 [json_name = "aws_chime_voice_connector_streaming"];
+
+    map<string, aws.resources.AwsChimeVoiceConnectorTermination> aws_chime_voice_connector_termination = 121 [json_name = "aws_chime_voice_connector_termination"];
+
+    map<string, aws.resources.AwsChimeVoiceConnectorTerminationCredentials> aws_chime_voice_connector_termination_credentials = 122 [json_name = "aws_chime_voice_connector_termination_credentials"];
+
+    map<string, aws.resources.AwsCloud9EnvironmentEc2> aws_cloud9_environment_ec2 = 123 [json_name = "aws_cloud9_environment_ec2"];
+
+    map<string, aws.resources.AwsCloudcontrolapiResource> aws_cloudcontrolapi_resource = 124 [json_name = "aws_cloudcontrolapi_resource"];
+
+    map<string, aws.resources.AwsCloudformationStack> aws_cloudformation_stack = 125 [json_name = "aws_cloudformation_stack"];
+
+    map<string, aws.resources.AwsCloudformationStackSet> aws_cloudformation_stack_set = 126 [json_name = "aws_cloudformation_stack_set"];
+
+    map<string, aws.resources.AwsCloudformationStackSetInstance> aws_cloudformation_stack_set_instance = 127 [json_name = "aws_cloudformation_stack_set_instance"];
+
+    map<string, aws.resources.AwsCloudformationType> aws_cloudformation_type = 128 [json_name = "aws_cloudformation_type"];
+
+    map<string, aws.resources.AwsCloudfrontCachePolicy> aws_cloudfront_cache_policy = 129 [json_name = "aws_cloudfront_cache_policy"];
+
+    map<string, aws.resources.AwsCloudfrontDistribution> aws_cloudfront_distribution = 130 [json_name = "aws_cloudfront_distribution"];
+
+    map<string, aws.resources.AwsCloudfrontFieldLevelEncryptionConfig> aws_cloudfront_field_level_encryption_config = 131 [json_name = "aws_cloudfront_field_level_encryption_config"];
+
+    map<string, aws.resources.AwsCloudfrontFieldLevelEncryptionProfile> aws_cloudfront_field_level_encryption_profile = 132 [json_name = "aws_cloudfront_field_level_encryption_profile"];
+
+    map<string, aws.resources.AwsCloudfrontFunction> aws_cloudfront_function = 133 [json_name = "aws_cloudfront_function"];
+
+    map<string, aws.resources.AwsCloudfrontKeyGroup> aws_cloudfront_key_group = 134 [json_name = "aws_cloudfront_key_group"];
+
+    map<string, aws.resources.AwsCloudfrontMonitoringSubscription> aws_cloudfront_monitoring_subscription = 135 [json_name = "aws_cloudfront_monitoring_subscription"];
+
+    map<string, aws.resources.AwsCloudfrontOriginAccessIdentity> aws_cloudfront_origin_access_identity = 136 [json_name = "aws_cloudfront_origin_access_identity"];
+
+    map<string, aws.resources.AwsCloudfrontOriginRequestPolicy> aws_cloudfront_origin_request_policy = 137 [json_name = "aws_cloudfront_origin_request_policy"];
+
+    map<string, aws.resources.AwsCloudfrontPublicKey> aws_cloudfront_public_key = 138 [json_name = "aws_cloudfront_public_key"];
+
+    map<string, aws.resources.AwsCloudfrontRealtimeLogConfig> aws_cloudfront_realtime_log_config = 139 [json_name = "aws_cloudfront_realtime_log_config"];
+
+    map<string, aws.resources.AwsCloudfrontResponseHeadersPolicy> aws_cloudfront_response_headers_policy = 140 [json_name = "aws_cloudfront_response_headers_policy"];
+
+    map<string, aws.resources.AwsCloudhsmV2Cluster> aws_cloudhsm_v2_cluster = 141 [json_name = "aws_cloudhsm_v2_cluster"];
+
+    map<string, aws.resources.AwsCloudhsmV2Hsm> aws_cloudhsm_v2_hsm = 142 [json_name = "aws_cloudhsm_v2_hsm"];
+
+    map<string, aws.resources.AwsCloudtrail> aws_cloudtrail = 143 [json_name = "aws_cloudtrail"];
+
+    map<string, aws.resources.AwsCloudwatchCompositeAlarm> aws_cloudwatch_composite_alarm = 144 [json_name = "aws_cloudwatch_composite_alarm"];
+
+    map<string, aws.resources.AwsCloudwatchDashboard> aws_cloudwatch_dashboard = 145 [json_name = "aws_cloudwatch_dashboard"];
+
+    map<string, aws.resources.AwsCloudwatchEventApiDestination> aws_cloudwatch_event_api_destination = 146 [json_name = "aws_cloudwatch_event_api_destination"];
+
+    map<string, aws.resources.AwsCloudwatchEventArchive> aws_cloudwatch_event_archive = 147 [json_name = "aws_cloudwatch_event_archive"];
+
+    map<string, aws.resources.AwsCloudwatchEventBus> aws_cloudwatch_event_bus = 148 [json_name = "aws_cloudwatch_event_bus"];
+
+    map<string, aws.resources.AwsCloudwatchEventBusPolicy> aws_cloudwatch_event_bus_policy = 149 [json_name = "aws_cloudwatch_event_bus_policy"];
+
+    map<string, aws.resources.AwsCloudwatchEventConnection> aws_cloudwatch_event_connection = 150 [json_name = "aws_cloudwatch_event_connection"];
+
+    map<string, aws.resources.AwsCloudwatchEventPermission> aws_cloudwatch_event_permission = 151 [json_name = "aws_cloudwatch_event_permission"];
+
+    map<string, aws.resources.AwsCloudwatchEventRule> aws_cloudwatch_event_rule = 152 [json_name = "aws_cloudwatch_event_rule"];
+
+    map<string, aws.resources.AwsCloudwatchEventTarget> aws_cloudwatch_event_target = 153 [json_name = "aws_cloudwatch_event_target"];
+
+    map<string, aws.resources.AwsCloudwatchLogDestination> aws_cloudwatch_log_destination = 154 [json_name = "aws_cloudwatch_log_destination"];
+
+    map<string, aws.resources.AwsCloudwatchLogDestinationPolicy> aws_cloudwatch_log_destination_policy = 155 [json_name = "aws_cloudwatch_log_destination_policy"];
+
+    map<string, aws.resources.AwsCloudwatchLogGroup> aws_cloudwatch_log_group = 156 [json_name = "aws_cloudwatch_log_group"];
+
+    map<string, aws.resources.AwsCloudwatchLogMetricFilter> aws_cloudwatch_log_metric_filter = 157 [json_name = "aws_cloudwatch_log_metric_filter"];
+
+    map<string, aws.resources.AwsCloudwatchLogResourcePolicy> aws_cloudwatch_log_resource_policy = 158 [json_name = "aws_cloudwatch_log_resource_policy"];
+
+    map<string, aws.resources.AwsCloudwatchLogStream> aws_cloudwatch_log_stream = 159 [json_name = "aws_cloudwatch_log_stream"];
+
+    map<string, aws.resources.AwsCloudwatchLogSubscriptionFilter> aws_cloudwatch_log_subscription_filter = 160 [json_name = "aws_cloudwatch_log_subscription_filter"];
+
+    map<string, aws.resources.AwsCloudwatchMetricAlarm> aws_cloudwatch_metric_alarm = 161 [json_name = "aws_cloudwatch_metric_alarm"];
+
+    map<string, aws.resources.AwsCloudwatchMetricStream> aws_cloudwatch_metric_stream = 162 [json_name = "aws_cloudwatch_metric_stream"];
+
+    map<string, aws.resources.AwsCloudwatchQueryDefinition> aws_cloudwatch_query_definition = 163 [json_name = "aws_cloudwatch_query_definition"];
+
+    map<string, aws.resources.AwsCodeartifactDomain> aws_codeartifact_domain = 164 [json_name = "aws_codeartifact_domain"];
+
+    map<string, aws.resources.AwsCodeartifactDomainPermissionsPolicy> aws_codeartifact_domain_permissions_policy = 165 [json_name = "aws_codeartifact_domain_permissions_policy"];
+
+    map<string, aws.resources.AwsCodeartifactRepository> aws_codeartifact_repository = 166 [json_name = "aws_codeartifact_repository"];
+
+    map<string, aws.resources.AwsCodeartifactRepositoryPermissionsPolicy> aws_codeartifact_repository_permissions_policy = 167 [json_name = "aws_codeartifact_repository_permissions_policy"];
+
+    map<string, aws.resources.AwsCodebuildProject> aws_codebuild_project = 168 [json_name = "aws_codebuild_project"];
+
+    map<string, aws.resources.AwsCodebuildReportGroup> aws_codebuild_report_group = 169 [json_name = "aws_codebuild_report_group"];
+
+    map<string, aws.resources.AwsCodebuildSourceCredential> aws_codebuild_source_credential = 170 [json_name = "aws_codebuild_source_credential"];
+
+    map<string, aws.resources.AwsCodebuildWebhook> aws_codebuild_webhook = 171 [json_name = "aws_codebuild_webhook"];
+
+    map<string, aws.resources.AwsCodecommitApprovalRuleTemplate> aws_codecommit_approval_rule_template = 172 [json_name = "aws_codecommit_approval_rule_template"];
+
+    map<string, aws.resources.AwsCodecommitApprovalRuleTemplateAssociation> aws_codecommit_approval_rule_template_association = 173 [json_name = "aws_codecommit_approval_rule_template_association"];
+
+    map<string, aws.resources.AwsCodecommitRepository> aws_codecommit_repository = 174 [json_name = "aws_codecommit_repository"];
+
+    map<string, aws.resources.AwsCodecommitTrigger> aws_codecommit_trigger = 175 [json_name = "aws_codecommit_trigger"];
+
+    map<string, aws.resources.AwsCodedeployApp> aws_codedeploy_app = 176 [json_name = "aws_codedeploy_app"];
+
+    map<string, aws.resources.AwsCodedeployDeploymentConfig> aws_codedeploy_deployment_config = 177 [json_name = "aws_codedeploy_deployment_config"];
+
+    map<string, aws.resources.AwsCodedeployDeploymentGroup> aws_codedeploy_deployment_group = 178 [json_name = "aws_codedeploy_deployment_group"];
+
+    map<string, aws.resources.AwsCodepipeline> aws_codepipeline = 179 [json_name = "aws_codepipeline"];
+
+    map<string, aws.resources.AwsCodepipelineWebhook> aws_codepipeline_webhook = 180 [json_name = "aws_codepipeline_webhook"];
+
+    map<string, aws.resources.AwsCodestarconnectionsConnection> aws_codestarconnections_connection = 181 [json_name = "aws_codestarconnections_connection"];
+
+    map<string, aws.resources.AwsCodestarconnectionsHost> aws_codestarconnections_host = 182 [json_name = "aws_codestarconnections_host"];
+
+    map<string, aws.resources.AwsCodestarnotificationsNotificationRule> aws_codestarnotifications_notification_rule = 183 [json_name = "aws_codestarnotifications_notification_rule"];
+
+    map<string, aws.resources.AwsCognitoIdentityPool> aws_cognito_identity_pool = 184 [json_name = "aws_cognito_identity_pool"];
+
+    map<string, aws.resources.AwsCognitoIdentityPoolRolesAttachment> aws_cognito_identity_pool_roles_attachment = 185 [json_name = "aws_cognito_identity_pool_roles_attachment"];
+
+    map<string, aws.resources.AwsCognitoIdentityProvider> aws_cognito_identity_provider = 186 [json_name = "aws_cognito_identity_provider"];
+
+    map<string, aws.resources.AwsCognitoResourceServer> aws_cognito_resource_server = 187 [json_name = "aws_cognito_resource_server"];
+
+    map<string, aws.resources.AwsCognitoUserGroup> aws_cognito_user_group = 188 [json_name = "aws_cognito_user_group"];
+
+    map<string, aws.resources.AwsCognitoUserPool> aws_cognito_user_pool = 189 [json_name = "aws_cognito_user_pool"];
+
+    map<string, aws.resources.AwsCognitoUserPoolClient> aws_cognito_user_pool_client = 190 [json_name = "aws_cognito_user_pool_client"];
+
+    map<string, aws.resources.AwsCognitoUserPoolDomain> aws_cognito_user_pool_domain = 191 [json_name = "aws_cognito_user_pool_domain"];
+
+    map<string, aws.resources.AwsCognitoUserPoolUiCustomization> aws_cognito_user_pool_ui_customization = 192 [json_name = "aws_cognito_user_pool_ui_customization"];
+
+    map<string, aws.resources.AwsConfigAggregateAuthorization> aws_config_aggregate_authorization = 193 [json_name = "aws_config_aggregate_authorization"];
+
+    map<string, aws.resources.AwsConfigConfigRule> aws_config_config_rule = 194 [json_name = "aws_config_config_rule"];
+
+    map<string, aws.resources.AwsConfigConfigurationAggregator> aws_config_configuration_aggregator = 195 [json_name = "aws_config_configuration_aggregator"];
+
+    map<string, aws.resources.AwsConfigConfigurationRecorder> aws_config_configuration_recorder = 196 [json_name = "aws_config_configuration_recorder"];
+
+    map<string, aws.resources.AwsConfigConfigurationRecorderStatus> aws_config_configuration_recorder_status = 197 [json_name = "aws_config_configuration_recorder_status"];
+
+    map<string, aws.resources.AwsConfigConformancePack> aws_config_conformance_pack = 198 [json_name = "aws_config_conformance_pack"];
+
+    map<string, aws.resources.AwsConfigDeliveryChannel> aws_config_delivery_channel = 199 [json_name = "aws_config_delivery_channel"];
+
+    map<string, aws.resources.AwsConfigOrganizationConformancePack> aws_config_organization_conformance_pack = 200 [json_name = "aws_config_organization_conformance_pack"];
+
+    map<string, aws.resources.AwsConfigOrganizationCustomRule> aws_config_organization_custom_rule = 201 [json_name = "aws_config_organization_custom_rule"];
+
+    map<string, aws.resources.AwsConfigOrganizationManagedRule> aws_config_organization_managed_rule = 202 [json_name = "aws_config_organization_managed_rule"];
+
+    map<string, aws.resources.AwsConfigRemediationConfiguration> aws_config_remediation_configuration = 203 [json_name = "aws_config_remediation_configuration"];
+
+    map<string, aws.resources.AwsConnectBotAssociation> aws_connect_bot_association = 204 [json_name = "aws_connect_bot_association"];
+
+    map<string, aws.resources.AwsConnectContactFlow> aws_connect_contact_flow = 205 [json_name = "aws_connect_contact_flow"];
+
+    map<string, aws.resources.AwsConnectHoursOfOperation> aws_connect_hours_of_operation = 206 [json_name = "aws_connect_hours_of_operation"];
+
+    map<string, aws.resources.AwsConnectInstance> aws_connect_instance = 207 [json_name = "aws_connect_instance"];
+
+    map<string, aws.resources.AwsConnectLambdaFunctionAssociation> aws_connect_lambda_function_association = 208 [json_name = "aws_connect_lambda_function_association"];
+
+    map<string, aws.resources.AwsCurReportDefinition> aws_cur_report_definition = 209 [json_name = "aws_cur_report_definition"];
+
+    map<string, aws.resources.AwsCustomerGateway> aws_customer_gateway = 210 [json_name = "aws_customer_gateway"];
+
+    map<string, aws.resources.AwsDatapipelinePipeline> aws_datapipeline_pipeline = 211 [json_name = "aws_datapipeline_pipeline"];
+
+    map<string, aws.resources.AwsDatasyncAgent> aws_datasync_agent = 212 [json_name = "aws_datasync_agent"];
+
+    map<string, aws.resources.AwsDatasyncLocationEfs> aws_datasync_location_efs = 213 [json_name = "aws_datasync_location_efs"];
+
+    map<string, aws.resources.AwsDatasyncLocationFsxWindowsFileSystem> aws_datasync_location_fsx_windows_file_system = 214 [json_name = "aws_datasync_location_fsx_windows_file_system"];
+
+    map<string, aws.resources.AwsDatasyncLocationNfs> aws_datasync_location_nfs = 215 [json_name = "aws_datasync_location_nfs"];
+
+    map<string, aws.resources.AwsDatasyncLocationS3> aws_datasync_location_s3 = 216 [json_name = "aws_datasync_location_s3"];
+
+    map<string, aws.resources.AwsDatasyncLocationSmb> aws_datasync_location_smb = 217 [json_name = "aws_datasync_location_smb"];
+
+    map<string, aws.resources.AwsDatasyncTask> aws_datasync_task = 218 [json_name = "aws_datasync_task"];
+
+    map<string, aws.resources.AwsDaxCluster> aws_dax_cluster = 219 [json_name = "aws_dax_cluster"];
+
+    map<string, aws.resources.AwsDaxParameterGroup> aws_dax_parameter_group = 220 [json_name = "aws_dax_parameter_group"];
+
+    map<string, aws.resources.AwsDaxSubnetGroup> aws_dax_subnet_group = 221 [json_name = "aws_dax_subnet_group"];
+
+    map<string, aws.resources.AwsDbClusterSnapshot> aws_db_cluster_snapshot = 222 [json_name = "aws_db_cluster_snapshot"];
+
+    map<string, aws.resources.AwsDbEventSubscription> aws_db_event_subscription = 223 [json_name = "aws_db_event_subscription"];
+
+    map<string, aws.resources.AwsDbInstance> aws_db_instance = 224 [json_name = "aws_db_instance"];
+
+    map<string, aws.resources.AwsDbInstanceRoleAssociation> aws_db_instance_role_association = 225 [json_name = "aws_db_instance_role_association"];
+
+    map<string, aws.resources.AwsDbOptionGroup> aws_db_option_group = 226 [json_name = "aws_db_option_group"];
+
+    map<string, aws.resources.AwsDbParameterGroup> aws_db_parameter_group = 227 [json_name = "aws_db_parameter_group"];
+
+    map<string, aws.resources.AwsDbProxy> aws_db_proxy = 228 [json_name = "aws_db_proxy"];
+
+    map<string, aws.resources.AwsDbProxyDefaultTargetGroup> aws_db_proxy_default_target_group = 229 [json_name = "aws_db_proxy_default_target_group"];
+
+    map<string, aws.resources.AwsDbProxyEndpoint> aws_db_proxy_endpoint = 230 [json_name = "aws_db_proxy_endpoint"];
+
+    map<string, aws.resources.AwsDbProxyTarget> aws_db_proxy_target = 231 [json_name = "aws_db_proxy_target"];
+
+    map<string, aws.resources.AwsDbSecurityGroup> aws_db_security_group = 232 [json_name = "aws_db_security_group"];
+
+    map<string, aws.resources.AwsDbSnapshot> aws_db_snapshot = 233 [json_name = "aws_db_snapshot"];
+
+    map<string, aws.resources.AwsDbSubnetGroup> aws_db_subnet_group = 234 [json_name = "aws_db_subnet_group"];
+
+    map<string, aws.resources.AwsDefaultNetworkAcl> aws_default_network_acl = 235 [json_name = "aws_default_network_acl"];
+
+    map<string, aws.resources.AwsDefaultRouteTable> aws_default_route_table = 236 [json_name = "aws_default_route_table"];
+
+    map<string, aws.resources.AwsDefaultSecurityGroup> aws_default_security_group = 237 [json_name = "aws_default_security_group"];
+
+    map<string, aws.resources.AwsDefaultSubnet> aws_default_subnet = 238 [json_name = "aws_default_subnet"];
+
+    map<string, aws.resources.AwsDefaultVpc> aws_default_vpc = 239 [json_name = "aws_default_vpc"];
+
+    map<string, aws.resources.AwsDefaultVpcDhcpOptions> aws_default_vpc_dhcp_options = 240 [json_name = "aws_default_vpc_dhcp_options"];
+
+    map<string, aws.resources.AwsDetectiveGraph> aws_detective_graph = 241 [json_name = "aws_detective_graph"];
+
+    map<string, aws.resources.AwsDevicefarmProject> aws_devicefarm_project = 242 [json_name = "aws_devicefarm_project"];
+
+    map<string, aws.resources.AwsDirectoryServiceConditionalForwarder> aws_directory_service_conditional_forwarder = 243 [json_name = "aws_directory_service_conditional_forwarder"];
+
+    map<string, aws.resources.AwsDirectoryServiceDirectory> aws_directory_service_directory = 244 [json_name = "aws_directory_service_directory"];
+
+    map<string, aws.resources.AwsDirectoryServiceLogSubscription> aws_directory_service_log_subscription = 245 [json_name = "aws_directory_service_log_subscription"];
+
+    map<string, aws.resources.AwsDlmLifecyclePolicy> aws_dlm_lifecycle_policy = 246 [json_name = "aws_dlm_lifecycle_policy"];
+
+    map<string, aws.resources.AwsDmsCertificate> aws_dms_certificate = 247 [json_name = "aws_dms_certificate"];
+
+    map<string, aws.resources.AwsDmsEndpoint> aws_dms_endpoint = 248 [json_name = "aws_dms_endpoint"];
+
+    map<string, aws.resources.AwsDmsEventSubscription> aws_dms_event_subscription = 249 [json_name = "aws_dms_event_subscription"];
+
+    map<string, aws.resources.AwsDmsReplicationInstance> aws_dms_replication_instance = 250 [json_name = "aws_dms_replication_instance"];
+
+    map<string, aws.resources.AwsDmsReplicationSubnetGroup> aws_dms_replication_subnet_group = 251 [json_name = "aws_dms_replication_subnet_group"];
+
+    map<string, aws.resources.AwsDmsReplicationTask> aws_dms_replication_task = 252 [json_name = "aws_dms_replication_task"];
+
+    map<string, aws.resources.AwsDocdbCluster> aws_docdb_cluster = 253 [json_name = "aws_docdb_cluster"];
+
+    map<string, aws.resources.AwsDocdbClusterInstance> aws_docdb_cluster_instance = 254 [json_name = "aws_docdb_cluster_instance"];
+
+    map<string, aws.resources.AwsDocdbClusterParameterGroup> aws_docdb_cluster_parameter_group = 255 [json_name = "aws_docdb_cluster_parameter_group"];
+
+    map<string, aws.resources.AwsDocdbClusterSnapshot> aws_docdb_cluster_snapshot = 256 [json_name = "aws_docdb_cluster_snapshot"];
+
+    map<string, aws.resources.AwsDocdbGlobalCluster> aws_docdb_global_cluster = 257 [json_name = "aws_docdb_global_cluster"];
+
+    map<string, aws.resources.AwsDocdbSubnetGroup> aws_docdb_subnet_group = 258 [json_name = "aws_docdb_subnet_group"];
+
+    map<string, aws.resources.AwsDxBgpPeer> aws_dx_bgp_peer = 259 [json_name = "aws_dx_bgp_peer"];
+
+    map<string, aws.resources.AwsDxConnection> aws_dx_connection = 260 [json_name = "aws_dx_connection"];
+
+    map<string, aws.resources.AwsDxConnectionAssociation> aws_dx_connection_association = 261 [json_name = "aws_dx_connection_association"];
+
+    map<string, aws.resources.AwsDxConnectionConfirmation> aws_dx_connection_confirmation = 262 [json_name = "aws_dx_connection_confirmation"];
+
+    map<string, aws.resources.AwsDxGateway> aws_dx_gateway = 263 [json_name = "aws_dx_gateway"];
+
+    map<string, aws.resources.AwsDxGatewayAssociation> aws_dx_gateway_association = 264 [json_name = "aws_dx_gateway_association"];
+
+    map<string, aws.resources.AwsDxGatewayAssociationProposal> aws_dx_gateway_association_proposal = 265 [json_name = "aws_dx_gateway_association_proposal"];
+
+    map<string, aws.resources.AwsDxHostedConnection> aws_dx_hosted_connection = 266 [json_name = "aws_dx_hosted_connection"];
+
+    map<string, aws.resources.AwsDxHostedPrivateVirtualInterface> aws_dx_hosted_private_virtual_interface = 267 [json_name = "aws_dx_hosted_private_virtual_interface"];
+
+    map<string, aws.resources.AwsDxHostedPrivateVirtualInterfaceAccepter> aws_dx_hosted_private_virtual_interface_accepter = 268 [json_name = "aws_dx_hosted_private_virtual_interface_accepter"];
+
+    map<string, aws.resources.AwsDxHostedPublicVirtualInterface> aws_dx_hosted_public_virtual_interface = 269 [json_name = "aws_dx_hosted_public_virtual_interface"];
+
+    map<string, aws.resources.AwsDxHostedPublicVirtualInterfaceAccepter> aws_dx_hosted_public_virtual_interface_accepter = 270 [json_name = "aws_dx_hosted_public_virtual_interface_accepter"];
+
+    map<string, aws.resources.AwsDxHostedTransitVirtualInterface> aws_dx_hosted_transit_virtual_interface = 271 [json_name = "aws_dx_hosted_transit_virtual_interface"];
+
+    map<string, aws.resources.AwsDxHostedTransitVirtualInterfaceAccepter> aws_dx_hosted_transit_virtual_interface_accepter = 272 [json_name = "aws_dx_hosted_transit_virtual_interface_accepter"];
+
+    map<string, aws.resources.AwsDxLag> aws_dx_lag = 273 [json_name = "aws_dx_lag"];
+
+    map<string, aws.resources.AwsDxPrivateVirtualInterface> aws_dx_private_virtual_interface = 274 [json_name = "aws_dx_private_virtual_interface"];
+
+    map<string, aws.resources.AwsDxPublicVirtualInterface> aws_dx_public_virtual_interface = 275 [json_name = "aws_dx_public_virtual_interface"];
+
+    map<string, aws.resources.AwsDxTransitVirtualInterface> aws_dx_transit_virtual_interface = 276 [json_name = "aws_dx_transit_virtual_interface"];
+
+    map<string, aws.resources.AwsDynamodbGlobalTable> aws_dynamodb_global_table = 277 [json_name = "aws_dynamodb_global_table"];
+
+    map<string, aws.resources.AwsDynamodbKinesisStreamingDestination> aws_dynamodb_kinesis_streaming_destination = 278 [json_name = "aws_dynamodb_kinesis_streaming_destination"];
+
+    map<string, aws.resources.AwsDynamodbTable> aws_dynamodb_table = 279 [json_name = "aws_dynamodb_table"];
+
+    map<string, aws.resources.AwsDynamodbTableItem> aws_dynamodb_table_item = 280 [json_name = "aws_dynamodb_table_item"];
+
+    map<string, aws.resources.AwsDynamodbTag> aws_dynamodb_tag = 281 [json_name = "aws_dynamodb_tag"];
+
+    map<string, aws.resources.AwsEbsDefaultKmsKey> aws_ebs_default_kms_key = 282 [json_name = "aws_ebs_default_kms_key"];
+
+    map<string, aws.resources.AwsEbsEncryptionByDefault> aws_ebs_encryption_by_default = 283 [json_name = "aws_ebs_encryption_by_default"];
+
+    map<string, aws.resources.AwsEbsSnapshot> aws_ebs_snapshot = 284 [json_name = "aws_ebs_snapshot"];
+
+    map<string, aws.resources.AwsEbsSnapshotCopy> aws_ebs_snapshot_copy = 285 [json_name = "aws_ebs_snapshot_copy"];
+
+    map<string, aws.resources.AwsEbsSnapshotImport> aws_ebs_snapshot_import = 286 [json_name = "aws_ebs_snapshot_import"];
+
+    map<string, aws.resources.AwsEbsVolume> aws_ebs_volume = 287 [json_name = "aws_ebs_volume"];
+
+    map<string, aws.resources.AwsEc2AvailabilityZoneGroup> aws_ec2_availability_zone_group = 288 [json_name = "aws_ec2_availability_zone_group"];
+
+    map<string, aws.resources.AwsEc2CapacityReservation> aws_ec2_capacity_reservation = 289 [json_name = "aws_ec2_capacity_reservation"];
+
+    map<string, aws.resources.AwsEc2CarrierGateway> aws_ec2_carrier_gateway = 290 [json_name = "aws_ec2_carrier_gateway"];
+
+    map<string, aws.resources.AwsEc2ClientVpnAuthorizationRule> aws_ec2_client_vpn_authorization_rule = 291 [json_name = "aws_ec2_client_vpn_authorization_rule"];
+
+    map<string, aws.resources.AwsEc2ClientVpnEndpoint> aws_ec2_client_vpn_endpoint = 292 [json_name = "aws_ec2_client_vpn_endpoint"];
+
+    map<string, aws.resources.AwsEc2ClientVpnNetworkAssociation> aws_ec2_client_vpn_network_association = 293 [json_name = "aws_ec2_client_vpn_network_association"];
+
+    map<string, aws.resources.AwsEc2ClientVpnRoute> aws_ec2_client_vpn_route = 294 [json_name = "aws_ec2_client_vpn_route"];
+
+    map<string, aws.resources.AwsEc2Fleet> aws_ec2_fleet = 295 [json_name = "aws_ec2_fleet"];
+
+    map<string, aws.resources.AwsEc2Host> aws_ec2_host = 296 [json_name = "aws_ec2_host"];
+
+    map<string, aws.resources.AwsEc2LocalGatewayRoute> aws_ec2_local_gateway_route = 297 [json_name = "aws_ec2_local_gateway_route"];
+
+    map<string, aws.resources.AwsEc2LocalGatewayRouteTableVpcAssociation> aws_ec2_local_gateway_route_table_vpc_association = 298 [json_name = "aws_ec2_local_gateway_route_table_vpc_association"];
+
+    map<string, aws.resources.AwsEc2ManagedPrefixList> aws_ec2_managed_prefix_list = 299 [json_name = "aws_ec2_managed_prefix_list"];
+
+    map<string, aws.resources.AwsEc2ManagedPrefixListEntry> aws_ec2_managed_prefix_list_entry = 300 [json_name = "aws_ec2_managed_prefix_list_entry"];
+
+    map<string, aws.resources.AwsEc2SubnetCidrReservation> aws_ec2_subnet_cidr_reservation = 301 [json_name = "aws_ec2_subnet_cidr_reservation"];
+
+    map<string, aws.resources.AwsEc2Tag> aws_ec2_tag = 302 [json_name = "aws_ec2_tag"];
+
+    map<string, aws.resources.AwsEc2TrafficMirrorFilter> aws_ec2_traffic_mirror_filter = 303 [json_name = "aws_ec2_traffic_mirror_filter"];
+
+    map<string, aws.resources.AwsEc2TrafficMirrorFilterRule> aws_ec2_traffic_mirror_filter_rule = 304 [json_name = "aws_ec2_traffic_mirror_filter_rule"];
+
+    map<string, aws.resources.AwsEc2TrafficMirrorSession> aws_ec2_traffic_mirror_session = 305 [json_name = "aws_ec2_traffic_mirror_session"];
+
+    map<string, aws.resources.AwsEc2TrafficMirrorTarget> aws_ec2_traffic_mirror_target = 306 [json_name = "aws_ec2_traffic_mirror_target"];
+
+    map<string, aws.resources.AwsEc2TransitGateway> aws_ec2_transit_gateway = 307 [json_name = "aws_ec2_transit_gateway"];
+
+    map<string, aws.resources.AwsEc2TransitGatewayPeeringAttachment> aws_ec2_transit_gateway_peering_attachment = 308 [json_name = "aws_ec2_transit_gateway_peering_attachment"];
+
+    map<string, aws.resources.AwsEc2TransitGatewayPeeringAttachmentAccepter> aws_ec2_transit_gateway_peering_attachment_accepter = 309 [json_name = "aws_ec2_transit_gateway_peering_attachment_accepter"];
+
+    map<string, aws.resources.AwsEc2TransitGatewayPrefixListReference> aws_ec2_transit_gateway_prefix_list_reference = 310 [json_name = "aws_ec2_transit_gateway_prefix_list_reference"];
+
+    map<string, aws.resources.AwsEc2TransitGatewayRoute> aws_ec2_transit_gateway_route = 311 [json_name = "aws_ec2_transit_gateway_route"];
+
+    map<string, aws.resources.AwsEc2TransitGatewayRouteTable> aws_ec2_transit_gateway_route_table = 312 [json_name = "aws_ec2_transit_gateway_route_table"];
+
+    map<string, aws.resources.AwsEc2TransitGatewayRouteTableAssociation> aws_ec2_transit_gateway_route_table_association = 313 [json_name = "aws_ec2_transit_gateway_route_table_association"];
+
+    map<string, aws.resources.AwsEc2TransitGatewayRouteTablePropagation> aws_ec2_transit_gateway_route_table_propagation = 314 [json_name = "aws_ec2_transit_gateway_route_table_propagation"];
+
+    map<string, aws.resources.AwsEc2TransitGatewayVpcAttachment> aws_ec2_transit_gateway_vpc_attachment = 315 [json_name = "aws_ec2_transit_gateway_vpc_attachment"];
+
+    map<string, aws.resources.AwsEc2TransitGatewayVpcAttachmentAccepter> aws_ec2_transit_gateway_vpc_attachment_accepter = 316 [json_name = "aws_ec2_transit_gateway_vpc_attachment_accepter"];
+
+    map<string, aws.resources.AwsEcrLifecyclePolicy> aws_ecr_lifecycle_policy = 317 [json_name = "aws_ecr_lifecycle_policy"];
+
+    map<string, aws.resources.AwsEcrPullThroughCacheRule> aws_ecr_pull_through_cache_rule = 318 [json_name = "aws_ecr_pull_through_cache_rule"];
+
+    map<string, aws.resources.AwsEcrRegistryPolicy> aws_ecr_registry_policy = 319 [json_name = "aws_ecr_registry_policy"];
+
+    map<string, aws.resources.AwsEcrRegistryScanningConfiguration> aws_ecr_registry_scanning_configuration = 320 [json_name = "aws_ecr_registry_scanning_configuration"];
+
+    map<string, aws.resources.AwsEcrReplicationConfiguration> aws_ecr_replication_configuration = 321 [json_name = "aws_ecr_replication_configuration"];
+
+    map<string, aws.resources.AwsEcrRepository> aws_ecr_repository = 322 [json_name = "aws_ecr_repository"];
+
+    map<string, aws.resources.AwsEcrRepositoryPolicy> aws_ecr_repository_policy = 323 [json_name = "aws_ecr_repository_policy"];
+
+    map<string, aws.resources.AwsEcrpublicRepository> aws_ecrpublic_repository = 324 [json_name = "aws_ecrpublic_repository"];
+
+    map<string, aws.resources.AwsEcrpublicRepositoryPolicy> aws_ecrpublic_repository_policy = 325 [json_name = "aws_ecrpublic_repository_policy"];
+
+    map<string, aws.resources.AwsEcsAccountSettingDefault> aws_ecs_account_setting_default = 326 [json_name = "aws_ecs_account_setting_default"];
+
+    map<string, aws.resources.AwsEcsCapacityProvider> aws_ecs_capacity_provider = 327 [json_name = "aws_ecs_capacity_provider"];
+
+    map<string, aws.resources.AwsEcsCluster> aws_ecs_cluster = 328 [json_name = "aws_ecs_cluster"];
+
+    map<string, aws.resources.AwsEcsService> aws_ecs_service = 329 [json_name = "aws_ecs_service"];
+
+    map<string, aws.resources.AwsEcsTag> aws_ecs_tag = 330 [json_name = "aws_ecs_tag"];
+
+    map<string, aws.resources.AwsEcsTaskDefinition> aws_ecs_task_definition = 331 [json_name = "aws_ecs_task_definition"];
+
+    map<string, aws.resources.AwsEcsTaskSet> aws_ecs_task_set = 332 [json_name = "aws_ecs_task_set"];
+
+    map<string, aws.resources.AwsEfsAccessPoint> aws_efs_access_point = 333 [json_name = "aws_efs_access_point"];
+
+    map<string, aws.resources.AwsEfsBackupPolicy> aws_efs_backup_policy = 334 [json_name = "aws_efs_backup_policy"];
+
+    map<string, aws.resources.AwsEfsFileSystem> aws_efs_file_system = 335 [json_name = "aws_efs_file_system"];
+
+    map<string, aws.resources.AwsEfsFileSystemPolicy> aws_efs_file_system_policy = 336 [json_name = "aws_efs_file_system_policy"];
+
+    map<string, aws.resources.AwsEfsMountTarget> aws_efs_mount_target = 337 [json_name = "aws_efs_mount_target"];
+
+    map<string, aws.resources.AwsEgressOnlyInternetGateway> aws_egress_only_internet_gateway = 338 [json_name = "aws_egress_only_internet_gateway"];
+
+    map<string, aws.resources.AwsEip> aws_eip = 339 [json_name = "aws_eip"];
+
+    map<string, aws.resources.AwsEipAssociation> aws_eip_association = 340 [json_name = "aws_eip_association"];
+
+    map<string, aws.resources.AwsEksAddon> aws_eks_addon = 341 [json_name = "aws_eks_addon"];
+
+    map<string, aws.resources.AwsEksCluster> aws_eks_cluster = 342 [json_name = "aws_eks_cluster"];
+
+    map<string, aws.resources.AwsEksFargateProfile> aws_eks_fargate_profile = 343 [json_name = "aws_eks_fargate_profile"];
+
+    map<string, aws.resources.AwsEksIdentityProviderConfig> aws_eks_identity_provider_config = 344 [json_name = "aws_eks_identity_provider_config"];
+
+    map<string, aws.resources.AwsEksNodeGroup> aws_eks_node_group = 345 [json_name = "aws_eks_node_group"];
+
+    map<string, aws.resources.AwsElasticBeanstalkApplication> aws_elastic_beanstalk_application = 346 [json_name = "aws_elastic_beanstalk_application"];
+
+    map<string, aws.resources.AwsElasticBeanstalkApplicationVersion> aws_elastic_beanstalk_application_version = 347 [json_name = "aws_elastic_beanstalk_application_version"];
+
+    map<string, aws.resources.AwsElasticBeanstalkConfigurationTemplate> aws_elastic_beanstalk_configuration_template = 348 [json_name = "aws_elastic_beanstalk_configuration_template"];
+
+    map<string, aws.resources.AwsElasticBeanstalkEnvironment> aws_elastic_beanstalk_environment = 349 [json_name = "aws_elastic_beanstalk_environment"];
+
+    map<string, aws.resources.AwsElasticacheCluster> aws_elasticache_cluster = 350 [json_name = "aws_elasticache_cluster"];
+
+    map<string, aws.resources.AwsElasticacheGlobalReplicationGroup> aws_elasticache_global_replication_group = 351 [json_name = "aws_elasticache_global_replication_group"];
+
+    map<string, aws.resources.AwsElasticacheParameterGroup> aws_elasticache_parameter_group = 352 [json_name = "aws_elasticache_parameter_group"];
+
+    map<string, aws.resources.AwsElasticacheReplicationGroup> aws_elasticache_replication_group = 353 [json_name = "aws_elasticache_replication_group"];
+
+    map<string, aws.resources.AwsElasticacheSecurityGroup> aws_elasticache_security_group = 354 [json_name = "aws_elasticache_security_group"];
+
+    map<string, aws.resources.AwsElasticacheSubnetGroup> aws_elasticache_subnet_group = 355 [json_name = "aws_elasticache_subnet_group"];
+
+    map<string, aws.resources.AwsElasticacheUser> aws_elasticache_user = 356 [json_name = "aws_elasticache_user"];
+
+    map<string, aws.resources.AwsElasticacheUserGroup> aws_elasticache_user_group = 357 [json_name = "aws_elasticache_user_group"];
+
+    map<string, aws.resources.AwsElasticsearchDomain> aws_elasticsearch_domain = 358 [json_name = "aws_elasticsearch_domain"];
+
+    map<string, aws.resources.AwsElasticsearchDomainPolicy> aws_elasticsearch_domain_policy = 359 [json_name = "aws_elasticsearch_domain_policy"];
+
+    map<string, aws.resources.AwsElasticsearchDomainSamlOptions> aws_elasticsearch_domain_saml_options = 360 [json_name = "aws_elasticsearch_domain_saml_options"];
+
+    map<string, aws.resources.AwsElastictranscoderPipeline> aws_elastictranscoder_pipeline = 361 [json_name = "aws_elastictranscoder_pipeline"];
+
+    map<string, aws.resources.AwsElastictranscoderPreset> aws_elastictranscoder_preset = 362 [json_name = "aws_elastictranscoder_preset"];
+
+    map<string, aws.resources.AwsElb> aws_elb = 363 [json_name = "aws_elb"];
+
+    map<string, aws.resources.AwsElbAttachment> aws_elb_attachment = 364 [json_name = "aws_elb_attachment"];
+
+    map<string, aws.resources.AwsEmrCluster> aws_emr_cluster = 365 [json_name = "aws_emr_cluster"];
+
+    map<string, aws.resources.AwsEmrInstanceFleet> aws_emr_instance_fleet = 366 [json_name = "aws_emr_instance_fleet"];
+
+    map<string, aws.resources.AwsEmrInstanceGroup> aws_emr_instance_group = 367 [json_name = "aws_emr_instance_group"];
+
+    map<string, aws.resources.AwsEmrManagedScalingPolicy> aws_emr_managed_scaling_policy = 368 [json_name = "aws_emr_managed_scaling_policy"];
+
+    map<string, aws.resources.AwsEmrSecurityConfiguration> aws_emr_security_configuration = 369 [json_name = "aws_emr_security_configuration"];
+
+    map<string, aws.resources.AwsEmrStudio> aws_emr_studio = 370 [json_name = "aws_emr_studio"];
+
+    map<string, aws.resources.AwsEmrStudioSessionMapping> aws_emr_studio_session_mapping = 371 [json_name = "aws_emr_studio_session_mapping"];
+
+    map<string, aws.resources.AwsFlowLog> aws_flow_log = 372 [json_name = "aws_flow_log"];
+
+    map<string, aws.resources.AwsFmsAdminAccount> aws_fms_admin_account = 373 [json_name = "aws_fms_admin_account"];
+
+    map<string, aws.resources.AwsFmsPolicy> aws_fms_policy = 374 [json_name = "aws_fms_policy"];
+
+    map<string, aws.resources.AwsFsxBackup> aws_fsx_backup = 375 [json_name = "aws_fsx_backup"];
+
+    map<string, aws.resources.AwsFsxLustreFileSystem> aws_fsx_lustre_file_system = 376 [json_name = "aws_fsx_lustre_file_system"];
+
+    map<string, aws.resources.AwsFsxOntapFileSystem> aws_fsx_ontap_file_system = 377 [json_name = "aws_fsx_ontap_file_system"];
+
+    map<string, aws.resources.AwsFsxOntapStorageVirtualMachine> aws_fsx_ontap_storage_virtual_machine = 378 [json_name = "aws_fsx_ontap_storage_virtual_machine"];
+
+    map<string, aws.resources.AwsFsxOntapVolume> aws_fsx_ontap_volume = 379 [json_name = "aws_fsx_ontap_volume"];
+
+    map<string, aws.resources.AwsFsxWindowsFileSystem> aws_fsx_windows_file_system = 380 [json_name = "aws_fsx_windows_file_system"];
+
+    map<string, aws.resources.AwsGameliftAlias> aws_gamelift_alias = 381 [json_name = "aws_gamelift_alias"];
+
+    map<string, aws.resources.AwsGameliftBuild> aws_gamelift_build = 382 [json_name = "aws_gamelift_build"];
+
+    map<string, aws.resources.AwsGameliftFleet> aws_gamelift_fleet = 383 [json_name = "aws_gamelift_fleet"];
+
+    map<string, aws.resources.AwsGameliftGameSessionQueue> aws_gamelift_game_session_queue = 384 [json_name = "aws_gamelift_game_session_queue"];
+
+    map<string, aws.resources.AwsGlacierVault> aws_glacier_vault = 385 [json_name = "aws_glacier_vault"];
+
+    map<string, aws.resources.AwsGlacierVaultLock> aws_glacier_vault_lock = 386 [json_name = "aws_glacier_vault_lock"];
+
+    map<string, aws.resources.AwsGlobalacceleratorAccelerator> aws_globalaccelerator_accelerator = 387 [json_name = "aws_globalaccelerator_accelerator"];
+
+    map<string, aws.resources.AwsGlobalacceleratorEndpointGroup> aws_globalaccelerator_endpoint_group = 388 [json_name = "aws_globalaccelerator_endpoint_group"];
+
+    map<string, aws.resources.AwsGlobalacceleratorListener> aws_globalaccelerator_listener = 389 [json_name = "aws_globalaccelerator_listener"];
+
+    map<string, aws.resources.AwsGlueCatalogDatabase> aws_glue_catalog_database = 390 [json_name = "aws_glue_catalog_database"];
+
+    map<string, aws.resources.AwsGlueCatalogTable> aws_glue_catalog_table = 391 [json_name = "aws_glue_catalog_table"];
+
+    map<string, aws.resources.AwsGlueClassifier> aws_glue_classifier = 392 [json_name = "aws_glue_classifier"];
+
+    map<string, aws.resources.AwsGlueConnection> aws_glue_connection = 393 [json_name = "aws_glue_connection"];
+
+    map<string, aws.resources.AwsGlueCrawler> aws_glue_crawler = 394 [json_name = "aws_glue_crawler"];
+
+    map<string, aws.resources.AwsGlueDataCatalogEncryptionSettings> aws_glue_data_catalog_encryption_settings = 395 [json_name = "aws_glue_data_catalog_encryption_settings"];
+
+    map<string, aws.resources.AwsGlueDevEndpoint> aws_glue_dev_endpoint = 396 [json_name = "aws_glue_dev_endpoint"];
+
+    map<string, aws.resources.AwsGlueJob> aws_glue_job = 397 [json_name = "aws_glue_job"];
+
+    map<string, aws.resources.AwsGlueMlTransform> aws_glue_ml_transform = 398 [json_name = "aws_glue_ml_transform"];
+
+    map<string, aws.resources.AwsGluePartition> aws_glue_partition = 399 [json_name = "aws_glue_partition"];
+
+    map<string, aws.resources.AwsGluePartitionIndex> aws_glue_partition_index = 400 [json_name = "aws_glue_partition_index"];
+
+    map<string, aws.resources.AwsGlueRegistry> aws_glue_registry = 401 [json_name = "aws_glue_registry"];
+
+    map<string, aws.resources.AwsGlueResourcePolicy> aws_glue_resource_policy = 402 [json_name = "aws_glue_resource_policy"];
+
+    map<string, aws.resources.AwsGlueSchema> aws_glue_schema = 403 [json_name = "aws_glue_schema"];
+
+    map<string, aws.resources.AwsGlueSecurityConfiguration> aws_glue_security_configuration = 404 [json_name = "aws_glue_security_configuration"];
+
+    map<string, aws.resources.AwsGlueTrigger> aws_glue_trigger = 405 [json_name = "aws_glue_trigger"];
+
+    map<string, aws.resources.AwsGlueUserDefinedFunction> aws_glue_user_defined_function = 406 [json_name = "aws_glue_user_defined_function"];
+
+    map<string, aws.resources.AwsGlueWorkflow> aws_glue_workflow = 407 [json_name = "aws_glue_workflow"];
+
+    map<string, aws.resources.AwsGuarddutyDetector> aws_guardduty_detector = 408 [json_name = "aws_guardduty_detector"];
+
+    map<string, aws.resources.AwsGuarddutyFilter> aws_guardduty_filter = 409 [json_name = "aws_guardduty_filter"];
+
+    map<string, aws.resources.AwsGuarddutyInviteAccepter> aws_guardduty_invite_accepter = 410 [json_name = "aws_guardduty_invite_accepter"];
+
+    map<string, aws.resources.AwsGuarddutyIpset> aws_guardduty_ipset = 411 [json_name = "aws_guardduty_ipset"];
+
+    map<string, aws.resources.AwsGuarddutyMember> aws_guardduty_member = 412 [json_name = "aws_guardduty_member"];
+
+    map<string, aws.resources.AwsGuarddutyOrganizationAdminAccount> aws_guardduty_organization_admin_account = 413 [json_name = "aws_guardduty_organization_admin_account"];
+
+    map<string, aws.resources.AwsGuarddutyOrganizationConfiguration> aws_guardduty_organization_configuration = 414 [json_name = "aws_guardduty_organization_configuration"];
+
+    map<string, aws.resources.AwsGuarddutyPublishingDestination> aws_guardduty_publishing_destination = 415 [json_name = "aws_guardduty_publishing_destination"];
+
+    map<string, aws.resources.AwsGuarddutyThreatintelset> aws_guardduty_threatintelset = 416 [json_name = "aws_guardduty_threatintelset"];
+
+    map<string, aws.resources.AwsIamAccessKey> aws_iam_access_key = 417 [json_name = "aws_iam_access_key"];
+
+    map<string, aws.resources.AwsIamAccountAlias> aws_iam_account_alias = 418 [json_name = "aws_iam_account_alias"];
+
+    map<string, aws.resources.AwsIamAccountPasswordPolicy> aws_iam_account_password_policy = 419 [json_name = "aws_iam_account_password_policy"];
+
+    map<string, aws.resources.AwsIamGroup> aws_iam_group = 420 [json_name = "aws_iam_group"];
+
+    map<string, aws.resources.AwsIamGroupMembership> aws_iam_group_membership = 421 [json_name = "aws_iam_group_membership"];
+
+    map<string, aws.resources.AwsIamGroupPolicy> aws_iam_group_policy = 422 [json_name = "aws_iam_group_policy"];
+
+    map<string, aws.resources.AwsIamGroupPolicyAttachment> aws_iam_group_policy_attachment = 423 [json_name = "aws_iam_group_policy_attachment"];
+
+    map<string, aws.resources.AwsIamInstanceProfile> aws_iam_instance_profile = 424 [json_name = "aws_iam_instance_profile"];
+
+    map<string, aws.resources.AwsIamOpenidConnectProvider> aws_iam_openid_connect_provider = 425 [json_name = "aws_iam_openid_connect_provider"];
+
+    map<string, aws.resources.AwsIamPolicy> aws_iam_policy = 426 [json_name = "aws_iam_policy"];
+
+    map<string, aws.resources.AwsIamPolicyAttachment> aws_iam_policy_attachment = 427 [json_name = "aws_iam_policy_attachment"];
+
+    map<string, aws.resources.AwsIamRole> aws_iam_role = 428 [json_name = "aws_iam_role"];
+
+    map<string, aws.resources.AwsIamRolePolicy> aws_iam_role_policy = 429 [json_name = "aws_iam_role_policy"];
+
+    map<string, aws.resources.AwsIamRolePolicyAttachment> aws_iam_role_policy_attachment = 430 [json_name = "aws_iam_role_policy_attachment"];
+
+    map<string, aws.resources.AwsIamSamlProvider> aws_iam_saml_provider = 431 [json_name = "aws_iam_saml_provider"];
+
+    map<string, aws.resources.AwsIamServerCertificate> aws_iam_server_certificate = 432 [json_name = "aws_iam_server_certificate"];
+
+    map<string, aws.resources.AwsIamServiceLinkedRole> aws_iam_service_linked_role = 433 [json_name = "aws_iam_service_linked_role"];
+
+    map<string, aws.resources.AwsIamUser> aws_iam_user = 434 [json_name = "aws_iam_user"];
+
+    map<string, aws.resources.AwsIamUserGroupMembership> aws_iam_user_group_membership = 435 [json_name = "aws_iam_user_group_membership"];
+
+    map<string, aws.resources.AwsIamUserLoginProfile> aws_iam_user_login_profile = 436 [json_name = "aws_iam_user_login_profile"];
+
+    map<string, aws.resources.AwsIamUserPolicy> aws_iam_user_policy = 437 [json_name = "aws_iam_user_policy"];
+
+    map<string, aws.resources.AwsIamUserPolicyAttachment> aws_iam_user_policy_attachment = 438 [json_name = "aws_iam_user_policy_attachment"];
+
+    map<string, aws.resources.AwsIamUserSshKey> aws_iam_user_ssh_key = 439 [json_name = "aws_iam_user_ssh_key"];
+
+    map<string, aws.resources.AwsImagebuilderComponent> aws_imagebuilder_component = 440 [json_name = "aws_imagebuilder_component"];
+
+    map<string, aws.resources.AwsImagebuilderDistributionConfiguration> aws_imagebuilder_distribution_configuration = 441 [json_name = "aws_imagebuilder_distribution_configuration"];
+
+    map<string, aws.resources.AwsImagebuilderImage> aws_imagebuilder_image = 442 [json_name = "aws_imagebuilder_image"];
+
+    map<string, aws.resources.AwsImagebuilderImagePipeline> aws_imagebuilder_image_pipeline = 443 [json_name = "aws_imagebuilder_image_pipeline"];
+
+    map<string, aws.resources.AwsImagebuilderImageRecipe> aws_imagebuilder_image_recipe = 444 [json_name = "aws_imagebuilder_image_recipe"];
+
+    map<string, aws.resources.AwsImagebuilderInfrastructureConfiguration> aws_imagebuilder_infrastructure_configuration = 445 [json_name = "aws_imagebuilder_infrastructure_configuration"];
+
+    map<string, aws.resources.AwsInspectorAssessmentTarget> aws_inspector_assessment_target = 446 [json_name = "aws_inspector_assessment_target"];
+
+    map<string, aws.resources.AwsInspectorAssessmentTemplate> aws_inspector_assessment_template = 447 [json_name = "aws_inspector_assessment_template"];
+
+    map<string, aws.resources.AwsInspectorResourceGroup> aws_inspector_resource_group = 448 [json_name = "aws_inspector_resource_group"];
+
+    map<string, aws.resources.AwsInstance> aws_instance = 449 [json_name = "aws_instance"];
+
+    map<string, aws.resources.AwsInternetGateway> aws_internet_gateway = 450 [json_name = "aws_internet_gateway"];
+
+    map<string, aws.resources.AwsIotAuthorizer> aws_iot_authorizer = 451 [json_name = "aws_iot_authorizer"];
+
+    map<string, aws.resources.AwsIotCertificate> aws_iot_certificate = 452 [json_name = "aws_iot_certificate"];
+
+    map<string, aws.resources.AwsIotPolicy> aws_iot_policy = 453 [json_name = "aws_iot_policy"];
+
+    map<string, aws.resources.AwsIotPolicyAttachment> aws_iot_policy_attachment = 454 [json_name = "aws_iot_policy_attachment"];
+
+    map<string, aws.resources.AwsIotRoleAlias> aws_iot_role_alias = 455 [json_name = "aws_iot_role_alias"];
+
+    map<string, aws.resources.AwsIotThing> aws_iot_thing = 456 [json_name = "aws_iot_thing"];
+
+    map<string, aws.resources.AwsIotThingGroup> aws_iot_thing_group = 457 [json_name = "aws_iot_thing_group"];
+
+    map<string, aws.resources.AwsIotThingGroupMembership> aws_iot_thing_group_membership = 458 [json_name = "aws_iot_thing_group_membership"];
+
+    map<string, aws.resources.AwsIotThingPrincipalAttachment> aws_iot_thing_principal_attachment = 459 [json_name = "aws_iot_thing_principal_attachment"];
+
+    map<string, aws.resources.AwsIotThingType> aws_iot_thing_type = 460 [json_name = "aws_iot_thing_type"];
+
+    map<string, aws.resources.AwsIotTopicRule> aws_iot_topic_rule = 461 [json_name = "aws_iot_topic_rule"];
+
+    map<string, aws.resources.AwsKeyPair> aws_key_pair = 462 [json_name = "aws_key_pair"];
+
+    map<string, aws.resources.AwsKinesisAnalyticsApplication> aws_kinesis_analytics_application = 463 [json_name = "aws_kinesis_analytics_application"];
+
+    map<string, aws.resources.AwsKinesisFirehoseDeliveryStream> aws_kinesis_firehose_delivery_stream = 464 [json_name = "aws_kinesis_firehose_delivery_stream"];
+
+    map<string, aws.resources.AwsKinesisStream> aws_kinesis_stream = 465 [json_name = "aws_kinesis_stream"];
+
+    map<string, aws.resources.AwsKinesisStreamConsumer> aws_kinesis_stream_consumer = 466 [json_name = "aws_kinesis_stream_consumer"];
+
+    map<string, aws.resources.AwsKinesisVideoStream> aws_kinesis_video_stream = 467 [json_name = "aws_kinesis_video_stream"];
+
+    map<string, aws.resources.AwsKinesisanalyticsv2Application> aws_kinesisanalyticsv2_application = 468 [json_name = "aws_kinesisanalyticsv2_application"];
+
+    map<string, aws.resources.AwsKinesisanalyticsv2ApplicationSnapshot> aws_kinesisanalyticsv2_application_snapshot = 469 [json_name = "aws_kinesisanalyticsv2_application_snapshot"];
+
+    map<string, aws.resources.AwsKmsAlias> aws_kms_alias = 470 [json_name = "aws_kms_alias"];
+
+    map<string, aws.resources.AwsKmsCiphertext> aws_kms_ciphertext = 471 [json_name = "aws_kms_ciphertext"];
+
+    map<string, aws.resources.AwsKmsExternalKey> aws_kms_external_key = 472 [json_name = "aws_kms_external_key"];
+
+    map<string, aws.resources.AwsKmsGrant> aws_kms_grant = 473 [json_name = "aws_kms_grant"];
+
+    map<string, aws.resources.AwsKmsKey> aws_kms_key = 474 [json_name = "aws_kms_key"];
+
+    map<string, aws.resources.AwsKmsReplicaExternalKey> aws_kms_replica_external_key = 475 [json_name = "aws_kms_replica_external_key"];
+
+    map<string, aws.resources.AwsKmsReplicaKey> aws_kms_replica_key = 476 [json_name = "aws_kms_replica_key"];
+
+    map<string, aws.resources.AwsLakeformationDataLakeSettings> aws_lakeformation_data_lake_settings = 477 [json_name = "aws_lakeformation_data_lake_settings"];
+
+    map<string, aws.resources.AwsLakeformationPermissions> aws_lakeformation_permissions = 478 [json_name = "aws_lakeformation_permissions"];
+
+    map<string, aws.resources.AwsLakeformationResource> aws_lakeformation_resource = 479 [json_name = "aws_lakeformation_resource"];
+
+    map<string, aws.resources.AwsLambdaAlias> aws_lambda_alias = 480 [json_name = "aws_lambda_alias"];
+
+    map<string, aws.resources.AwsLambdaCodeSigningConfig> aws_lambda_code_signing_config = 481 [json_name = "aws_lambda_code_signing_config"];
+
+    map<string, aws.resources.AwsLambdaEventSourceMapping> aws_lambda_event_source_mapping = 482 [json_name = "aws_lambda_event_source_mapping"];
+
+    map<string, aws.resources.AwsLambdaFunction> aws_lambda_function = 483 [json_name = "aws_lambda_function"];
+
+    map<string, aws.resources.AwsLambdaFunctionEventInvokeConfig> aws_lambda_function_event_invoke_config = 484 [json_name = "aws_lambda_function_event_invoke_config"];
+
+    map<string, aws.resources.AwsLambdaLayerVersion> aws_lambda_layer_version = 485 [json_name = "aws_lambda_layer_version"];
+
+    map<string, aws.resources.AwsLambdaLayerVersionPermission> aws_lambda_layer_version_permission = 486 [json_name = "aws_lambda_layer_version_permission"];
+
+    map<string, aws.resources.AwsLambdaPermission> aws_lambda_permission = 487 [json_name = "aws_lambda_permission"];
+
+    map<string, aws.resources.AwsLambdaProvisionedConcurrencyConfig> aws_lambda_provisioned_concurrency_config = 488 [json_name = "aws_lambda_provisioned_concurrency_config"];
+
+    map<string, aws.resources.AwsLaunchConfiguration> aws_launch_configuration = 489 [json_name = "aws_launch_configuration"];
+
+    map<string, aws.resources.AwsLaunchTemplate> aws_launch_template = 490 [json_name = "aws_launch_template"];
+
+    map<string, aws.resources.AwsLb> aws_lb = 491 [json_name = "aws_lb"];
+
+    map<string, aws.resources.AwsLbCookieStickinessPolicy> aws_lb_cookie_stickiness_policy = 492 [json_name = "aws_lb_cookie_stickiness_policy"];
+
+    map<string, aws.resources.AwsLbListener> aws_lb_listener = 493 [json_name = "aws_lb_listener"];
+
+    map<string, aws.resources.AwsLbListenerCertificate> aws_lb_listener_certificate = 494 [json_name = "aws_lb_listener_certificate"];
+
+    map<string, aws.resources.AwsLbListenerRule> aws_lb_listener_rule = 495 [json_name = "aws_lb_listener_rule"];
+
+    map<string, aws.resources.AwsLbSslNegotiationPolicy> aws_lb_ssl_negotiation_policy = 496 [json_name = "aws_lb_ssl_negotiation_policy"];
+
+    map<string, aws.resources.AwsLbTargetGroup> aws_lb_target_group = 497 [json_name = "aws_lb_target_group"];
+
+    map<string, aws.resources.AwsLbTargetGroupAttachment> aws_lb_target_group_attachment = 498 [json_name = "aws_lb_target_group_attachment"];
+
+    map<string, aws.resources.AwsLexBot> aws_lex_bot = 499 [json_name = "aws_lex_bot"];
+
+    map<string, aws.resources.AwsLexBotAlias> aws_lex_bot_alias = 500 [json_name = "aws_lex_bot_alias"];
+
+    map<string, aws.resources.AwsLexIntent> aws_lex_intent = 501 [json_name = "aws_lex_intent"];
+
+    map<string, aws.resources.AwsLexSlotType> aws_lex_slot_type = 502 [json_name = "aws_lex_slot_type"];
+
+    map<string, aws.resources.AwsLicensemanagerAssociation> aws_licensemanager_association = 503 [json_name = "aws_licensemanager_association"];
+
+    map<string, aws.resources.AwsLicensemanagerLicenseConfiguration> aws_licensemanager_license_configuration = 504 [json_name = "aws_licensemanager_license_configuration"];
+
+    map<string, aws.resources.AwsLightsailDomain> aws_lightsail_domain = 505 [json_name = "aws_lightsail_domain"];
+
+    map<string, aws.resources.AwsLightsailInstance> aws_lightsail_instance = 506 [json_name = "aws_lightsail_instance"];
+
+    map<string, aws.resources.AwsLightsailInstancePublicPorts> aws_lightsail_instance_public_ports = 507 [json_name = "aws_lightsail_instance_public_ports"];
+
+    map<string, aws.resources.AwsLightsailKeyPair> aws_lightsail_key_pair = 508 [json_name = "aws_lightsail_key_pair"];
+
+    map<string, aws.resources.AwsLightsailStaticIp> aws_lightsail_static_ip = 509 [json_name = "aws_lightsail_static_ip"];
+
+    map<string, aws.resources.AwsLightsailStaticIpAttachment> aws_lightsail_static_ip_attachment = 510 [json_name = "aws_lightsail_static_ip_attachment"];
+
+    map<string, aws.resources.AwsLoadBalancerBackendServerPolicy> aws_load_balancer_backend_server_policy = 511 [json_name = "aws_load_balancer_backend_server_policy"];
+
+    map<string, aws.resources.AwsLoadBalancerListenerPolicy> aws_load_balancer_listener_policy = 512 [json_name = "aws_load_balancer_listener_policy"];
+
+    map<string, aws.resources.AwsLoadBalancerPolicy> aws_load_balancer_policy = 513 [json_name = "aws_load_balancer_policy"];
+
+    map<string, aws.resources.AwsMacie2Account> aws_macie2_account = 514 [json_name = "aws_macie2_account"];
+
+    map<string, aws.resources.AwsMacie2ClassificationJob> aws_macie2_classification_job = 515 [json_name = "aws_macie2_classification_job"];
+
+    map<string, aws.resources.AwsMacie2CustomDataIdentifier> aws_macie2_custom_data_identifier = 516 [json_name = "aws_macie2_custom_data_identifier"];
+
+    map<string, aws.resources.AwsMacie2FindingsFilter> aws_macie2_findings_filter = 517 [json_name = "aws_macie2_findings_filter"];
+
+    map<string, aws.resources.AwsMacie2InvitationAccepter> aws_macie2_invitation_accepter = 518 [json_name = "aws_macie2_invitation_accepter"];
+
+    map<string, aws.resources.AwsMacie2Member> aws_macie2_member = 519 [json_name = "aws_macie2_member"];
+
+    map<string, aws.resources.AwsMacie2OrganizationAdminAccount> aws_macie2_organization_admin_account = 520 [json_name = "aws_macie2_organization_admin_account"];
+
+    map<string, aws.resources.AwsMacieMemberAccountAssociation> aws_macie_member_account_association = 521 [json_name = "aws_macie_member_account_association"];
+
+    map<string, aws.resources.AwsMacieS3BucketAssociation> aws_macie_s3_bucket_association = 522 [json_name = "aws_macie_s3_bucket_association"];
+
+    map<string, aws.resources.AwsMainRouteTableAssociation> aws_main_route_table_association = 523 [json_name = "aws_main_route_table_association"];
+
+    map<string, aws.resources.AwsMediaConvertQueue> aws_media_convert_queue = 524 [json_name = "aws_media_convert_queue"];
+
+    map<string, aws.resources.AwsMediaPackageChannel> aws_media_package_channel = 525 [json_name = "aws_media_package_channel"];
+
+    map<string, aws.resources.AwsMediaStoreContainer> aws_media_store_container = 526 [json_name = "aws_media_store_container"];
+
+    map<string, aws.resources.AwsMediaStoreContainerPolicy> aws_media_store_container_policy = 527 [json_name = "aws_media_store_container_policy"];
+
+    map<string, aws.resources.AwsMqBroker> aws_mq_broker = 528 [json_name = "aws_mq_broker"];
+
+    map<string, aws.resources.AwsMqConfiguration> aws_mq_configuration = 529 [json_name = "aws_mq_configuration"];
+
+    map<string, aws.resources.AwsMskCluster> aws_msk_cluster = 530 [json_name = "aws_msk_cluster"];
+
+    map<string, aws.resources.AwsMskConfiguration> aws_msk_configuration = 531 [json_name = "aws_msk_configuration"];
+
+    map<string, aws.resources.AwsMskScramSecretAssociation> aws_msk_scram_secret_association = 532 [json_name = "aws_msk_scram_secret_association"];
+
+    map<string, aws.resources.AwsMwaaEnvironment> aws_mwaa_environment = 533 [json_name = "aws_mwaa_environment"];
+
+    map<string, aws.resources.AwsNatGateway> aws_nat_gateway = 534 [json_name = "aws_nat_gateway"];
+
+    map<string, aws.resources.AwsNeptuneCluster> aws_neptune_cluster = 535 [json_name = "aws_neptune_cluster"];
+
+    map<string, aws.resources.AwsNeptuneClusterEndpoint> aws_neptune_cluster_endpoint = 536 [json_name = "aws_neptune_cluster_endpoint"];
+
+    map<string, aws.resources.AwsNeptuneClusterInstance> aws_neptune_cluster_instance = 537 [json_name = "aws_neptune_cluster_instance"];
+
+    map<string, aws.resources.AwsNeptuneClusterParameterGroup> aws_neptune_cluster_parameter_group = 538 [json_name = "aws_neptune_cluster_parameter_group"];
+
+    map<string, aws.resources.AwsNeptuneClusterSnapshot> aws_neptune_cluster_snapshot = 539 [json_name = "aws_neptune_cluster_snapshot"];
+
+    map<string, aws.resources.AwsNeptuneEventSubscription> aws_neptune_event_subscription = 540 [json_name = "aws_neptune_event_subscription"];
+
+    map<string, aws.resources.AwsNeptuneParameterGroup> aws_neptune_parameter_group = 541 [json_name = "aws_neptune_parameter_group"];
+
+    map<string, aws.resources.AwsNeptuneSubnetGroup> aws_neptune_subnet_group = 542 [json_name = "aws_neptune_subnet_group"];
+
+    map<string, aws.resources.AwsNetworkAcl> aws_network_acl = 543 [json_name = "aws_network_acl"];
+
+    map<string, aws.resources.AwsNetworkAclRule> aws_network_acl_rule = 544 [json_name = "aws_network_acl_rule"];
+
+    map<string, aws.resources.AwsNetworkInterface> aws_network_interface = 545 [json_name = "aws_network_interface"];
+
+    map<string, aws.resources.AwsNetworkInterfaceAttachment> aws_network_interface_attachment = 546 [json_name = "aws_network_interface_attachment"];
+
+    map<string, aws.resources.AwsNetworkInterfaceSgAttachment> aws_network_interface_sg_attachment = 547 [json_name = "aws_network_interface_sg_attachment"];
+
+    map<string, aws.resources.AwsNetworkfirewallFirewall> aws_networkfirewall_firewall = 548 [json_name = "aws_networkfirewall_firewall"];
+
+    map<string, aws.resources.AwsNetworkfirewallFirewallPolicy> aws_networkfirewall_firewall_policy = 549 [json_name = "aws_networkfirewall_firewall_policy"];
+
+    map<string, aws.resources.AwsNetworkfirewallLoggingConfiguration> aws_networkfirewall_logging_configuration = 550 [json_name = "aws_networkfirewall_logging_configuration"];
+
+    map<string, aws.resources.AwsNetworkfirewallResourcePolicy> aws_networkfirewall_resource_policy = 551 [json_name = "aws_networkfirewall_resource_policy"];
+
+    map<string, aws.resources.AwsNetworkfirewallRuleGroup> aws_networkfirewall_rule_group = 552 [json_name = "aws_networkfirewall_rule_group"];
+
+    map<string, aws.resources.AwsOpsworksApplication> aws_opsworks_application = 553 [json_name = "aws_opsworks_application"];
+
+    map<string, aws.resources.AwsOpsworksCustomLayer> aws_opsworks_custom_layer = 554 [json_name = "aws_opsworks_custom_layer"];
+
+    map<string, aws.resources.AwsOpsworksGangliaLayer> aws_opsworks_ganglia_layer = 555 [json_name = "aws_opsworks_ganglia_layer"];
+
+    map<string, aws.resources.AwsOpsworksHaproxyLayer> aws_opsworks_haproxy_layer = 556 [json_name = "aws_opsworks_haproxy_layer"];
+
+    map<string, aws.resources.AwsOpsworksInstance> aws_opsworks_instance = 557 [json_name = "aws_opsworks_instance"];
+
+    map<string, aws.resources.AwsOpsworksJavaAppLayer> aws_opsworks_java_app_layer = 558 [json_name = "aws_opsworks_java_app_layer"];
+
+    map<string, aws.resources.AwsOpsworksMemcachedLayer> aws_opsworks_memcached_layer = 559 [json_name = "aws_opsworks_memcached_layer"];
+
+    map<string, aws.resources.AwsOpsworksMysqlLayer> aws_opsworks_mysql_layer = 560 [json_name = "aws_opsworks_mysql_layer"];
+
+    map<string, aws.resources.AwsOpsworksNodejsAppLayer> aws_opsworks_nodejs_app_layer = 561 [json_name = "aws_opsworks_nodejs_app_layer"];
+
+    map<string, aws.resources.AwsOpsworksPermission> aws_opsworks_permission = 562 [json_name = "aws_opsworks_permission"];
+
+    map<string, aws.resources.AwsOpsworksPhpAppLayer> aws_opsworks_php_app_layer = 563 [json_name = "aws_opsworks_php_app_layer"];
+
+    map<string, aws.resources.AwsOpsworksRailsAppLayer> aws_opsworks_rails_app_layer = 564 [json_name = "aws_opsworks_rails_app_layer"];
+
+    map<string, aws.resources.AwsOpsworksRdsDbInstance> aws_opsworks_rds_db_instance = 565 [json_name = "aws_opsworks_rds_db_instance"];
+
+    map<string, aws.resources.AwsOpsworksStack> aws_opsworks_stack = 566 [json_name = "aws_opsworks_stack"];
+
+    map<string, aws.resources.AwsOpsworksStaticWebLayer> aws_opsworks_static_web_layer = 567 [json_name = "aws_opsworks_static_web_layer"];
+
+    map<string, aws.resources.AwsOpsworksUserProfile> aws_opsworks_user_profile = 568 [json_name = "aws_opsworks_user_profile"];
+
+    map<string, aws.resources.AwsOrganizationsAccount> aws_organizations_account = 569 [json_name = "aws_organizations_account"];
+
+    map<string, aws.resources.AwsOrganizationsDelegatedAdministrator> aws_organizations_delegated_administrator = 570 [json_name = "aws_organizations_delegated_administrator"];
+
+    map<string, aws.resources.AwsOrganizationsOrganization> aws_organizations_organization = 571 [json_name = "aws_organizations_organization"];
+
+    map<string, aws.resources.AwsOrganizationsOrganizationalUnit> aws_organizations_organizational_unit = 572 [json_name = "aws_organizations_organizational_unit"];
+
+    map<string, aws.resources.AwsOrganizationsPolicy> aws_organizations_policy = 573 [json_name = "aws_organizations_policy"];
+
+    map<string, aws.resources.AwsOrganizationsPolicyAttachment> aws_organizations_policy_attachment = 574 [json_name = "aws_organizations_policy_attachment"];
+
+    map<string, aws.resources.AwsPinpointAdmChannel> aws_pinpoint_adm_channel = 575 [json_name = "aws_pinpoint_adm_channel"];
+
+    map<string, aws.resources.AwsPinpointApnsChannel> aws_pinpoint_apns_channel = 576 [json_name = "aws_pinpoint_apns_channel"];
+
+    map<string, aws.resources.AwsPinpointApnsSandboxChannel> aws_pinpoint_apns_sandbox_channel = 577 [json_name = "aws_pinpoint_apns_sandbox_channel"];
+
+    map<string, aws.resources.AwsPinpointApnsVoipChannel> aws_pinpoint_apns_voip_channel = 578 [json_name = "aws_pinpoint_apns_voip_channel"];
+
+    map<string, aws.resources.AwsPinpointApnsVoipSandboxChannel> aws_pinpoint_apns_voip_sandbox_channel = 579 [json_name = "aws_pinpoint_apns_voip_sandbox_channel"];
+
+    map<string, aws.resources.AwsPinpointApp> aws_pinpoint_app = 580 [json_name = "aws_pinpoint_app"];
+
+    map<string, aws.resources.AwsPinpointBaiduChannel> aws_pinpoint_baidu_channel = 581 [json_name = "aws_pinpoint_baidu_channel"];
+
+    map<string, aws.resources.AwsPinpointEmailChannel> aws_pinpoint_email_channel = 582 [json_name = "aws_pinpoint_email_channel"];
+
+    map<string, aws.resources.AwsPinpointEventStream> aws_pinpoint_event_stream = 583 [json_name = "aws_pinpoint_event_stream"];
+
+    map<string, aws.resources.AwsPinpointGcmChannel> aws_pinpoint_gcm_channel = 584 [json_name = "aws_pinpoint_gcm_channel"];
+
+    map<string, aws.resources.AwsPinpointSmsChannel> aws_pinpoint_sms_channel = 585 [json_name = "aws_pinpoint_sms_channel"];
+
+    map<string, aws.resources.AwsPlacementGroup> aws_placement_group = 586 [json_name = "aws_placement_group"];
+
+    map<string, aws.resources.AwsPrometheusAlertManagerDefinition> aws_prometheus_alert_manager_definition = 587 [json_name = "aws_prometheus_alert_manager_definition"];
+
+    map<string, aws.resources.AwsPrometheusRuleGroupNamespace> aws_prometheus_rule_group_namespace = 588 [json_name = "aws_prometheus_rule_group_namespace"];
+
+    map<string, aws.resources.AwsPrometheusWorkspace> aws_prometheus_workspace = 589 [json_name = "aws_prometheus_workspace"];
+
+    map<string, aws.resources.AwsProxyProtocolPolicy> aws_proxy_protocol_policy = 590 [json_name = "aws_proxy_protocol_policy"];
+
+    map<string, aws.resources.AwsQldbLedger> aws_qldb_ledger = 591 [json_name = "aws_qldb_ledger"];
+
+    map<string, aws.resources.AwsQuicksightDataSource> aws_quicksight_data_source = 592 [json_name = "aws_quicksight_data_source"];
+
+    map<string, aws.resources.AwsQuicksightGroup> aws_quicksight_group = 593 [json_name = "aws_quicksight_group"];
+
+    map<string, aws.resources.AwsQuicksightGroupMembership> aws_quicksight_group_membership = 594 [json_name = "aws_quicksight_group_membership"];
+
+    map<string, aws.resources.AwsQuicksightUser> aws_quicksight_user = 595 [json_name = "aws_quicksight_user"];
+
+    map<string, aws.resources.AwsRamPrincipalAssociation> aws_ram_principal_association = 596 [json_name = "aws_ram_principal_association"];
+
+    map<string, aws.resources.AwsRamResourceAssociation> aws_ram_resource_association = 597 [json_name = "aws_ram_resource_association"];
+
+    map<string, aws.resources.AwsRamResourceShare> aws_ram_resource_share = 598 [json_name = "aws_ram_resource_share"];
+
+    map<string, aws.resources.AwsRamResourceShareAccepter> aws_ram_resource_share_accepter = 599 [json_name = "aws_ram_resource_share_accepter"];
+
+    map<string, aws.resources.AwsRdsCluster> aws_rds_cluster = 600 [json_name = "aws_rds_cluster"];
+
+    map<string, aws.resources.AwsRdsClusterEndpoint> aws_rds_cluster_endpoint = 601 [json_name = "aws_rds_cluster_endpoint"];
+
+    map<string, aws.resources.AwsRdsClusterInstance> aws_rds_cluster_instance = 602 [json_name = "aws_rds_cluster_instance"];
+
+    map<string, aws.resources.AwsRdsClusterParameterGroup> aws_rds_cluster_parameter_group = 603 [json_name = "aws_rds_cluster_parameter_group"];
+
+    map<string, aws.resources.AwsRdsClusterRoleAssociation> aws_rds_cluster_role_association = 604 [json_name = "aws_rds_cluster_role_association"];
+
+    map<string, aws.resources.AwsRdsGlobalCluster> aws_rds_global_cluster = 605 [json_name = "aws_rds_global_cluster"];
+
+    map<string, aws.resources.AwsRedshiftCluster> aws_redshift_cluster = 606 [json_name = "aws_redshift_cluster"];
+
+    map<string, aws.resources.AwsRedshiftEventSubscription> aws_redshift_event_subscription = 607 [json_name = "aws_redshift_event_subscription"];
+
+    map<string, aws.resources.AwsRedshiftParameterGroup> aws_redshift_parameter_group = 608 [json_name = "aws_redshift_parameter_group"];
+
+    map<string, aws.resources.AwsRedshiftScheduledAction> aws_redshift_scheduled_action = 609 [json_name = "aws_redshift_scheduled_action"];
+
+    map<string, aws.resources.AwsRedshiftSecurityGroup> aws_redshift_security_group = 610 [json_name = "aws_redshift_security_group"];
+
+    map<string, aws.resources.AwsRedshiftSnapshotCopyGrant> aws_redshift_snapshot_copy_grant = 611 [json_name = "aws_redshift_snapshot_copy_grant"];
+
+    map<string, aws.resources.AwsRedshiftSnapshotSchedule> aws_redshift_snapshot_schedule = 612 [json_name = "aws_redshift_snapshot_schedule"];
+
+    map<string, aws.resources.AwsRedshiftSnapshotScheduleAssociation> aws_redshift_snapshot_schedule_association = 613 [json_name = "aws_redshift_snapshot_schedule_association"];
+
+    map<string, aws.resources.AwsRedshiftSubnetGroup> aws_redshift_subnet_group = 614 [json_name = "aws_redshift_subnet_group"];
+
+    map<string, aws.resources.AwsResourcegroupsGroup> aws_resourcegroups_group = 615 [json_name = "aws_resourcegroups_group"];
+
+    map<string, aws.resources.AwsRoute> aws_route = 616 [json_name = "aws_route"];
+
+    map<string, aws.resources.AwsRoute53DelegationSet> aws_route53_delegation_set = 617 [json_name = "aws_route53_delegation_set"];
+
+    map<string, aws.resources.AwsRoute53HealthCheck> aws_route53_health_check = 618 [json_name = "aws_route53_health_check"];
+
+    map<string, aws.resources.AwsRoute53HostedZoneDnssec> aws_route53_hosted_zone_dnssec = 619 [json_name = "aws_route53_hosted_zone_dnssec"];
+
+    map<string, aws.resources.AwsRoute53KeySigningKey> aws_route53_key_signing_key = 620 [json_name = "aws_route53_key_signing_key"];
+
+    map<string, aws.resources.AwsRoute53QueryLog> aws_route53_query_log = 621 [json_name = "aws_route53_query_log"];
+
+    map<string, aws.resources.AwsRoute53Record> aws_route53_record = 622 [json_name = "aws_route53_record"];
+
+    map<string, aws.resources.AwsRoute53ResolverDnssecConfig> aws_route53_resolver_dnssec_config = 623 [json_name = "aws_route53_resolver_dnssec_config"];
+
+    map<string, aws.resources.AwsRoute53ResolverEndpoint> aws_route53_resolver_endpoint = 624 [json_name = "aws_route53_resolver_endpoint"];
+
+    map<string, aws.resources.AwsRoute53ResolverFirewallConfig> aws_route53_resolver_firewall_config = 625 [json_name = "aws_route53_resolver_firewall_config"];
+
+    map<string, aws.resources.AwsRoute53ResolverFirewallDomainList> aws_route53_resolver_firewall_domain_list = 626 [json_name = "aws_route53_resolver_firewall_domain_list"];
+
+    map<string, aws.resources.AwsRoute53ResolverFirewallRule> aws_route53_resolver_firewall_rule = 627 [json_name = "aws_route53_resolver_firewall_rule"];
+
+    map<string, aws.resources.AwsRoute53ResolverFirewallRuleGroup> aws_route53_resolver_firewall_rule_group = 628 [json_name = "aws_route53_resolver_firewall_rule_group"];
+
+    map<string, aws.resources.AwsRoute53ResolverFirewallRuleGroupAssociation> aws_route53_resolver_firewall_rule_group_association = 629 [json_name = "aws_route53_resolver_firewall_rule_group_association"];
+
+    map<string, aws.resources.AwsRoute53ResolverQueryLogConfig> aws_route53_resolver_query_log_config = 630 [json_name = "aws_route53_resolver_query_log_config"];
+
+    map<string, aws.resources.AwsRoute53ResolverQueryLogConfigAssociation> aws_route53_resolver_query_log_config_association = 631 [json_name = "aws_route53_resolver_query_log_config_association"];
+
+    map<string, aws.resources.AwsRoute53ResolverRule> aws_route53_resolver_rule = 632 [json_name = "aws_route53_resolver_rule"];
+
+    map<string, aws.resources.AwsRoute53ResolverRuleAssociation> aws_route53_resolver_rule_association = 633 [json_name = "aws_route53_resolver_rule_association"];
+
+    map<string, aws.resources.AwsRoute53VpcAssociationAuthorization> aws_route53_vpc_association_authorization = 634 [json_name = "aws_route53_vpc_association_authorization"];
+
+    map<string, aws.resources.AwsRoute53Zone> aws_route53_zone = 635 [json_name = "aws_route53_zone"];
+
+    map<string, aws.resources.AwsRoute53ZoneAssociation> aws_route53_zone_association = 636 [json_name = "aws_route53_zone_association"];
+
+    map<string, aws.resources.AwsRoute53recoverycontrolconfigCluster> aws_route53recoverycontrolconfig_cluster = 637 [json_name = "aws_route53recoverycontrolconfig_cluster"];
+
+    map<string, aws.resources.AwsRoute53recoverycontrolconfigControlPanel> aws_route53recoverycontrolconfig_control_panel = 638 [json_name = "aws_route53recoverycontrolconfig_control_panel"];
+
+    map<string, aws.resources.AwsRoute53recoverycontrolconfigRoutingControl> aws_route53recoverycontrolconfig_routing_control = 639 [json_name = "aws_route53recoverycontrolconfig_routing_control"];
+
+    map<string, aws.resources.AwsRoute53recoverycontrolconfigSafetyRule> aws_route53recoverycontrolconfig_safety_rule = 640 [json_name = "aws_route53recoverycontrolconfig_safety_rule"];
+
+    map<string, aws.resources.AwsRoute53recoveryreadinessCell> aws_route53recoveryreadiness_cell = 641 [json_name = "aws_route53recoveryreadiness_cell"];
+
+    map<string, aws.resources.AwsRoute53recoveryreadinessReadinessCheck> aws_route53recoveryreadiness_readiness_check = 642 [json_name = "aws_route53recoveryreadiness_readiness_check"];
+
+    map<string, aws.resources.AwsRoute53recoveryreadinessRecoveryGroup> aws_route53recoveryreadiness_recovery_group = 643 [json_name = "aws_route53recoveryreadiness_recovery_group"];
+
+    map<string, aws.resources.AwsRoute53recoveryreadinessResourceSet> aws_route53recoveryreadiness_resource_set = 644 [json_name = "aws_route53recoveryreadiness_resource_set"];
+
+    map<string, aws.resources.AwsRouteTable> aws_route_table = 645 [json_name = "aws_route_table"];
+
+    map<string, aws.resources.AwsRouteTableAssociation> aws_route_table_association = 646 [json_name = "aws_route_table_association"];
+
+    map<string, aws.resources.AwsS3AccessPoint> aws_s3_access_point = 647 [json_name = "aws_s3_access_point"];
+
+    map<string, aws.resources.AwsS3AccountPublicAccessBlock> aws_s3_account_public_access_block = 648 [json_name = "aws_s3_account_public_access_block"];
+
+    map<string, aws.resources.AwsS3Bucket> aws_s3_bucket = 649 [json_name = "aws_s3_bucket"];
+
+    map<string, aws.resources.AwsS3BucketAnalyticsConfiguration> aws_s3_bucket_analytics_configuration = 650 [json_name = "aws_s3_bucket_analytics_configuration"];
+
+    map<string, aws.resources.AwsS3BucketIntelligentTieringConfiguration> aws_s3_bucket_intelligent_tiering_configuration = 651 [json_name = "aws_s3_bucket_intelligent_tiering_configuration"];
+
+    map<string, aws.resources.AwsS3BucketInventory> aws_s3_bucket_inventory = 652 [json_name = "aws_s3_bucket_inventory"];
+
+    map<string, aws.resources.AwsS3BucketMetric> aws_s3_bucket_metric = 653 [json_name = "aws_s3_bucket_metric"];
+
+    map<string, aws.resources.AwsS3BucketNotification> aws_s3_bucket_notification = 654 [json_name = "aws_s3_bucket_notification"];
+
+    map<string, aws.resources.AwsS3BucketObject> aws_s3_bucket_object = 655 [json_name = "aws_s3_bucket_object"];
+
+    map<string, aws.resources.AwsS3BucketOwnershipControls> aws_s3_bucket_ownership_controls = 656 [json_name = "aws_s3_bucket_ownership_controls"];
+
+    map<string, aws.resources.AwsS3BucketPolicy> aws_s3_bucket_policy = 657 [json_name = "aws_s3_bucket_policy"];
+
+    map<string, aws.resources.AwsS3BucketPublicAccessBlock> aws_s3_bucket_public_access_block = 658 [json_name = "aws_s3_bucket_public_access_block"];
+
+    map<string, aws.resources.AwsS3BucketReplicationConfiguration> aws_s3_bucket_replication_configuration = 659 [json_name = "aws_s3_bucket_replication_configuration"];
+
+    map<string, aws.resources.AwsS3ObjectCopy> aws_s3_object_copy = 660 [json_name = "aws_s3_object_copy"];
+
+    map<string, aws.resources.AwsS3controlAccessPointPolicy> aws_s3control_access_point_policy = 661 [json_name = "aws_s3control_access_point_policy"];
+
+    map<string, aws.resources.AwsS3controlBucket> aws_s3control_bucket = 662 [json_name = "aws_s3control_bucket"];
+
+    map<string, aws.resources.AwsS3controlBucketLifecycleConfiguration> aws_s3control_bucket_lifecycle_configuration = 663 [json_name = "aws_s3control_bucket_lifecycle_configuration"];
+
+    map<string, aws.resources.AwsS3controlBucketPolicy> aws_s3control_bucket_policy = 664 [json_name = "aws_s3control_bucket_policy"];
+
+    map<string, aws.resources.AwsS3controlMultiRegionAccessPoint> aws_s3control_multi_region_access_point = 665 [json_name = "aws_s3control_multi_region_access_point"];
+
+    map<string, aws.resources.AwsS3controlMultiRegionAccessPointPolicy> aws_s3control_multi_region_access_point_policy = 666 [json_name = "aws_s3control_multi_region_access_point_policy"];
+
+    map<string, aws.resources.AwsS3controlObjectLambdaAccessPoint> aws_s3control_object_lambda_access_point = 667 [json_name = "aws_s3control_object_lambda_access_point"];
+
+    map<string, aws.resources.AwsS3controlObjectLambdaAccessPointPolicy> aws_s3control_object_lambda_access_point_policy = 668 [json_name = "aws_s3control_object_lambda_access_point_policy"];
+
+    map<string, aws.resources.AwsS3outpostsEndpoint> aws_s3outposts_endpoint = 669 [json_name = "aws_s3outposts_endpoint"];
+
+    map<string, aws.resources.AwsSagemakerApp> aws_sagemaker_app = 670 [json_name = "aws_sagemaker_app"];
+
+    map<string, aws.resources.AwsSagemakerAppImageConfig> aws_sagemaker_app_image_config = 671 [json_name = "aws_sagemaker_app_image_config"];
+
+    map<string, aws.resources.AwsSagemakerCodeRepository> aws_sagemaker_code_repository = 672 [json_name = "aws_sagemaker_code_repository"];
+
+    map<string, aws.resources.AwsSagemakerDeviceFleet> aws_sagemaker_device_fleet = 673 [json_name = "aws_sagemaker_device_fleet"];
+
+    map<string, aws.resources.AwsSagemakerDomain> aws_sagemaker_domain = 674 [json_name = "aws_sagemaker_domain"];
+
+    map<string, aws.resources.AwsSagemakerEndpoint> aws_sagemaker_endpoint = 675 [json_name = "aws_sagemaker_endpoint"];
+
+    map<string, aws.resources.AwsSagemakerEndpointConfiguration> aws_sagemaker_endpoint_configuration = 676 [json_name = "aws_sagemaker_endpoint_configuration"];
+
+    map<string, aws.resources.AwsSagemakerFeatureGroup> aws_sagemaker_feature_group = 677 [json_name = "aws_sagemaker_feature_group"];
+
+    map<string, aws.resources.AwsSagemakerFlowDefinition> aws_sagemaker_flow_definition = 678 [json_name = "aws_sagemaker_flow_definition"];
+
+    map<string, aws.resources.AwsSagemakerHumanTaskUi> aws_sagemaker_human_task_ui = 679 [json_name = "aws_sagemaker_human_task_ui"];
+
+    map<string, aws.resources.AwsSagemakerImage> aws_sagemaker_image = 680 [json_name = "aws_sagemaker_image"];
+
+    map<string, aws.resources.AwsSagemakerImageVersion> aws_sagemaker_image_version = 681 [json_name = "aws_sagemaker_image_version"];
+
+    map<string, aws.resources.AwsSagemakerModel> aws_sagemaker_model = 682 [json_name = "aws_sagemaker_model"];
+
+    map<string, aws.resources.AwsSagemakerModelPackageGroup> aws_sagemaker_model_package_group = 683 [json_name = "aws_sagemaker_model_package_group"];
+
+    map<string, aws.resources.AwsSagemakerModelPackageGroupPolicy> aws_sagemaker_model_package_group_policy = 684 [json_name = "aws_sagemaker_model_package_group_policy"];
+
+    map<string, aws.resources.AwsSagemakerNotebookInstance> aws_sagemaker_notebook_instance = 685 [json_name = "aws_sagemaker_notebook_instance"];
+
+    map<string, aws.resources.AwsSagemakerNotebookInstanceLifecycleConfiguration> aws_sagemaker_notebook_instance_lifecycle_configuration = 686 [json_name = "aws_sagemaker_notebook_instance_lifecycle_configuration"];
+
+    map<string, aws.resources.AwsSagemakerStudioLifecycleConfig> aws_sagemaker_studio_lifecycle_config = 687 [json_name = "aws_sagemaker_studio_lifecycle_config"];
+
+    map<string, aws.resources.AwsSagemakerUserProfile> aws_sagemaker_user_profile = 688 [json_name = "aws_sagemaker_user_profile"];
+
+    map<string, aws.resources.AwsSagemakerWorkforce> aws_sagemaker_workforce = 689 [json_name = "aws_sagemaker_workforce"];
+
+    map<string, aws.resources.AwsSagemakerWorkteam> aws_sagemaker_workteam = 690 [json_name = "aws_sagemaker_workteam"];
+
+    map<string, aws.resources.AwsSchemasDiscoverer> aws_schemas_discoverer = 691 [json_name = "aws_schemas_discoverer"];
+
+    map<string, aws.resources.AwsSchemasRegistry> aws_schemas_registry = 692 [json_name = "aws_schemas_registry"];
+
+    map<string, aws.resources.AwsSchemasSchema> aws_schemas_schema = 693 [json_name = "aws_schemas_schema"];
+
+    map<string, aws.resources.AwsSecretsmanagerSecret> aws_secretsmanager_secret = 694 [json_name = "aws_secretsmanager_secret"];
+
+    map<string, aws.resources.AwsSecretsmanagerSecretPolicy> aws_secretsmanager_secret_policy = 695 [json_name = "aws_secretsmanager_secret_policy"];
+
+    map<string, aws.resources.AwsSecretsmanagerSecretRotation> aws_secretsmanager_secret_rotation = 696 [json_name = "aws_secretsmanager_secret_rotation"];
+
+    map<string, aws.resources.AwsSecretsmanagerSecretVersion> aws_secretsmanager_secret_version = 697 [json_name = "aws_secretsmanager_secret_version"];
+
+    map<string, aws.resources.AwsSecurityGroup> aws_security_group = 698 [json_name = "aws_security_group"];
+
+    map<string, aws.resources.AwsSecurityGroupRule> aws_security_group_rule = 699 [json_name = "aws_security_group_rule"];
+
+    map<string, aws.resources.AwsSecurityhubAccount> aws_securityhub_account = 700 [json_name = "aws_securityhub_account"];
+
+    map<string, aws.resources.AwsSecurityhubActionTarget> aws_securityhub_action_target = 701 [json_name = "aws_securityhub_action_target"];
+
+    map<string, aws.resources.AwsSecurityhubFindingAggregator> aws_securityhub_finding_aggregator = 702 [json_name = "aws_securityhub_finding_aggregator"];
+
+    map<string, aws.resources.AwsSecurityhubInsight> aws_securityhub_insight = 703 [json_name = "aws_securityhub_insight"];
+
+    map<string, aws.resources.AwsSecurityhubInviteAccepter> aws_securityhub_invite_accepter = 704 [json_name = "aws_securityhub_invite_accepter"];
+
+    map<string, aws.resources.AwsSecurityhubMember> aws_securityhub_member = 705 [json_name = "aws_securityhub_member"];
+
+    map<string, aws.resources.AwsSecurityhubOrganizationAdminAccount> aws_securityhub_organization_admin_account = 706 [json_name = "aws_securityhub_organization_admin_account"];
+
+    map<string, aws.resources.AwsSecurityhubOrganizationConfiguration> aws_securityhub_organization_configuration = 707 [json_name = "aws_securityhub_organization_configuration"];
+
+    map<string, aws.resources.AwsSecurityhubProductSubscription> aws_securityhub_product_subscription = 708 [json_name = "aws_securityhub_product_subscription"];
+
+    map<string, aws.resources.AwsSecurityhubStandardsControl> aws_securityhub_standards_control = 709 [json_name = "aws_securityhub_standards_control"];
+
+    map<string, aws.resources.AwsSecurityhubStandardsSubscription> aws_securityhub_standards_subscription = 710 [json_name = "aws_securityhub_standards_subscription"];
+
+    map<string, aws.resources.AwsServerlessapplicationrepositoryCloudformationStack> aws_serverlessapplicationrepository_cloudformation_stack = 711 [json_name = "aws_serverlessapplicationrepository_cloudformation_stack"];
+
+    map<string, aws.resources.AwsServiceDiscoveryHttpNamespace> aws_service_discovery_http_namespace = 712 [json_name = "aws_service_discovery_http_namespace"];
+
+    map<string, aws.resources.AwsServiceDiscoveryInstance> aws_service_discovery_instance = 713 [json_name = "aws_service_discovery_instance"];
+
+    map<string, aws.resources.AwsServiceDiscoveryPrivateDnsNamespace> aws_service_discovery_private_dns_namespace = 714 [json_name = "aws_service_discovery_private_dns_namespace"];
+
+    map<string, aws.resources.AwsServiceDiscoveryPublicDnsNamespace> aws_service_discovery_public_dns_namespace = 715 [json_name = "aws_service_discovery_public_dns_namespace"];
+
+    map<string, aws.resources.AwsServiceDiscoveryService> aws_service_discovery_service = 716 [json_name = "aws_service_discovery_service"];
+
+    map<string, aws.resources.AwsServicecatalogBudgetResourceAssociation> aws_servicecatalog_budget_resource_association = 717 [json_name = "aws_servicecatalog_budget_resource_association"];
+
+    map<string, aws.resources.AwsServicecatalogConstraint> aws_servicecatalog_constraint = 718 [json_name = "aws_servicecatalog_constraint"];
+
+    map<string, aws.resources.AwsServicecatalogOrganizationsAccess> aws_servicecatalog_organizations_access = 719 [json_name = "aws_servicecatalog_organizations_access"];
+
+    map<string, aws.resources.AwsServicecatalogPortfolio> aws_servicecatalog_portfolio = 720 [json_name = "aws_servicecatalog_portfolio"];
+
+    map<string, aws.resources.AwsServicecatalogPortfolioShare> aws_servicecatalog_portfolio_share = 721 [json_name = "aws_servicecatalog_portfolio_share"];
+
+    map<string, aws.resources.AwsServicecatalogPrincipalPortfolioAssociation> aws_servicecatalog_principal_portfolio_association = 722 [json_name = "aws_servicecatalog_principal_portfolio_association"];
+
+    map<string, aws.resources.AwsServicecatalogProduct> aws_servicecatalog_product = 723 [json_name = "aws_servicecatalog_product"];
+
+    map<string, aws.resources.AwsServicecatalogProductPortfolioAssociation> aws_servicecatalog_product_portfolio_association = 724 [json_name = "aws_servicecatalog_product_portfolio_association"];
+
+    map<string, aws.resources.AwsServicecatalogProvisionedProduct> aws_servicecatalog_provisioned_product = 725 [json_name = "aws_servicecatalog_provisioned_product"];
+
+    map<string, aws.resources.AwsServicecatalogProvisioningArtifact> aws_servicecatalog_provisioning_artifact = 726 [json_name = "aws_servicecatalog_provisioning_artifact"];
+
+    map<string, aws.resources.AwsServicecatalogServiceAction> aws_servicecatalog_service_action = 727 [json_name = "aws_servicecatalog_service_action"];
+
+    map<string, aws.resources.AwsServicecatalogTagOption> aws_servicecatalog_tag_option = 728 [json_name = "aws_servicecatalog_tag_option"];
+
+    map<string, aws.resources.AwsServicecatalogTagOptionResourceAssociation> aws_servicecatalog_tag_option_resource_association = 729 [json_name = "aws_servicecatalog_tag_option_resource_association"];
+
+    map<string, aws.resources.AwsServicequotasServiceQuota> aws_servicequotas_service_quota = 730 [json_name = "aws_servicequotas_service_quota"];
+
+    map<string, aws.resources.AwsSesActiveReceiptRuleSet> aws_ses_active_receipt_rule_set = 731 [json_name = "aws_ses_active_receipt_rule_set"];
+
+    map<string, aws.resources.AwsSesConfigurationSet> aws_ses_configuration_set = 732 [json_name = "aws_ses_configuration_set"];
+
+    map<string, aws.resources.AwsSesDomainDkim> aws_ses_domain_dkim = 733 [json_name = "aws_ses_domain_dkim"];
+
+    map<string, aws.resources.AwsSesDomainIdentity> aws_ses_domain_identity = 734 [json_name = "aws_ses_domain_identity"];
+
+    map<string, aws.resources.AwsSesDomainIdentityVerification> aws_ses_domain_identity_verification = 735 [json_name = "aws_ses_domain_identity_verification"];
+
+    map<string, aws.resources.AwsSesDomainMailFrom> aws_ses_domain_mail_from = 736 [json_name = "aws_ses_domain_mail_from"];
+
+    map<string, aws.resources.AwsSesEmailIdentity> aws_ses_email_identity = 737 [json_name = "aws_ses_email_identity"];
+
+    map<string, aws.resources.AwsSesEventDestination> aws_ses_event_destination = 738 [json_name = "aws_ses_event_destination"];
+
+    map<string, aws.resources.AwsSesIdentityNotificationTopic> aws_ses_identity_notification_topic = 739 [json_name = "aws_ses_identity_notification_topic"];
+
+    map<string, aws.resources.AwsSesIdentityPolicy> aws_ses_identity_policy = 740 [json_name = "aws_ses_identity_policy"];
+
+    map<string, aws.resources.AwsSesReceiptFilter> aws_ses_receipt_filter = 741 [json_name = "aws_ses_receipt_filter"];
+
+    map<string, aws.resources.AwsSesReceiptRule> aws_ses_receipt_rule = 742 [json_name = "aws_ses_receipt_rule"];
+
+    map<string, aws.resources.AwsSesReceiptRuleSet> aws_ses_receipt_rule_set = 743 [json_name = "aws_ses_receipt_rule_set"];
+
+    map<string, aws.resources.AwsSesTemplate> aws_ses_template = 744 [json_name = "aws_ses_template"];
+
+    map<string, aws.resources.AwsSfnActivity> aws_sfn_activity = 745 [json_name = "aws_sfn_activity"];
+
+    map<string, aws.resources.AwsSfnStateMachine> aws_sfn_state_machine = 746 [json_name = "aws_sfn_state_machine"];
+
+    map<string, aws.resources.AwsShieldProtection> aws_shield_protection = 747 [json_name = "aws_shield_protection"];
+
+    map<string, aws.resources.AwsShieldProtectionGroup> aws_shield_protection_group = 748 [json_name = "aws_shield_protection_group"];
+
+    map<string, aws.resources.AwsSignerSigningJob> aws_signer_signing_job = 749 [json_name = "aws_signer_signing_job"];
+
+    map<string, aws.resources.AwsSignerSigningProfile> aws_signer_signing_profile = 750 [json_name = "aws_signer_signing_profile"];
+
+    map<string, aws.resources.AwsSignerSigningProfilePermission> aws_signer_signing_profile_permission = 751 [json_name = "aws_signer_signing_profile_permission"];
+
+    map<string, aws.resources.AwsSimpledbDomain> aws_simpledb_domain = 752 [json_name = "aws_simpledb_domain"];
+
+    map<string, aws.resources.AwsSnapshotCreateVolumePermission> aws_snapshot_create_volume_permission = 753 [json_name = "aws_snapshot_create_volume_permission"];
+
+    map<string, aws.resources.AwsSnsPlatformApplication> aws_sns_platform_application = 754 [json_name = "aws_sns_platform_application"];
+
+    map<string, aws.resources.AwsSnsSmsPreferences> aws_sns_sms_preferences = 755 [json_name = "aws_sns_sms_preferences"];
+
+    map<string, aws.resources.AwsSnsTopic> aws_sns_topic = 756 [json_name = "aws_sns_topic"];
+
+    map<string, aws.resources.AwsSnsTopicPolicy> aws_sns_topic_policy = 757 [json_name = "aws_sns_topic_policy"];
+
+    map<string, aws.resources.AwsSnsTopicSubscription> aws_sns_topic_subscription = 758 [json_name = "aws_sns_topic_subscription"];
+
+    map<string, aws.resources.AwsSpotDatafeedSubscription> aws_spot_datafeed_subscription = 759 [json_name = "aws_spot_datafeed_subscription"];
+
+    map<string, aws.resources.AwsSpotFleetRequest> aws_spot_fleet_request = 760 [json_name = "aws_spot_fleet_request"];
+
+    map<string, aws.resources.AwsSpotInstanceRequest> aws_spot_instance_request = 761 [json_name = "aws_spot_instance_request"];
+
+    map<string, aws.resources.AwsSqsQueue> aws_sqs_queue = 762 [json_name = "aws_sqs_queue"];
+
+    map<string, aws.resources.AwsSqsQueuePolicy> aws_sqs_queue_policy = 763 [json_name = "aws_sqs_queue_policy"];
+
+    map<string, aws.resources.AwsSsmActivation> aws_ssm_activation = 764 [json_name = "aws_ssm_activation"];
+
+    map<string, aws.resources.AwsSsmAssociation> aws_ssm_association = 765 [json_name = "aws_ssm_association"];
+
+    map<string, aws.resources.AwsSsmDocument> aws_ssm_document = 766 [json_name = "aws_ssm_document"];
+
+    map<string, aws.resources.AwsSsmMaintenanceWindow> aws_ssm_maintenance_window = 767 [json_name = "aws_ssm_maintenance_window"];
+
+    map<string, aws.resources.AwsSsmMaintenanceWindowTarget> aws_ssm_maintenance_window_target = 768 [json_name = "aws_ssm_maintenance_window_target"];
+
+    map<string, aws.resources.AwsSsmMaintenanceWindowTask> aws_ssm_maintenance_window_task = 769 [json_name = "aws_ssm_maintenance_window_task"];
+
+    map<string, aws.resources.AwsSsmParameter> aws_ssm_parameter = 770 [json_name = "aws_ssm_parameter"];
+
+    map<string, aws.resources.AwsSsmPatchBaseline> aws_ssm_patch_baseline = 771 [json_name = "aws_ssm_patch_baseline"];
+
+    map<string, aws.resources.AwsSsmPatchGroup> aws_ssm_patch_group = 772 [json_name = "aws_ssm_patch_group"];
+
+    map<string, aws.resources.AwsSsmResourceDataSync> aws_ssm_resource_data_sync = 773 [json_name = "aws_ssm_resource_data_sync"];
+
+    map<string, aws.resources.AwsSsoadminAccountAssignment> aws_ssoadmin_account_assignment = 774 [json_name = "aws_ssoadmin_account_assignment"];
+
+    map<string, aws.resources.AwsSsoadminManagedPolicyAttachment> aws_ssoadmin_managed_policy_attachment = 775 [json_name = "aws_ssoadmin_managed_policy_attachment"];
+
+    map<string, aws.resources.AwsSsoadminPermissionSet> aws_ssoadmin_permission_set = 776 [json_name = "aws_ssoadmin_permission_set"];
+
+    map<string, aws.resources.AwsSsoadminPermissionSetInlinePolicy> aws_ssoadmin_permission_set_inline_policy = 777 [json_name = "aws_ssoadmin_permission_set_inline_policy"];
+
+    map<string, aws.resources.AwsStoragegatewayCache> aws_storagegateway_cache = 778 [json_name = "aws_storagegateway_cache"];
+
+    map<string, aws.resources.AwsStoragegatewayCachedIscsiVolume> aws_storagegateway_cached_iscsi_volume = 779 [json_name = "aws_storagegateway_cached_iscsi_volume"];
+
+    map<string, aws.resources.AwsStoragegatewayFileSystemAssociation> aws_storagegateway_file_system_association = 780 [json_name = "aws_storagegateway_file_system_association"];
+
+    map<string, aws.resources.AwsStoragegatewayGateway> aws_storagegateway_gateway = 781 [json_name = "aws_storagegateway_gateway"];
+
+    map<string, aws.resources.AwsStoragegatewayNfsFileShare> aws_storagegateway_nfs_file_share = 782 [json_name = "aws_storagegateway_nfs_file_share"];
+
+    map<string, aws.resources.AwsStoragegatewaySmbFileShare> aws_storagegateway_smb_file_share = 783 [json_name = "aws_storagegateway_smb_file_share"];
+
+    map<string, aws.resources.AwsStoragegatewayStoredIscsiVolume> aws_storagegateway_stored_iscsi_volume = 784 [json_name = "aws_storagegateway_stored_iscsi_volume"];
+
+    map<string, aws.resources.AwsStoragegatewayTapePool> aws_storagegateway_tape_pool = 785 [json_name = "aws_storagegateway_tape_pool"];
+
+    map<string, aws.resources.AwsStoragegatewayUploadBuffer> aws_storagegateway_upload_buffer = 786 [json_name = "aws_storagegateway_upload_buffer"];
+
+    map<string, aws.resources.AwsStoragegatewayWorkingStorage> aws_storagegateway_working_storage = 787 [json_name = "aws_storagegateway_working_storage"];
+
+    map<string, aws.resources.AwsSubnet> aws_subnet = 788 [json_name = "aws_subnet"];
+
+    map<string, aws.resources.AwsSwfDomain> aws_swf_domain = 789 [json_name = "aws_swf_domain"];
+
+    map<string, aws.resources.AwsSyntheticsCanary> aws_synthetics_canary = 790 [json_name = "aws_synthetics_canary"];
+
+    map<string, aws.resources.AwsTimestreamwriteDatabase> aws_timestreamwrite_database = 791 [json_name = "aws_timestreamwrite_database"];
+
+    map<string, aws.resources.AwsTimestreamwriteTable> aws_timestreamwrite_table = 792 [json_name = "aws_timestreamwrite_table"];
+
+    map<string, aws.resources.AwsTransferAccess> aws_transfer_access = 793 [json_name = "aws_transfer_access"];
+
+    map<string, aws.resources.AwsTransferServer> aws_transfer_server = 794 [json_name = "aws_transfer_server"];
+
+    map<string, aws.resources.AwsTransferSshKey> aws_transfer_ssh_key = 795 [json_name = "aws_transfer_ssh_key"];
+
+    map<string, aws.resources.AwsTransferUser> aws_transfer_user = 796 [json_name = "aws_transfer_user"];
+
+    map<string, aws.resources.AwsVolumeAttachment> aws_volume_attachment = 797 [json_name = "aws_volume_attachment"];
+
+    map<string, aws.resources.AwsVpc> aws_vpc = 798 [json_name = "aws_vpc"];
+
+    map<string, aws.resources.AwsVpcDhcpOptions> aws_vpc_dhcp_options = 799 [json_name = "aws_vpc_dhcp_options"];
+
+    map<string, aws.resources.AwsVpcDhcpOptionsAssociation> aws_vpc_dhcp_options_association = 800 [json_name = "aws_vpc_dhcp_options_association"];
+
+    map<string, aws.resources.AwsVpcEndpoint> aws_vpc_endpoint = 801 [json_name = "aws_vpc_endpoint"];
+
+    map<string, aws.resources.AwsVpcEndpointConnectionNotification> aws_vpc_endpoint_connection_notification = 802 [json_name = "aws_vpc_endpoint_connection_notification"];
+
+    map<string, aws.resources.AwsVpcEndpointRouteTableAssociation> aws_vpc_endpoint_route_table_association = 803 [json_name = "aws_vpc_endpoint_route_table_association"];
+
+    map<string, aws.resources.AwsVpcEndpointService> aws_vpc_endpoint_service = 804 [json_name = "aws_vpc_endpoint_service"];
+
+    map<string, aws.resources.AwsVpcEndpointServiceAllowedPrincipal> aws_vpc_endpoint_service_allowed_principal = 805 [json_name = "aws_vpc_endpoint_service_allowed_principal"];
+
+    map<string, aws.resources.AwsVpcEndpointSubnetAssociation> aws_vpc_endpoint_subnet_association = 806 [json_name = "aws_vpc_endpoint_subnet_association"];
+
+    map<string, aws.resources.AwsVpcIpam> aws_vpc_ipam = 807 [json_name = "aws_vpc_ipam"];
+
+    map<string, aws.resources.AwsVpcIpamPool> aws_vpc_ipam_pool = 808 [json_name = "aws_vpc_ipam_pool"];
+
+    map<string, aws.resources.AwsVpcIpamPoolCidr> aws_vpc_ipam_pool_cidr = 809 [json_name = "aws_vpc_ipam_pool_cidr"];
+
+    map<string, aws.resources.AwsVpcIpamPoolCidrAllocation> aws_vpc_ipam_pool_cidr_allocation = 810 [json_name = "aws_vpc_ipam_pool_cidr_allocation"];
+
+    map<string, aws.resources.AwsVpcIpamScope> aws_vpc_ipam_scope = 811 [json_name = "aws_vpc_ipam_scope"];
+
+    map<string, aws.resources.AwsVpcIpv4CidrBlockAssociation> aws_vpc_ipv4_cidr_block_association = 812 [json_name = "aws_vpc_ipv4_cidr_block_association"];
+
+    map<string, aws.resources.AwsVpcIpv6CidrBlockAssociation> aws_vpc_ipv6_cidr_block_association = 813 [json_name = "aws_vpc_ipv6_cidr_block_association"];
+
+    map<string, aws.resources.AwsVpcPeeringConnection> aws_vpc_peering_connection = 814 [json_name = "aws_vpc_peering_connection"];
+
+    map<string, aws.resources.AwsVpcPeeringConnectionAccepter> aws_vpc_peering_connection_accepter = 815 [json_name = "aws_vpc_peering_connection_accepter"];
+
+    map<string, aws.resources.AwsVpcPeeringConnectionOptions> aws_vpc_peering_connection_options = 816 [json_name = "aws_vpc_peering_connection_options"];
+
+    map<string, aws.resources.AwsVpnConnection> aws_vpn_connection = 817 [json_name = "aws_vpn_connection"];
+
+    map<string, aws.resources.AwsVpnConnectionRoute> aws_vpn_connection_route = 818 [json_name = "aws_vpn_connection_route"];
+
+    map<string, aws.resources.AwsVpnGateway> aws_vpn_gateway = 819 [json_name = "aws_vpn_gateway"];
+
+    map<string, aws.resources.AwsVpnGatewayAttachment> aws_vpn_gateway_attachment = 820 [json_name = "aws_vpn_gateway_attachment"];
+
+    map<string, aws.resources.AwsVpnGatewayRoutePropagation> aws_vpn_gateway_route_propagation = 821 [json_name = "aws_vpn_gateway_route_propagation"];
+
+    map<string, aws.resources.AwsWafByteMatchSet> aws_waf_byte_match_set = 822 [json_name = "aws_waf_byte_match_set"];
+
+    map<string, aws.resources.AwsWafGeoMatchSet> aws_waf_geo_match_set = 823 [json_name = "aws_waf_geo_match_set"];
+
+    map<string, aws.resources.AwsWafIpset> aws_waf_ipset = 824 [json_name = "aws_waf_ipset"];
+
+    map<string, aws.resources.AwsWafRateBasedRule> aws_waf_rate_based_rule = 825 [json_name = "aws_waf_rate_based_rule"];
+
+    map<string, aws.resources.AwsWafRegexMatchSet> aws_waf_regex_match_set = 826 [json_name = "aws_waf_regex_match_set"];
+
+    map<string, aws.resources.AwsWafRegexPatternSet> aws_waf_regex_pattern_set = 827 [json_name = "aws_waf_regex_pattern_set"];
+
+    map<string, aws.resources.AwsWafRule> aws_waf_rule = 828 [json_name = "aws_waf_rule"];
+
+    map<string, aws.resources.AwsWafRuleGroup> aws_waf_rule_group = 829 [json_name = "aws_waf_rule_group"];
+
+    map<string, aws.resources.AwsWafSizeConstraintSet> aws_waf_size_constraint_set = 830 [json_name = "aws_waf_size_constraint_set"];
+
+    map<string, aws.resources.AwsWafSqlInjectionMatchSet> aws_waf_sql_injection_match_set = 831 [json_name = "aws_waf_sql_injection_match_set"];
+
+    map<string, aws.resources.AwsWafWebAcl> aws_waf_web_acl = 832 [json_name = "aws_waf_web_acl"];
+
+    map<string, aws.resources.AwsWafXssMatchSet> aws_waf_xss_match_set = 833 [json_name = "aws_waf_xss_match_set"];
+
+    map<string, aws.resources.AwsWafregionalByteMatchSet> aws_wafregional_byte_match_set = 834 [json_name = "aws_wafregional_byte_match_set"];
+
+    map<string, aws.resources.AwsWafregionalGeoMatchSet> aws_wafregional_geo_match_set = 835 [json_name = "aws_wafregional_geo_match_set"];
+
+    map<string, aws.resources.AwsWafregionalIpset> aws_wafregional_ipset = 836 [json_name = "aws_wafregional_ipset"];
+
+    map<string, aws.resources.AwsWafregionalRateBasedRule> aws_wafregional_rate_based_rule = 837 [json_name = "aws_wafregional_rate_based_rule"];
+
+    map<string, aws.resources.AwsWafregionalRegexMatchSet> aws_wafregional_regex_match_set = 838 [json_name = "aws_wafregional_regex_match_set"];
+
+    map<string, aws.resources.AwsWafregionalRegexPatternSet> aws_wafregional_regex_pattern_set = 839 [json_name = "aws_wafregional_regex_pattern_set"];
+
+    map<string, aws.resources.AwsWafregionalRule> aws_wafregional_rule = 840 [json_name = "aws_wafregional_rule"];
+
+    map<string, aws.resources.AwsWafregionalRuleGroup> aws_wafregional_rule_group = 841 [json_name = "aws_wafregional_rule_group"];
+
+    map<string, aws.resources.AwsWafregionalSizeConstraintSet> aws_wafregional_size_constraint_set = 842 [json_name = "aws_wafregional_size_constraint_set"];
+
+    map<string, aws.resources.AwsWafregionalSqlInjectionMatchSet> aws_wafregional_sql_injection_match_set = 843 [json_name = "aws_wafregional_sql_injection_match_set"];
+
+    map<string, aws.resources.AwsWafregionalWebAcl> aws_wafregional_web_acl = 844 [json_name = "aws_wafregional_web_acl"];
+
+    map<string, aws.resources.AwsWafregionalWebAclAssociation> aws_wafregional_web_acl_association = 845 [json_name = "aws_wafregional_web_acl_association"];
+
+    map<string, aws.resources.AwsWafregionalXssMatchSet> aws_wafregional_xss_match_set = 846 [json_name = "aws_wafregional_xss_match_set"];
+
+    map<string, aws.resources.AwsWafv2IpSet> aws_wafv2_ip_set = 847 [json_name = "aws_wafv2_ip_set"];
+
+    map<string, aws.resources.AwsWafv2RegexPatternSet> aws_wafv2_regex_pattern_set = 848 [json_name = "aws_wafv2_regex_pattern_set"];
+
+    map<string, aws.resources.AwsWafv2RuleGroup> aws_wafv2_rule_group = 849 [json_name = "aws_wafv2_rule_group"];
+
+    map<string, aws.resources.AwsWafv2WebAcl> aws_wafv2_web_acl = 850 [json_name = "aws_wafv2_web_acl"];
+
+    map<string, aws.resources.AwsWafv2WebAclAssociation> aws_wafv2_web_acl_association = 851 [json_name = "aws_wafv2_web_acl_association"];
+
+    map<string, aws.resources.AwsWafv2WebAclLoggingConfiguration> aws_wafv2_web_acl_logging_configuration = 852 [json_name = "aws_wafv2_web_acl_logging_configuration"];
+
+    map<string, aws.resources.AwsWorklinkFleet> aws_worklink_fleet = 853 [json_name = "aws_worklink_fleet"];
+
+    map<string, aws.resources.AwsWorklinkWebsiteCertificateAuthorityAssociation> aws_worklink_website_certificate_authority_association = 854 [json_name = "aws_worklink_website_certificate_authority_association"];
+
+    map<string, aws.resources.AwsWorkspacesDirectory> aws_workspaces_directory = 855 [json_name = "aws_workspaces_directory"];
+
+    map<string, aws.resources.AwsWorkspacesIpGroup> aws_workspaces_ip_group = 856 [json_name = "aws_workspaces_ip_group"];
+
+    map<string, aws.resources.AwsWorkspacesWorkspace> aws_workspaces_workspace = 857 [json_name = "aws_workspaces_workspace"];
+
+    map<string, aws.resources.AwsXrayEncryptionConfig> aws_xray_encryption_config = 858 [json_name = "aws_xray_encryption_config"];
+
+    map<string, aws.resources.AwsXrayGroup> aws_xray_group = 859 [json_name = "aws_xray_group"];
+
+    map<string, aws.resources.AwsXraySamplingRule> aws_xray_sampling_rule = 860 [json_name = "aws_xray_sampling_rule"];
+
+    map<string, tfe.resources.TfeAgentPool> tfe_agent_pool = 861 [json_name = "tfe_agent_pool"];
+
+    map<string, tfe.resources.TfeAgentToken> tfe_agent_token = 862 [json_name = "tfe_agent_token"];
+
+    map<string, tfe.resources.TfeNotificationConfiguration> tfe_notification_configuration = 863 [json_name = "tfe_notification_configuration"];
+
+    map<string, tfe.resources.TfeOauthClient> tfe_oauth_client = 864 [json_name = "tfe_oauth_client"];
+
+    map<string, tfe.resources.TfeOrganization> tfe_organization = 865 [json_name = "tfe_organization"];
+
+    map<string, tfe.resources.TfeOrganizationMembership> tfe_organization_membership = 866 [json_name = "tfe_organization_membership"];
+
+    map<string, tfe.resources.TfeOrganizationToken> tfe_organization_token = 867 [json_name = "tfe_organization_token"];
+
+    map<string, tfe.resources.TfePolicySet> tfe_policy_set = 868 [json_name = "tfe_policy_set"];
+
+    map<string, tfe.resources.TfePolicySetParameter> tfe_policy_set_parameter = 869 [json_name = "tfe_policy_set_parameter"];
+
+    map<string, tfe.resources.TfeRegistryModule> tfe_registry_module = 870 [json_name = "tfe_registry_module"];
+
+    map<string, tfe.resources.TfeRunTrigger> tfe_run_trigger = 871 [json_name = "tfe_run_trigger"];
+
+    map<string, tfe.resources.TfeSentinelPolicy> tfe_sentinel_policy = 872 [json_name = "tfe_sentinel_policy"];
+
+    map<string, tfe.resources.TfeSshKey> tfe_ssh_key = 873 [json_name = "tfe_ssh_key"];
+
+    map<string, tfe.resources.TfeTeam> tfe_team = 874 [json_name = "tfe_team"];
+
+    map<string, tfe.resources.TfeTeamAccess> tfe_team_access = 875 [json_name = "tfe_team_access"];
+
+    map<string, tfe.resources.TfeTeamMember> tfe_team_member = 876 [json_name = "tfe_team_member"];
+
+    map<string, tfe.resources.TfeTeamMembers> tfe_team_members = 877 [json_name = "tfe_team_members"];
+
+    map<string, tfe.resources.TfeTeamOrganizationMember> tfe_team_organization_member = 878 [json_name = "tfe_team_organization_member"];
+
+    map<string, tfe.resources.TfeTeamToken> tfe_team_token = 879 [json_name = "tfe_team_token"];
+
+    map<string, tfe.resources.TfeVariable> tfe_variable = 880 [json_name = "tfe_variable"];
+
+    map<string, tfe.resources.TfeWorkspace> tfe_workspace = 881 [json_name = "tfe_workspace"];
   }
 
   message Datasources {
-    map<string, tfe.data.TfeAgentPool> tfe_agent_pool = 1 [json_name = "tfe_agent_pool"];
+    map<string, aws.data.AwsAcmCertificate> aws_acm_certificate = 1 [json_name = "aws_acm_certificate"];
 
-    map<string, tfe.data.TfeIpRanges> tfe_ip_ranges = 2 [json_name = "tfe_ip_ranges"];
+    map<string, aws.data.AwsAcmpcaCertificate> aws_acmpca_certificate = 2 [json_name = "aws_acmpca_certificate"];
 
-    map<string, tfe.data.TfeOauthClient> tfe_oauth_client = 3 [json_name = "tfe_oauth_client"];
+    map<string, aws.data.AwsAcmpcaCertificateAuthority> aws_acmpca_certificate_authority = 3 [json_name = "aws_acmpca_certificate_authority"];
 
-    map<string, tfe.data.TfeOrganization> tfe_organization = 4 [json_name = "tfe_organization"];
+    map<string, aws.data.AwsAlb> aws_alb = 4 [json_name = "aws_alb"];
 
-    map<string, tfe.data.TfeOrganizationMembership> tfe_organization_membership = 5 [json_name = "tfe_organization_membership"];
+    map<string, aws.data.AwsAlbListener> aws_alb_listener = 5 [json_name = "aws_alb_listener"];
 
-    map<string, tfe.data.TfeOrganizations> tfe_organizations = 6 [json_name = "tfe_organizations"];
+    map<string, aws.data.AwsAlbTargetGroup> aws_alb_target_group = 6 [json_name = "aws_alb_target_group"];
 
-    map<string, tfe.data.TfeOutputs> tfe_outputs = 7 [json_name = "tfe_outputs"];
+    map<string, aws.data.AwsAmi> aws_ami = 7 [json_name = "aws_ami"];
 
-    map<string, tfe.data.TfeSlug> tfe_slug = 8 [json_name = "tfe_slug"];
+    map<string, aws.data.AwsAmiIds> aws_ami_ids = 8 [json_name = "aws_ami_ids"];
 
-    map<string, tfe.data.TfeSshKey> tfe_ssh_key = 9 [json_name = "tfe_ssh_key"];
+    map<string, aws.data.AwsApiGatewayApiKey> aws_api_gateway_api_key = 9 [json_name = "aws_api_gateway_api_key"];
 
-    map<string, tfe.data.TfeTeam> tfe_team = 10 [json_name = "tfe_team"];
+    map<string, aws.data.AwsApiGatewayDomainName> aws_api_gateway_domain_name = 10 [json_name = "aws_api_gateway_domain_name"];
 
-    map<string, tfe.data.TfeTeamAccess> tfe_team_access = 11 [json_name = "tfe_team_access"];
+    map<string, aws.data.AwsApiGatewayResource> aws_api_gateway_resource = 11 [json_name = "aws_api_gateway_resource"];
 
-    map<string, tfe.data.TfeVariables> tfe_variables = 12 [json_name = "tfe_variables"];
+    map<string, aws.data.AwsApiGatewayRestApi> aws_api_gateway_rest_api = 12 [json_name = "aws_api_gateway_rest_api"];
 
-    map<string, tfe.data.TfeWorkspace> tfe_workspace = 13 [json_name = "tfe_workspace"];
+    map<string, aws.data.AwsApiGatewayVpcLink> aws_api_gateway_vpc_link = 13 [json_name = "aws_api_gateway_vpc_link"];
 
-    map<string, tfe.data.TfeWorkspaceIds> tfe_workspace_ids = 14 [json_name = "tfe_workspace_ids"];
+    map<string, aws.data.AwsApigatewayv2Api> aws_apigatewayv2_api = 14 [json_name = "aws_apigatewayv2_api"];
+
+    map<string, aws.data.AwsApigatewayv2Apis> aws_apigatewayv2_apis = 15 [json_name = "aws_apigatewayv2_apis"];
+
+    map<string, aws.data.AwsAppmeshMesh> aws_appmesh_mesh = 16 [json_name = "aws_appmesh_mesh"];
+
+    map<string, aws.data.AwsAppmeshVirtualService> aws_appmesh_virtual_service = 17 [json_name = "aws_appmesh_virtual_service"];
+
+    map<string, aws.data.AwsArn> aws_arn = 18 [json_name = "aws_arn"];
+
+    map<string, aws.data.AwsAutoscalingGroup> aws_autoscaling_group = 19 [json_name = "aws_autoscaling_group"];
+
+    map<string, aws.data.AwsAutoscalingGroups> aws_autoscaling_groups = 20 [json_name = "aws_autoscaling_groups"];
+
+    map<string, aws.data.AwsAvailabilityZone> aws_availability_zone = 21 [json_name = "aws_availability_zone"];
+
+    map<string, aws.data.AwsAvailabilityZones> aws_availability_zones = 22 [json_name = "aws_availability_zones"];
+
+    map<string, aws.data.AwsBackupPlan> aws_backup_plan = 23 [json_name = "aws_backup_plan"];
+
+    map<string, aws.data.AwsBackupSelection> aws_backup_selection = 24 [json_name = "aws_backup_selection"];
+
+    map<string, aws.data.AwsBackupVault> aws_backup_vault = 25 [json_name = "aws_backup_vault"];
+
+    map<string, aws.data.AwsBatchComputeEnvironment> aws_batch_compute_environment = 26 [json_name = "aws_batch_compute_environment"];
+
+    map<string, aws.data.AwsBatchJobQueue> aws_batch_job_queue = 27 [json_name = "aws_batch_job_queue"];
+
+    map<string, aws.data.AwsBillingServiceAccount> aws_billing_service_account = 28 [json_name = "aws_billing_service_account"];
+
+    map<string, aws.data.AwsCallerIdentity> aws_caller_identity = 29 [json_name = "aws_caller_identity"];
+
+    map<string, aws.data.AwsCanonicalUserId> aws_canonical_user_id = 30 [json_name = "aws_canonical_user_id"];
+
+    map<string, aws.data.AwsCloudcontrolapiResource> aws_cloudcontrolapi_resource = 31 [json_name = "aws_cloudcontrolapi_resource"];
+
+    map<string, aws.data.AwsCloudformationExport> aws_cloudformation_export = 32 [json_name = "aws_cloudformation_export"];
+
+    map<string, aws.data.AwsCloudformationStack> aws_cloudformation_stack = 33 [json_name = "aws_cloudformation_stack"];
+
+    map<string, aws.data.AwsCloudformationType> aws_cloudformation_type = 34 [json_name = "aws_cloudformation_type"];
+
+    map<string, aws.data.AwsCloudfrontCachePolicy> aws_cloudfront_cache_policy = 35 [json_name = "aws_cloudfront_cache_policy"];
+
+    map<string, aws.data.AwsCloudfrontDistribution> aws_cloudfront_distribution = 36 [json_name = "aws_cloudfront_distribution"];
+
+    map<string, aws.data.AwsCloudfrontFunction> aws_cloudfront_function = 37 [json_name = "aws_cloudfront_function"];
+
+    map<string, aws.data.AwsCloudfrontLogDeliveryCanonicalUserId> aws_cloudfront_log_delivery_canonical_user_id = 38 [json_name = "aws_cloudfront_log_delivery_canonical_user_id"];
+
+    map<string, aws.data.AwsCloudfrontOriginRequestPolicy> aws_cloudfront_origin_request_policy = 39 [json_name = "aws_cloudfront_origin_request_policy"];
+
+    map<string, aws.data.AwsCloudfrontResponseHeadersPolicy> aws_cloudfront_response_headers_policy = 40 [json_name = "aws_cloudfront_response_headers_policy"];
+
+    map<string, aws.data.AwsCloudhsmV2Cluster> aws_cloudhsm_v2_cluster = 41 [json_name = "aws_cloudhsm_v2_cluster"];
+
+    map<string, aws.data.AwsCloudtrailServiceAccount> aws_cloudtrail_service_account = 42 [json_name = "aws_cloudtrail_service_account"];
+
+    map<string, aws.data.AwsCloudwatchEventConnection> aws_cloudwatch_event_connection = 43 [json_name = "aws_cloudwatch_event_connection"];
+
+    map<string, aws.data.AwsCloudwatchEventSource> aws_cloudwatch_event_source = 44 [json_name = "aws_cloudwatch_event_source"];
+
+    map<string, aws.data.AwsCloudwatchLogGroup> aws_cloudwatch_log_group = 45 [json_name = "aws_cloudwatch_log_group"];
+
+    map<string, aws.data.AwsCloudwatchLogGroups> aws_cloudwatch_log_groups = 46 [json_name = "aws_cloudwatch_log_groups"];
+
+    map<string, aws.data.AwsCodeartifactAuthorizationToken> aws_codeartifact_authorization_token = 47 [json_name = "aws_codeartifact_authorization_token"];
+
+    map<string, aws.data.AwsCodeartifactRepositoryEndpoint> aws_codeartifact_repository_endpoint = 48 [json_name = "aws_codeartifact_repository_endpoint"];
+
+    map<string, aws.data.AwsCodecommitApprovalRuleTemplate> aws_codecommit_approval_rule_template = 49 [json_name = "aws_codecommit_approval_rule_template"];
+
+    map<string, aws.data.AwsCodecommitRepository> aws_codecommit_repository = 50 [json_name = "aws_codecommit_repository"];
+
+    map<string, aws.data.AwsCodestarconnectionsConnection> aws_codestarconnections_connection = 51 [json_name = "aws_codestarconnections_connection"];
+
+    map<string, aws.data.AwsCognitoUserPools> aws_cognito_user_pools = 52 [json_name = "aws_cognito_user_pools"];
+
+    map<string, aws.data.AwsConnectBotAssociation> aws_connect_bot_association = 53 [json_name = "aws_connect_bot_association"];
+
+    map<string, aws.data.AwsConnectContactFlow> aws_connect_contact_flow = 54 [json_name = "aws_connect_contact_flow"];
+
+    map<string, aws.data.AwsConnectHoursOfOperation> aws_connect_hours_of_operation = 55 [json_name = "aws_connect_hours_of_operation"];
+
+    map<string, aws.data.AwsConnectInstance> aws_connect_instance = 56 [json_name = "aws_connect_instance"];
+
+    map<string, aws.data.AwsConnectLambdaFunctionAssociation> aws_connect_lambda_function_association = 57 [json_name = "aws_connect_lambda_function_association"];
+
+    map<string, aws.data.AwsCurReportDefinition> aws_cur_report_definition = 58 [json_name = "aws_cur_report_definition"];
+
+    map<string, aws.data.AwsCustomerGateway> aws_customer_gateway = 59 [json_name = "aws_customer_gateway"];
+
+    map<string, aws.data.AwsDbClusterSnapshot> aws_db_cluster_snapshot = 60 [json_name = "aws_db_cluster_snapshot"];
+
+    map<string, aws.data.AwsDbEventCategories> aws_db_event_categories = 61 [json_name = "aws_db_event_categories"];
+
+    map<string, aws.data.AwsDbInstance> aws_db_instance = 62 [json_name = "aws_db_instance"];
+
+    map<string, aws.data.AwsDbProxy> aws_db_proxy = 63 [json_name = "aws_db_proxy"];
+
+    map<string, aws.data.AwsDbSnapshot> aws_db_snapshot = 64 [json_name = "aws_db_snapshot"];
+
+    map<string, aws.data.AwsDbSubnetGroup> aws_db_subnet_group = 65 [json_name = "aws_db_subnet_group"];
+
+    map<string, aws.data.AwsDefaultTags> aws_default_tags = 66 [json_name = "aws_default_tags"];
+
+    map<string, aws.data.AwsDirectoryServiceDirectory> aws_directory_service_directory = 67 [json_name = "aws_directory_service_directory"];
+
+    map<string, aws.data.AwsDocdbEngineVersion> aws_docdb_engine_version = 68 [json_name = "aws_docdb_engine_version"];
+
+    map<string, aws.data.AwsDocdbOrderableDbInstance> aws_docdb_orderable_db_instance = 69 [json_name = "aws_docdb_orderable_db_instance"];
+
+    map<string, aws.data.AwsDxConnection> aws_dx_connection = 70 [json_name = "aws_dx_connection"];
+
+    map<string, aws.data.AwsDxGateway> aws_dx_gateway = 71 [json_name = "aws_dx_gateway"];
+
+    map<string, aws.data.AwsDxLocation> aws_dx_location = 72 [json_name = "aws_dx_location"];
+
+    map<string, aws.data.AwsDxLocations> aws_dx_locations = 73 [json_name = "aws_dx_locations"];
+
+    map<string, aws.data.AwsDynamodbTable> aws_dynamodb_table = 74 [json_name = "aws_dynamodb_table"];
+
+    map<string, aws.data.AwsEbsDefaultKmsKey> aws_ebs_default_kms_key = 75 [json_name = "aws_ebs_default_kms_key"];
+
+    map<string, aws.data.AwsEbsEncryptionByDefault> aws_ebs_encryption_by_default = 76 [json_name = "aws_ebs_encryption_by_default"];
+
+    map<string, aws.data.AwsEbsSnapshot> aws_ebs_snapshot = 77 [json_name = "aws_ebs_snapshot"];
+
+    map<string, aws.data.AwsEbsSnapshotIds> aws_ebs_snapshot_ids = 78 [json_name = "aws_ebs_snapshot_ids"];
+
+    map<string, aws.data.AwsEbsVolume> aws_ebs_volume = 79 [json_name = "aws_ebs_volume"];
+
+    map<string, aws.data.AwsEbsVolumes> aws_ebs_volumes = 80 [json_name = "aws_ebs_volumes"];
+
+    map<string, aws.data.AwsEc2CoipPool> aws_ec2_coip_pool = 81 [json_name = "aws_ec2_coip_pool"];
+
+    map<string, aws.data.AwsEc2CoipPools> aws_ec2_coip_pools = 82 [json_name = "aws_ec2_coip_pools"];
+
+    map<string, aws.data.AwsEc2Host> aws_ec2_host = 83 [json_name = "aws_ec2_host"];
+
+    map<string, aws.data.AwsEc2InstanceType> aws_ec2_instance_type = 84 [json_name = "aws_ec2_instance_type"];
+
+    map<string, aws.data.AwsEc2InstanceTypeOffering> aws_ec2_instance_type_offering = 85 [json_name = "aws_ec2_instance_type_offering"];
+
+    map<string, aws.data.AwsEc2InstanceTypeOfferings> aws_ec2_instance_type_offerings = 86 [json_name = "aws_ec2_instance_type_offerings"];
+
+    map<string, aws.data.AwsEc2InstanceTypes> aws_ec2_instance_types = 87 [json_name = "aws_ec2_instance_types"];
+
+    map<string, aws.data.AwsEc2LocalGateway> aws_ec2_local_gateway = 88 [json_name = "aws_ec2_local_gateway"];
+
+    map<string, aws.data.AwsEc2LocalGatewayRouteTable> aws_ec2_local_gateway_route_table = 89 [json_name = "aws_ec2_local_gateway_route_table"];
+
+    map<string, aws.data.AwsEc2LocalGatewayRouteTables> aws_ec2_local_gateway_route_tables = 90 [json_name = "aws_ec2_local_gateway_route_tables"];
+
+    map<string, aws.data.AwsEc2LocalGatewayVirtualInterface> aws_ec2_local_gateway_virtual_interface = 91 [json_name = "aws_ec2_local_gateway_virtual_interface"];
+
+    map<string, aws.data.AwsEc2LocalGatewayVirtualInterfaceGroup> aws_ec2_local_gateway_virtual_interface_group = 92 [json_name = "aws_ec2_local_gateway_virtual_interface_group"];
+
+    map<string, aws.data.AwsEc2LocalGatewayVirtualInterfaceGroups> aws_ec2_local_gateway_virtual_interface_groups = 93 [json_name = "aws_ec2_local_gateway_virtual_interface_groups"];
+
+    map<string, aws.data.AwsEc2LocalGateways> aws_ec2_local_gateways = 94 [json_name = "aws_ec2_local_gateways"];
+
+    map<string, aws.data.AwsEc2ManagedPrefixList> aws_ec2_managed_prefix_list = 95 [json_name = "aws_ec2_managed_prefix_list"];
+
+    map<string, aws.data.AwsEc2SpotPrice> aws_ec2_spot_price = 96 [json_name = "aws_ec2_spot_price"];
+
+    map<string, aws.data.AwsEc2TransitGateway> aws_ec2_transit_gateway = 97 [json_name = "aws_ec2_transit_gateway"];
+
+    map<string, aws.data.AwsEc2TransitGatewayDxGatewayAttachment> aws_ec2_transit_gateway_dx_gateway_attachment = 98 [json_name = "aws_ec2_transit_gateway_dx_gateway_attachment"];
+
+    map<string, aws.data.AwsEc2TransitGatewayPeeringAttachment> aws_ec2_transit_gateway_peering_attachment = 99 [json_name = "aws_ec2_transit_gateway_peering_attachment"];
+
+    map<string, aws.data.AwsEc2TransitGatewayRouteTable> aws_ec2_transit_gateway_route_table = 100 [json_name = "aws_ec2_transit_gateway_route_table"];
+
+    map<string, aws.data.AwsEc2TransitGatewayRouteTables> aws_ec2_transit_gateway_route_tables = 101 [json_name = "aws_ec2_transit_gateway_route_tables"];
+
+    map<string, aws.data.AwsEc2TransitGatewayVpcAttachment> aws_ec2_transit_gateway_vpc_attachment = 102 [json_name = "aws_ec2_transit_gateway_vpc_attachment"];
+
+    map<string, aws.data.AwsEc2TransitGatewayVpnAttachment> aws_ec2_transit_gateway_vpn_attachment = 103 [json_name = "aws_ec2_transit_gateway_vpn_attachment"];
+
+    map<string, aws.data.AwsEcrAuthorizationToken> aws_ecr_authorization_token = 104 [json_name = "aws_ecr_authorization_token"];
+
+    map<string, aws.data.AwsEcrImage> aws_ecr_image = 105 [json_name = "aws_ecr_image"];
+
+    map<string, aws.data.AwsEcrRepository> aws_ecr_repository = 106 [json_name = "aws_ecr_repository"];
+
+    map<string, aws.data.AwsEcsCluster> aws_ecs_cluster = 107 [json_name = "aws_ecs_cluster"];
+
+    map<string, aws.data.AwsEcsContainerDefinition> aws_ecs_container_definition = 108 [json_name = "aws_ecs_container_definition"];
+
+    map<string, aws.data.AwsEcsService> aws_ecs_service = 109 [json_name = "aws_ecs_service"];
+
+    map<string, aws.data.AwsEcsTaskDefinition> aws_ecs_task_definition = 110 [json_name = "aws_ecs_task_definition"];
+
+    map<string, aws.data.AwsEfsAccessPoint> aws_efs_access_point = 111 [json_name = "aws_efs_access_point"];
+
+    map<string, aws.data.AwsEfsAccessPoints> aws_efs_access_points = 112 [json_name = "aws_efs_access_points"];
+
+    map<string, aws.data.AwsEfsFileSystem> aws_efs_file_system = 113 [json_name = "aws_efs_file_system"];
+
+    map<string, aws.data.AwsEfsMountTarget> aws_efs_mount_target = 114 [json_name = "aws_efs_mount_target"];
+
+    map<string, aws.data.AwsEip> aws_eip = 115 [json_name = "aws_eip"];
+
+    map<string, aws.data.AwsEksAddon> aws_eks_addon = 116 [json_name = "aws_eks_addon"];
+
+    map<string, aws.data.AwsEksCluster> aws_eks_cluster = 117 [json_name = "aws_eks_cluster"];
+
+    map<string, aws.data.AwsEksClusterAuth> aws_eks_cluster_auth = 118 [json_name = "aws_eks_cluster_auth"];
+
+    map<string, aws.data.AwsEksClusters> aws_eks_clusters = 119 [json_name = "aws_eks_clusters"];
+
+    map<string, aws.data.AwsEksNodeGroup> aws_eks_node_group = 120 [json_name = "aws_eks_node_group"];
+
+    map<string, aws.data.AwsEksNodeGroups> aws_eks_node_groups = 121 [json_name = "aws_eks_node_groups"];
+
+    map<string, aws.data.AwsElasticBeanstalkApplication> aws_elastic_beanstalk_application = 122 [json_name = "aws_elastic_beanstalk_application"];
+
+    map<string, aws.data.AwsElasticBeanstalkHostedZone> aws_elastic_beanstalk_hosted_zone = 123 [json_name = "aws_elastic_beanstalk_hosted_zone"];
+
+    map<string, aws.data.AwsElasticBeanstalkSolutionStack> aws_elastic_beanstalk_solution_stack = 124 [json_name = "aws_elastic_beanstalk_solution_stack"];
+
+    map<string, aws.data.AwsElasticacheCluster> aws_elasticache_cluster = 125 [json_name = "aws_elasticache_cluster"];
+
+    map<string, aws.data.AwsElasticacheReplicationGroup> aws_elasticache_replication_group = 126 [json_name = "aws_elasticache_replication_group"];
+
+    map<string, aws.data.AwsElasticacheUser> aws_elasticache_user = 127 [json_name = "aws_elasticache_user"];
+
+    map<string, aws.data.AwsElasticsearchDomain> aws_elasticsearch_domain = 128 [json_name = "aws_elasticsearch_domain"];
+
+    map<string, aws.data.AwsElb> aws_elb = 129 [json_name = "aws_elb"];
+
+    map<string, aws.data.AwsElbHostedZoneId> aws_elb_hosted_zone_id = 130 [json_name = "aws_elb_hosted_zone_id"];
+
+    map<string, aws.data.AwsElbServiceAccount> aws_elb_service_account = 131 [json_name = "aws_elb_service_account"];
+
+    map<string, aws.data.AwsEmrReleaseLabels> aws_emr_release_labels = 132 [json_name = "aws_emr_release_labels"];
+
+    map<string, aws.data.AwsGlobalacceleratorAccelerator> aws_globalaccelerator_accelerator = 133 [json_name = "aws_globalaccelerator_accelerator"];
+
+    map<string, aws.data.AwsGlueConnection> aws_glue_connection = 134 [json_name = "aws_glue_connection"];
+
+    map<string, aws.data.AwsGlueDataCatalogEncryptionSettings> aws_glue_data_catalog_encryption_settings = 135 [json_name = "aws_glue_data_catalog_encryption_settings"];
+
+    map<string, aws.data.AwsGlueScript> aws_glue_script = 136 [json_name = "aws_glue_script"];
+
+    map<string, aws.data.AwsGuarddutyDetector> aws_guardduty_detector = 137 [json_name = "aws_guardduty_detector"];
+
+    map<string, aws.data.AwsIamAccountAlias> aws_iam_account_alias = 138 [json_name = "aws_iam_account_alias"];
+
+    map<string, aws.data.AwsIamGroup> aws_iam_group = 139 [json_name = "aws_iam_group"];
+
+    map<string, aws.data.AwsIamInstanceProfile> aws_iam_instance_profile = 140 [json_name = "aws_iam_instance_profile"];
+
+    map<string, aws.data.AwsIamPolicy> aws_iam_policy = 141 [json_name = "aws_iam_policy"];
+
+    map<string, aws.data.AwsIamPolicyDocument> aws_iam_policy_document = 142 [json_name = "aws_iam_policy_document"];
+
+    map<string, aws.data.AwsIamRole> aws_iam_role = 143 [json_name = "aws_iam_role"];
+
+    map<string, aws.data.AwsIamRoles> aws_iam_roles = 144 [json_name = "aws_iam_roles"];
+
+    map<string, aws.data.AwsIamServerCertificate> aws_iam_server_certificate = 145 [json_name = "aws_iam_server_certificate"];
+
+    map<string, aws.data.AwsIamSessionContext> aws_iam_session_context = 146 [json_name = "aws_iam_session_context"];
+
+    map<string, aws.data.AwsIamUser> aws_iam_user = 147 [json_name = "aws_iam_user"];
+
+    map<string, aws.data.AwsIamUserSshKey> aws_iam_user_ssh_key = 148 [json_name = "aws_iam_user_ssh_key"];
+
+    map<string, aws.data.AwsIamUsers> aws_iam_users = 149 [json_name = "aws_iam_users"];
+
+    map<string, aws.data.AwsIdentitystoreGroup> aws_identitystore_group = 150 [json_name = "aws_identitystore_group"];
+
+    map<string, aws.data.AwsIdentitystoreUser> aws_identitystore_user = 151 [json_name = "aws_identitystore_user"];
+
+    map<string, aws.data.AwsImagebuilderComponent> aws_imagebuilder_component = 152 [json_name = "aws_imagebuilder_component"];
+
+    map<string, aws.data.AwsImagebuilderDistributionConfiguration> aws_imagebuilder_distribution_configuration = 153 [json_name = "aws_imagebuilder_distribution_configuration"];
+
+    map<string, aws.data.AwsImagebuilderImage> aws_imagebuilder_image = 154 [json_name = "aws_imagebuilder_image"];
+
+    map<string, aws.data.AwsImagebuilderImagePipeline> aws_imagebuilder_image_pipeline = 155 [json_name = "aws_imagebuilder_image_pipeline"];
+
+    map<string, aws.data.AwsImagebuilderImageRecipe> aws_imagebuilder_image_recipe = 156 [json_name = "aws_imagebuilder_image_recipe"];
+
+    map<string, aws.data.AwsImagebuilderImageRecipes> aws_imagebuilder_image_recipes = 157 [json_name = "aws_imagebuilder_image_recipes"];
+
+    map<string, aws.data.AwsImagebuilderInfrastructureConfiguration> aws_imagebuilder_infrastructure_configuration = 158 [json_name = "aws_imagebuilder_infrastructure_configuration"];
+
+    map<string, aws.data.AwsInspectorRulesPackages> aws_inspector_rules_packages = 159 [json_name = "aws_inspector_rules_packages"];
+
+    map<string, aws.data.AwsInstance> aws_instance = 160 [json_name = "aws_instance"];
+
+    map<string, aws.data.AwsInstances> aws_instances = 161 [json_name = "aws_instances"];
+
+    map<string, aws.data.AwsInternetGateway> aws_internet_gateway = 162 [json_name = "aws_internet_gateway"];
+
+    map<string, aws.data.AwsIotEndpoint> aws_iot_endpoint = 163 [json_name = "aws_iot_endpoint"];
+
+    map<string, aws.data.AwsIpRanges> aws_ip_ranges = 164 [json_name = "aws_ip_ranges"];
+
+    map<string, aws.data.AwsKeyPair> aws_key_pair = 165 [json_name = "aws_key_pair"];
+
+    map<string, aws.data.AwsKinesisFirehoseDeliveryStream> aws_kinesis_firehose_delivery_stream = 166 [json_name = "aws_kinesis_firehose_delivery_stream"];
+
+    map<string, aws.data.AwsKinesisStream> aws_kinesis_stream = 167 [json_name = "aws_kinesis_stream"];
+
+    map<string, aws.data.AwsKinesisStreamConsumer> aws_kinesis_stream_consumer = 168 [json_name = "aws_kinesis_stream_consumer"];
+
+    map<string, aws.data.AwsKmsAlias> aws_kms_alias = 169 [json_name = "aws_kms_alias"];
+
+    map<string, aws.data.AwsKmsCiphertext> aws_kms_ciphertext = 170 [json_name = "aws_kms_ciphertext"];
+
+    map<string, aws.data.AwsKmsKey> aws_kms_key = 171 [json_name = "aws_kms_key"];
+
+    map<string, aws.data.AwsKmsPublicKey> aws_kms_public_key = 172 [json_name = "aws_kms_public_key"];
+
+    map<string, aws.data.AwsKmsSecret> aws_kms_secret = 173 [json_name = "aws_kms_secret"];
+
+    map<string, aws.data.AwsKmsSecrets> aws_kms_secrets = 174 [json_name = "aws_kms_secrets"];
+
+    map<string, aws.data.AwsLakeformationDataLakeSettings> aws_lakeformation_data_lake_settings = 175 [json_name = "aws_lakeformation_data_lake_settings"];
+
+    map<string, aws.data.AwsLakeformationPermissions> aws_lakeformation_permissions = 176 [json_name = "aws_lakeformation_permissions"];
+
+    map<string, aws.data.AwsLakeformationResource> aws_lakeformation_resource = 177 [json_name = "aws_lakeformation_resource"];
+
+    map<string, aws.data.AwsLambdaAlias> aws_lambda_alias = 178 [json_name = "aws_lambda_alias"];
+
+    map<string, aws.data.AwsLambdaCodeSigningConfig> aws_lambda_code_signing_config = 179 [json_name = "aws_lambda_code_signing_config"];
+
+    map<string, aws.data.AwsLambdaFunction> aws_lambda_function = 180 [json_name = "aws_lambda_function"];
+
+    map<string, aws.data.AwsLambdaInvocation> aws_lambda_invocation = 181 [json_name = "aws_lambda_invocation"];
+
+    map<string, aws.data.AwsLambdaLayerVersion> aws_lambda_layer_version = 182 [json_name = "aws_lambda_layer_version"];
+
+    map<string, aws.data.AwsLaunchConfiguration> aws_launch_configuration = 183 [json_name = "aws_launch_configuration"];
+
+    map<string, aws.data.AwsLaunchTemplate> aws_launch_template = 184 [json_name = "aws_launch_template"];
+
+    map<string, aws.data.AwsLb> aws_lb = 185 [json_name = "aws_lb"];
+
+    map<string, aws.data.AwsLbListener> aws_lb_listener = 186 [json_name = "aws_lb_listener"];
+
+    map<string, aws.data.AwsLbTargetGroup> aws_lb_target_group = 187 [json_name = "aws_lb_target_group"];
+
+    map<string, aws.data.AwsLexBot> aws_lex_bot = 188 [json_name = "aws_lex_bot"];
+
+    map<string, aws.data.AwsLexBotAlias> aws_lex_bot_alias = 189 [json_name = "aws_lex_bot_alias"];
+
+    map<string, aws.data.AwsLexIntent> aws_lex_intent = 190 [json_name = "aws_lex_intent"];
+
+    map<string, aws.data.AwsLexSlotType> aws_lex_slot_type = 191 [json_name = "aws_lex_slot_type"];
+
+    map<string, aws.data.AwsMqBroker> aws_mq_broker = 192 [json_name = "aws_mq_broker"];
+
+    map<string, aws.data.AwsMskBrokerNodes> aws_msk_broker_nodes = 193 [json_name = "aws_msk_broker_nodes"];
+
+    map<string, aws.data.AwsMskCluster> aws_msk_cluster = 194 [json_name = "aws_msk_cluster"];
+
+    map<string, aws.data.AwsMskConfiguration> aws_msk_configuration = 195 [json_name = "aws_msk_configuration"];
+
+    map<string, aws.data.AwsMskKafkaVersion> aws_msk_kafka_version = 196 [json_name = "aws_msk_kafka_version"];
+
+    map<string, aws.data.AwsNatGateway> aws_nat_gateway = 197 [json_name = "aws_nat_gateway"];
+
+    map<string, aws.data.AwsNeptuneEngineVersion> aws_neptune_engine_version = 198 [json_name = "aws_neptune_engine_version"];
+
+    map<string, aws.data.AwsNeptuneOrderableDbInstance> aws_neptune_orderable_db_instance = 199 [json_name = "aws_neptune_orderable_db_instance"];
+
+    map<string, aws.data.AwsNetworkAcls> aws_network_acls = 200 [json_name = "aws_network_acls"];
+
+    map<string, aws.data.AwsNetworkInterface> aws_network_interface = 201 [json_name = "aws_network_interface"];
+
+    map<string, aws.data.AwsNetworkInterfaces> aws_network_interfaces = 202 [json_name = "aws_network_interfaces"];
+
+    map<string, aws.data.AwsOrganizationsDelegatedAdministrators> aws_organizations_delegated_administrators = 203 [json_name = "aws_organizations_delegated_administrators"];
+
+    map<string, aws.data.AwsOrganizationsDelegatedServices> aws_organizations_delegated_services = 204 [json_name = "aws_organizations_delegated_services"];
+
+    map<string, aws.data.AwsOrganizationsOrganization> aws_organizations_organization = 205 [json_name = "aws_organizations_organization"];
+
+    map<string, aws.data.AwsOrganizationsOrganizationalUnits> aws_organizations_organizational_units = 206 [json_name = "aws_organizations_organizational_units"];
+
+    map<string, aws.data.AwsOutpostsOutpost> aws_outposts_outpost = 207 [json_name = "aws_outposts_outpost"];
+
+    map<string, aws.data.AwsOutpostsOutpostInstanceType> aws_outposts_outpost_instance_type = 208 [json_name = "aws_outposts_outpost_instance_type"];
+
+    map<string, aws.data.AwsOutpostsOutpostInstanceTypes> aws_outposts_outpost_instance_types = 209 [json_name = "aws_outposts_outpost_instance_types"];
+
+    map<string, aws.data.AwsOutpostsOutposts> aws_outposts_outposts = 210 [json_name = "aws_outposts_outposts"];
+
+    map<string, aws.data.AwsOutpostsSite> aws_outposts_site = 211 [json_name = "aws_outposts_site"];
+
+    map<string, aws.data.AwsOutpostsSites> aws_outposts_sites = 212 [json_name = "aws_outposts_sites"];
+
+    map<string, aws.data.AwsPartition> aws_partition = 213 [json_name = "aws_partition"];
+
+    map<string, aws.data.AwsPrefixList> aws_prefix_list = 214 [json_name = "aws_prefix_list"];
+
+    map<string, aws.data.AwsPricingProduct> aws_pricing_product = 215 [json_name = "aws_pricing_product"];
+
+    map<string, aws.data.AwsQldbLedger> aws_qldb_ledger = 216 [json_name = "aws_qldb_ledger"];
+
+    map<string, aws.data.AwsRamResourceShare> aws_ram_resource_share = 217 [json_name = "aws_ram_resource_share"];
+
+    map<string, aws.data.AwsRdsCertificate> aws_rds_certificate = 218 [json_name = "aws_rds_certificate"];
+
+    map<string, aws.data.AwsRdsCluster> aws_rds_cluster = 219 [json_name = "aws_rds_cluster"];
+
+    map<string, aws.data.AwsRdsEngineVersion> aws_rds_engine_version = 220 [json_name = "aws_rds_engine_version"];
+
+    map<string, aws.data.AwsRdsOrderableDbInstance> aws_rds_orderable_db_instance = 221 [json_name = "aws_rds_orderable_db_instance"];
+
+    map<string, aws.data.AwsRedshiftCluster> aws_redshift_cluster = 222 [json_name = "aws_redshift_cluster"];
+
+    map<string, aws.data.AwsRedshiftOrderableCluster> aws_redshift_orderable_cluster = 223 [json_name = "aws_redshift_orderable_cluster"];
+
+    map<string, aws.data.AwsRedshiftServiceAccount> aws_redshift_service_account = 224 [json_name = "aws_redshift_service_account"];
+
+    map<string, aws.data.AwsRegion> aws_region = 225 [json_name = "aws_region"];
+
+    map<string, aws.data.AwsRegions> aws_regions = 226 [json_name = "aws_regions"];
+
+    map<string, aws.data.AwsResourcegroupstaggingapiResources> aws_resourcegroupstaggingapi_resources = 227 [json_name = "aws_resourcegroupstaggingapi_resources"];
+
+    map<string, aws.data.AwsRoute> aws_route = 228 [json_name = "aws_route"];
+
+    map<string, aws.data.AwsRoute53DelegationSet> aws_route53_delegation_set = 229 [json_name = "aws_route53_delegation_set"];
+
+    map<string, aws.data.AwsRoute53ResolverEndpoint> aws_route53_resolver_endpoint = 230 [json_name = "aws_route53_resolver_endpoint"];
+
+    map<string, aws.data.AwsRoute53ResolverRule> aws_route53_resolver_rule = 231 [json_name = "aws_route53_resolver_rule"];
+
+    map<string, aws.data.AwsRoute53ResolverRules> aws_route53_resolver_rules = 232 [json_name = "aws_route53_resolver_rules"];
+
+    map<string, aws.data.AwsRoute53Zone> aws_route53_zone = 233 [json_name = "aws_route53_zone"];
+
+    map<string, aws.data.AwsRouteTable> aws_route_table = 234 [json_name = "aws_route_table"];
+
+    map<string, aws.data.AwsRouteTables> aws_route_tables = 235 [json_name = "aws_route_tables"];
+
+    map<string, aws.data.AwsS3Bucket> aws_s3_bucket = 236 [json_name = "aws_s3_bucket"];
+
+    map<string, aws.data.AwsS3BucketObject> aws_s3_bucket_object = 237 [json_name = "aws_s3_bucket_object"];
+
+    map<string, aws.data.AwsS3BucketObjects> aws_s3_bucket_objects = 238 [json_name = "aws_s3_bucket_objects"];
+
+    map<string, aws.data.AwsSagemakerPrebuiltEcrImage> aws_sagemaker_prebuilt_ecr_image = 239 [json_name = "aws_sagemaker_prebuilt_ecr_image"];
+
+    map<string, aws.data.AwsSecretsmanagerSecret> aws_secretsmanager_secret = 240 [json_name = "aws_secretsmanager_secret"];
+
+    map<string, aws.data.AwsSecretsmanagerSecretRotation> aws_secretsmanager_secret_rotation = 241 [json_name = "aws_secretsmanager_secret_rotation"];
+
+    map<string, aws.data.AwsSecretsmanagerSecretVersion> aws_secretsmanager_secret_version = 242 [json_name = "aws_secretsmanager_secret_version"];
+
+    map<string, aws.data.AwsSecurityGroup> aws_security_group = 243 [json_name = "aws_security_group"];
+
+    map<string, aws.data.AwsSecurityGroups> aws_security_groups = 244 [json_name = "aws_security_groups"];
+
+    map<string, aws.data.AwsServerlessapplicationrepositoryApplication> aws_serverlessapplicationrepository_application = 245 [json_name = "aws_serverlessapplicationrepository_application"];
+
+    map<string, aws.data.AwsServiceDiscoveryDnsNamespace> aws_service_discovery_dns_namespace = 246 [json_name = "aws_service_discovery_dns_namespace"];
+
+    map<string, aws.data.AwsServicecatalogConstraint> aws_servicecatalog_constraint = 247 [json_name = "aws_servicecatalog_constraint"];
+
+    map<string, aws.data.AwsServicecatalogLaunchPaths> aws_servicecatalog_launch_paths = 248 [json_name = "aws_servicecatalog_launch_paths"];
+
+    map<string, aws.data.AwsServicecatalogPortfolio> aws_servicecatalog_portfolio = 249 [json_name = "aws_servicecatalog_portfolio"];
+
+    map<string, aws.data.AwsServicecatalogPortfolioConstraints> aws_servicecatalog_portfolio_constraints = 250 [json_name = "aws_servicecatalog_portfolio_constraints"];
+
+    map<string, aws.data.AwsServicecatalogProduct> aws_servicecatalog_product = 251 [json_name = "aws_servicecatalog_product"];
+
+    map<string, aws.data.AwsServicequotasService> aws_servicequotas_service = 252 [json_name = "aws_servicequotas_service"];
+
+    map<string, aws.data.AwsServicequotasServiceQuota> aws_servicequotas_service_quota = 253 [json_name = "aws_servicequotas_service_quota"];
+
+    map<string, aws.data.AwsSfnActivity> aws_sfn_activity = 254 [json_name = "aws_sfn_activity"];
+
+    map<string, aws.data.AwsSfnStateMachine> aws_sfn_state_machine = 255 [json_name = "aws_sfn_state_machine"];
+
+    map<string, aws.data.AwsSignerSigningJob> aws_signer_signing_job = 256 [json_name = "aws_signer_signing_job"];
+
+    map<string, aws.data.AwsSignerSigningProfile> aws_signer_signing_profile = 257 [json_name = "aws_signer_signing_profile"];
+
+    map<string, aws.data.AwsSnsTopic> aws_sns_topic = 258 [json_name = "aws_sns_topic"];
+
+    map<string, aws.data.AwsSqsQueue> aws_sqs_queue = 259 [json_name = "aws_sqs_queue"];
+
+    map<string, aws.data.AwsSsmDocument> aws_ssm_document = 260 [json_name = "aws_ssm_document"];
+
+    map<string, aws.data.AwsSsmParameter> aws_ssm_parameter = 261 [json_name = "aws_ssm_parameter"];
+
+    map<string, aws.data.AwsSsmParametersByPath> aws_ssm_parameters_by_path = 262 [json_name = "aws_ssm_parameters_by_path"];
+
+    map<string, aws.data.AwsSsmPatchBaseline> aws_ssm_patch_baseline = 263 [json_name = "aws_ssm_patch_baseline"];
+
+    map<string, aws.data.AwsSsoadminInstances> aws_ssoadmin_instances = 264 [json_name = "aws_ssoadmin_instances"];
+
+    map<string, aws.data.AwsSsoadminPermissionSet> aws_ssoadmin_permission_set = 265 [json_name = "aws_ssoadmin_permission_set"];
+
+    map<string, aws.data.AwsStoragegatewayLocalDisk> aws_storagegateway_local_disk = 266 [json_name = "aws_storagegateway_local_disk"];
+
+    map<string, aws.data.AwsSubnet> aws_subnet = 267 [json_name = "aws_subnet"];
+
+    map<string, aws.data.AwsSubnetIds> aws_subnet_ids = 268 [json_name = "aws_subnet_ids"];
+
+    map<string, aws.data.AwsSubnets> aws_subnets = 269 [json_name = "aws_subnets"];
+
+    map<string, aws.data.AwsTransferServer> aws_transfer_server = 270 [json_name = "aws_transfer_server"];
+
+    map<string, aws.data.AwsVpc> aws_vpc = 271 [json_name = "aws_vpc"];
+
+    map<string, aws.data.AwsVpcDhcpOptions> aws_vpc_dhcp_options = 272 [json_name = "aws_vpc_dhcp_options"];
+
+    map<string, aws.data.AwsVpcEndpoint> aws_vpc_endpoint = 273 [json_name = "aws_vpc_endpoint"];
+
+    map<string, aws.data.AwsVpcEndpointService> aws_vpc_endpoint_service = 274 [json_name = "aws_vpc_endpoint_service"];
+
+    map<string, aws.data.AwsVpcIpamPool> aws_vpc_ipam_pool = 275 [json_name = "aws_vpc_ipam_pool"];
+
+    map<string, aws.data.AwsVpcPeeringConnection> aws_vpc_peering_connection = 276 [json_name = "aws_vpc_peering_connection"];
+
+    map<string, aws.data.AwsVpcPeeringConnections> aws_vpc_peering_connections = 277 [json_name = "aws_vpc_peering_connections"];
+
+    map<string, aws.data.AwsVpcs> aws_vpcs = 278 [json_name = "aws_vpcs"];
+
+    map<string, aws.data.AwsVpnGateway> aws_vpn_gateway = 279 [json_name = "aws_vpn_gateway"];
+
+    map<string, aws.data.AwsWafIpset> aws_waf_ipset = 280 [json_name = "aws_waf_ipset"];
+
+    map<string, aws.data.AwsWafRateBasedRule> aws_waf_rate_based_rule = 281 [json_name = "aws_waf_rate_based_rule"];
+
+    map<string, aws.data.AwsWafRule> aws_waf_rule = 282 [json_name = "aws_waf_rule"];
+
+    map<string, aws.data.AwsWafWebAcl> aws_waf_web_acl = 283 [json_name = "aws_waf_web_acl"];
+
+    map<string, aws.data.AwsWafregionalIpset> aws_wafregional_ipset = 284 [json_name = "aws_wafregional_ipset"];
+
+    map<string, aws.data.AwsWafregionalRateBasedRule> aws_wafregional_rate_based_rule = 285 [json_name = "aws_wafregional_rate_based_rule"];
+
+    map<string, aws.data.AwsWafregionalRule> aws_wafregional_rule = 286 [json_name = "aws_wafregional_rule"];
+
+    map<string, aws.data.AwsWafregionalWebAcl> aws_wafregional_web_acl = 287 [json_name = "aws_wafregional_web_acl"];
+
+    map<string, aws.data.AwsWafv2IpSet> aws_wafv2_ip_set = 288 [json_name = "aws_wafv2_ip_set"];
+
+    map<string, aws.data.AwsWafv2RegexPatternSet> aws_wafv2_regex_pattern_set = 289 [json_name = "aws_wafv2_regex_pattern_set"];
+
+    map<string, aws.data.AwsWafv2RuleGroup> aws_wafv2_rule_group = 290 [json_name = "aws_wafv2_rule_group"];
+
+    map<string, aws.data.AwsWafv2WebAcl> aws_wafv2_web_acl = 291 [json_name = "aws_wafv2_web_acl"];
+
+    map<string, aws.data.AwsWorkspacesBundle> aws_workspaces_bundle = 292 [json_name = "aws_workspaces_bundle"];
+
+    map<string, aws.data.AwsWorkspacesDirectory> aws_workspaces_directory = 293 [json_name = "aws_workspaces_directory"];
+
+    map<string, aws.data.AwsWorkspacesImage> aws_workspaces_image = 294 [json_name = "aws_workspaces_image"];
+
+    map<string, aws.data.AwsWorkspacesWorkspace> aws_workspaces_workspace = 295 [json_name = "aws_workspaces_workspace"];
+
+    map<string, tfe.data.TfeAgentPool> tfe_agent_pool = 296 [json_name = "tfe_agent_pool"];
+
+    map<string, tfe.data.TfeIpRanges> tfe_ip_ranges = 297 [json_name = "tfe_ip_ranges"];
+
+    map<string, tfe.data.TfeOauthClient> tfe_oauth_client = 298 [json_name = "tfe_oauth_client"];
+
+    map<string, tfe.data.TfeOrganization> tfe_organization = 299 [json_name = "tfe_organization"];
+
+    map<string, tfe.data.TfeOrganizationMembership> tfe_organization_membership = 300 [json_name = "tfe_organization_membership"];
+
+    map<string, tfe.data.TfeOrganizations> tfe_organizations = 301 [json_name = "tfe_organizations"];
+
+    map<string, tfe.data.TfeOutputs> tfe_outputs = 302 [json_name = "tfe_outputs"];
+
+    map<string, tfe.data.TfeSlug> tfe_slug = 303 [json_name = "tfe_slug"];
+
+    map<string, tfe.data.TfeSshKey> tfe_ssh_key = 304 [json_name = "tfe_ssh_key"];
+
+    map<string, tfe.data.TfeTeam> tfe_team = 305 [json_name = "tfe_team"];
+
+    map<string, tfe.data.TfeTeamAccess> tfe_team_access = 306 [json_name = "tfe_team_access"];
+
+    map<string, tfe.data.TfeVariables> tfe_variables = 307 [json_name = "tfe_variables"];
+
+    map<string, tfe.data.TfeWorkspace> tfe_workspace = 308 [json_name = "tfe_workspace"];
+
+    map<string, tfe.data.TfeWorkspaceIds> tfe_workspace_ids = 309 [json_name = "tfe_workspace_ids"];
   }
 
   message Providers {
-    repeated tfe.provider.Tfe tfe = 1;
+    repeated aws.provider.Aws aws = 1;
+
+    repeated tfe.provider.Tfe tfe = 2;
   }
 
   message Variable {

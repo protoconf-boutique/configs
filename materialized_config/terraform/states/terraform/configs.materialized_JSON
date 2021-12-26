@@ -8,6 +8,14 @@
           "email": "team@protoconf.com",
           "name": "protoconf-boutique"
         }
+      },
+      "tfe_workspace": {
+        "vpc-us-west-1": {
+          "auto_apply": true,
+          "name": "vpc-us-west-1",
+          "organization": "protoconf-boutique",
+          "working_directory": "tfconfigs/vpc-us-west-1"
+        }
       }
     },
     "terraform": {
