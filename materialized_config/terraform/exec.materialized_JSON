@@ -4,23 +4,24 @@
     "@type": "type.googleapis.com/exec_config.Config",
     "items": [
       {
-        "path": "terraform/providers.tf",
+        "path": "terraform/states/terraform/configs",
         "protoFile": "terraform/terraform.proto",
         "actions": [
           {
             "file": {
-              "path": "tfconfigs/terraform/providers.tf.json"
+              "path": "tfconfigs/configs/main.tf.json"
             }
           }
         ]
       },
       {
-        "path": "terraform/states.tf",
-        "protoFile": "terraform/terraform.proto",
+        "path": "terraform/states/action/configs",
+        "protoFile": "github/actions.proto",
         "actions": [
           {
             "file": {
-              "path": "tfconfigs/terraform/states.tf.json"
+              "path": ".github/workflows/terraform-configs-action.yaml",
+              "serializer": "YAML"
             }
           }
         ]

@@ -1,0 +1,65 @@
+"""
+states.tf
+"""
+
+load("terraform.proto", "Terraform")
+load(
+    "tfe-resources.proto",
+    "TfeOrganization",
+    "TfeWorkspace",
+)
+
+TF_ORG_NAME = "protoconf-boutique"
+workspaces = []
+
+states_tf = Terraform(
+    resource=Terraform.Resources(),
+    terraform=Terraform.TerraformSettings(
+        backend=Terraform.TerraformSettings.Backend(
+            remote=Terraform.TerraformSettings.Backend.BackendRemote(
+                organization=TF_ORG_NAME,
+                workspaces=Terraform.TerraformSettings.Backend.BackendRemote.Workspace(
+                    name="configs"
+                ),
+            )
+        )
+    ),
+)
+workspaces.append(states_tf)
+
+tfe_org = states_tf.resource.tfe_organization.setdefault(
+    "protoconf-boutique",
+    TfeOrganization(
+        email="team@protoconf.com",
+        name="protoconf-boutique",
+    ),
+)
+
+def terraform_workspace(tf, name):
+    ws = tf.resource.tfe_workspace.setdefault(
+        name,
+        TfeWorkspace(
+            name=name,
+            auto_apply=True,
+            organization=TF_ORG_NAME,
+            working_directory="tfconfigs/%s" % name,
+        ),
+    )
+    ws = Terraform(
+        resource=Terraform.Resources(),
+        terraform=Terraform.TerraformSettings(
+            backend=Terraform.TerraformSettings.Backend(
+                remote=Terraform.TerraformSettings.Backend.BackendRemote(
+                    organization="protoconf-boutique",
+                    workspaces=Terraform.TerraformSettings.Backend.BackendRemote.Workspace(
+                        name=name
+                    ),
+                )
+            )
+        ),
+    )
+    workspaces.append(ws)
+    return ws
+
+def get_workspace_name(tf):
+    return tf.terraform.backend.remote.workspaces.name

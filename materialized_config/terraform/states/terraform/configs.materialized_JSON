@@ -1,0 +1,24 @@
+{
+  "protoFile": "terraform/terraform.proto",
+  "value": {
+    "@type": "type.googleapis.com/terraform.Terraform",
+    "resource": {
+      "tfe_organization": {
+        "protoconf-boutique": {
+          "email": "team@protoconf.com",
+          "name": "protoconf-boutique"
+        }
+      }
+    },
+    "terraform": {
+      "backend": {
+        "remote": {
+          "organization": "protoconf-boutique",
+          "workspaces": {
+            "name": "configs"
+          }
+        }
+      }
+    }
+  }
+}

@@ -9,6 +9,7 @@ load(
     "Config",
     "WatcherConfig",
 )
+load("workspaces.pinc", "workspaces", "get_workspace_name")
 
 configs = [
     "terraform/providers.tf",
@@ -20,12 +21,27 @@ def main():
     return Config(
         items=[
             WatcherConfig(
-                path="%s" % path,
+                path="terraform/states/terraform/%s" % get_workspace_name(ws),
                 proto_file="terraform/terraform.proto",
                 actions=[
-                    Action(file=ActionTypeWriteToFile(path="tfconfigs/%s.json" % path)),
+                    Action(file=ActionTypeWriteToFile(path="tfconfigs/%s/main.tf.json" % get_workspace_name(ws))),
                 ],
             )
-            for path in configs
+            for ws in workspaces
+        ]
+        + [
+            WatcherConfig(
+                path="terraform/states/action/%s" % get_workspace_name(ws),
+                proto_file="github/actions.proto",
+                actions=[
+                    Action(
+                        file=ActionTypeWriteToFile(
+                            path=".github/workflows/terraform-%s-action.yaml" % get_workspace_name(ws),
+                            serializer=Config.Serializer.YAML,
+                        )
+                    ),
+                ],
+            )
+            for ws in workspaces
         ],
     )
