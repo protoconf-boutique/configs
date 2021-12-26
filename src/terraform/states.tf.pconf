@@ -24,10 +24,10 @@ tf = Terraform(
                 organization="protoconf-boutique",
                 workspaces=Terraform.TerraformSettings.Backend.BackendRemote.Workspace(
                     name="configs"
-                )
+                ),
             )
         )
-    )
+    ),
 )
 tfe_org = tf.resource.tfe_organization.setdefault(
     "protoconf-boutique",

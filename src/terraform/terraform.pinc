@@ -4,10 +4,11 @@ Returns a default Terraform insance
 
 load("//terraform/terraform.proto", "Terraform")
 
+
 def NewTerraform():
     return Terraform(
-        provider = Terraform.Providers(),
-        resource = Terraform.Resources(),
-        data = Terraform.Datasources(),
-        terraform = Terraform.TerraformSettings(),
+        provider=Terraform.Providers(),
+        resource=Terraform.Resources(),
+        data=Terraform.Datasources(),
+        terraform=Terraform.TerraformSettings(),
     )

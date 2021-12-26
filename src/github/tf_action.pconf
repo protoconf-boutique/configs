@@ -16,7 +16,11 @@ def gen_actions(path):
                 steps=[
                     g.Job.Step(name="Checkout", uses="actions/checkout@v2"),
                     g.Job.Step(
-                        name="Setup Terraform", uses="hashicorp/setup-terraform@v1"
+                        name="Setup Terraform",
+                        uses="hashicorp/setup-terraform@v1",
+                        params={
+                            "cli_config_credentials_token": "${{ secrets.TF_API_TOKEN }}"
+                        },
                     ),
                     g.Job.Step(
                         name="Terraform Format",
